@@ -1,526 +1,322 @@
 #include "prmodel.h"
-#include "Windows.h"
 
 PrModel::PrModel()
 {
-    sp_SWMatrix = std::make_shared<SWMatrix>();
 }
 
-std::shared_ptr<PrMatrix> PrModel::getSWMatrix(){
-    return sp_SWMatrix;
+PrModel::PrModel(const string & video_path)
+{
+    this->capture(video_path);
+    cout << ">> Video imported sucessful. (Path: " << video_path << ")" << endl;
 }
 
-void PrModel::newLayout(int level)
+PrModel::PrModel(const PrModel &old_video, int start_frame, int end_frame) : PrModel(old_video)
+{
+    this->cut(start_frame, end_frame);
+    cout << ">> PrModel imported sucessful." << endl;
+}
+
+PrModel::~PrModel()
+{
+}
+
+double PrModel::getFPS() const
+{
+    return fps;
+}
+
+double PrModel::getWidth() const
+{
+    return wSize.width;
+}
+
+double PrModel::getHeight() const
+{
+    return wSize.height;
+}
+
+int PrModel::getFrameCnt() const
+{
+    return fCnt;
+}
+
+void PrModel::capture(const string &video_path)
+{
+    VideoCapture capture(video_path);
+    if (!capture.isOpened()) {
+        cout << ">> [Error] Failed to import the video!" << endl;
+        return;
+    }
+
+    fps = capture.get(CAP_PROP_FPS);
+    wSize = windowSize(capture.get(CAP_PROP_FRAME_WIDTH), capture.get(CAP_PROP_FRAME_HEIGHT));
+    fCnt = capture.get(CAP_PROP_FRAME_COUNT);
+
+    Mat frame;
+    while (capture.read(frame))
+    {
+        Mat *frameP = new Mat;
+        frame.copyTo(*frameP);
+        frames.push_back(*frameP);
+    }
+
+    capture.release();
+    cout << ">> PrModel imported sucessful. (Path: " << video_path << ")" << endl;
+}
+
+void PrModel::cut(int start_frame, int end_frame)
+{
+    frames.erase(frames.begin(), frames.begin() + start_frame);
+    frames.erase(frames.begin() + (end_frame - start_frame), frames.end());
+    fCnt = end_frame - start_frame;
+}
+
+
+PrModel cut(const PrModel &old_video, int start_frame, int end_frame)
+{
+    PrModel video(old_video);
+    video.cut(start_frame, end_frame);
+    return video;
+}
+
+void PrModel::link(const PrModel &video, int trans_mode)
 {
 
-    if(level == 1||level==16){
-        int row = 5;
-        int col = 5;
-        sp_SWMatrix->initialMatrix(row,col,1);
-
-        sp_SWMatrix->setMatrixPointIsExist(1,1,0);
-        sp_SWMatrix->setMatrixPointIsExist(1,5,0);
-        sp_SWMatrix->setMatrixPointIsExist(1,1,0);
-        sp_SWMatrix->setMatrixPointIsExist(5,1,0);
-        sp_SWMatrix->setMatrixPointIsExist(5,5,0);
-
-        for(int j=1;j<=col;j++){
-            sp_SWMatrix->setMatrixPointColor(3,j,1);
-        }
-        sp_SWMatrix->setMatrixPointIsStart(3,1,1);
-
+    if (wSize.width < video.wSize.width) {
+        wSize.width = video.wSize.width;
     }
-    else if(level == 2){
-        int row = 5;
-        int col = 4;
-        sp_SWMatrix->initialMatrix(row,col,2);
-
-        sp_SWMatrix->setMatrixPointIsExist(1,1,0);
-        sp_SWMatrix->setMatrixPointIsExist(1,4,0);
-        sp_SWMatrix->setMatrixPointIsExist(5,1,0);
-        sp_SWMatrix->setMatrixPointIsExist(5,4,0);
-
-        for(int j=1;j<=row;j++){
-            sp_SWMatrix->setMatrixPointColor(j,2,1);
-            sp_SWMatrix->setMatrixPointColor(j,3,1);
-        }
-        sp_SWMatrix->setMatrixPointIsStart(1,2,1);
-        sp_SWMatrix->setMatrixPointIsStart(5,3,1);
-
+    if (wSize.height < video.wSize.height) {
+        wSize.height = video.wSize.height;
+    }
+    if (fps != video.fps) {
+        cout << ">> [Warning] Trying to stitch video with different FPS." << endl;
     }
 
-    else if(level == 3){
-         int row =6;
-         int col =7;
-         sp_SWMatrix->initialMatrix(row,col,3);
-         sp_SWMatrix->setMatrixPointIsExist(1,1,0);
-         sp_SWMatrix->setMatrixPointIsExist(1,7,0);
-         sp_SWMatrix->setMatrixPointIsExist(4,1,0);
-         sp_SWMatrix->setMatrixPointIsExist(4,7,0);
-         sp_SWMatrix->setMatrixPointIsExist(5,1,0);
-         sp_SWMatrix->setMatrixPointIsExist(5,2,0);
-         sp_SWMatrix->setMatrixPointIsExist(5,6,0);
-         sp_SWMatrix->setMatrixPointIsExist(5,7,0);
-         sp_SWMatrix->setMatrixPointIsExist(6,1,0);
-         sp_SWMatrix->setMatrixPointIsExist(6,2,0);
-         sp_SWMatrix->setMatrixPointIsExist(6,3,0);
-         sp_SWMatrix->setMatrixPointIsExist(6,5,0);
-         sp_SWMatrix->setMatrixPointIsExist(6,6,0);
-         sp_SWMatrix->setMatrixPointIsExist(6,7,0);
-
-         sp_SWMatrix->setMatrixPointColor(1,3,1);
-         sp_SWMatrix->setMatrixPointColor(1,5,1);
-         sp_SWMatrix->setMatrixPointColor(2,3,1);
-         sp_SWMatrix->setMatrixPointColor(2,5,1);
-         sp_SWMatrix->setMatrixPointColor(3,3,1);
-         sp_SWMatrix->setMatrixPointColor(3,5,1);
-         sp_SWMatrix->setMatrixPointColor(4,3,1);
-         sp_SWMatrix->setMatrixPointColor(4,5,1);
-         sp_SWMatrix->setMatrixPointColor(5,3,1);
-         sp_SWMatrix->setMatrixPointColor(5,5,1);
-
-         sp_SWMatrix->setMatrixPointIsStart(1,3,1);
-         sp_SWMatrix->setMatrixPointIsStart(5,5,1);
-
-     }
-    else if(level == 4){
-         int row = 5;
-         int col = 4;
-         sp_SWMatrix->initialMatrix(row,col,4);
-         for(int i=1;i<=row;i++){
-             sp_SWMatrix->setMatrixPointColor(i,3,1);
-         }
-         for(int j=1;j<=col;j++){
-             sp_SWMatrix->setMatrixPointColor(3,j,1);
-         }
-         sp_SWMatrix->setMatrixPointColor(3,3,0);
-         sp_SWMatrix->setMatrixPointIsStart(1,3,1);
-         sp_SWMatrix->setMatrixPointIsStart(3,4,1);
-
-     }
-    else if(level == 5){
-         int row =6;
-         int col =5;
-         sp_SWMatrix->initialMatrix(row,col,5);
-         sp_SWMatrix->setMatrixPointIsExist(1,3,0);
-         sp_SWMatrix->setMatrixPointIsExist(3,1,0);
-         sp_SWMatrix->setMatrixPointIsExist(3,5,0);
-         sp_SWMatrix->setMatrixPointIsExist(6,3,0);
-
-
-         sp_SWMatrix->setMatrixPointColor(1,1,1);
-         sp_SWMatrix->setMatrixPointColor(1,5,1);
-         sp_SWMatrix->setMatrixPointColor(2,1,1);
-         sp_SWMatrix->setMatrixPointColor(2,3,1);
-         sp_SWMatrix->setMatrixPointColor(2,5,1);
-         sp_SWMatrix->setMatrixPointColor(3,3,1);
-         sp_SWMatrix->setMatrixPointColor(4,2,1);
-         sp_SWMatrix->setMatrixPointColor(4,4,1);
-         sp_SWMatrix->setMatrixPointColor(5,1,1);
-         sp_SWMatrix->setMatrixPointColor(5,5,1);
-         sp_SWMatrix->setMatrixPointColor(6,1,1);
-         sp_SWMatrix->setMatrixPointColor(6,2,1);
-         sp_SWMatrix->setMatrixPointColor(6,4,1);
-         sp_SWMatrix->setMatrixPointColor(6,5,1);
-
-
-
-
-
-         sp_SWMatrix->setMatrixPointIsStart(1,4,1);
-         sp_SWMatrix->setMatrixPointIsStart(4,5,1);
-
-     }
-    else if(level==6){
-        int row = 5;
-        int col = 4;
-        sp_SWMatrix->initialMatrix(row,col,6);
-
-        sp_SWMatrix->setMatrixPointIsExist(1,2,0);
-        sp_SWMatrix->setMatrixPointIsExist(1,3,0);
-        sp_SWMatrix->setMatrixPointIsExist(1,4,0);
-        sp_SWMatrix->setMatrixPointIsExist(5,1,0);
-        sp_SWMatrix->setMatrixPointIsExist(5,2,0);
-        sp_SWMatrix->setMatrixPointIsExist(5,3,0);
-
-        sp_SWMatrix->setMatrixPointColor(2,1,1);
-        sp_SWMatrix->setMatrixPointColor(3,2,1);
-        sp_SWMatrix->setMatrixPointColor(3,3,1);
-        sp_SWMatrix->setMatrixPointColor(4,4,1);
-        sp_SWMatrix->setMatrixPointIsStart(2,1,1);
-        sp_SWMatrix->setMatrixPointIsStart(4,4,1);
-
-
-    }
-    else if(level==7){
-        int row = 7;
-        int col = 6;
-        sp_SWMatrix->initialMatrix(row,col,7);
-
-        sp_SWMatrix->setMatrixPointIsExist(1,2,0);
-        sp_SWMatrix->setMatrixPointIsExist(1,5,0);
-        sp_SWMatrix->setMatrixPointIsExist(7,2,0);
-        sp_SWMatrix->setMatrixPointIsExist(7,5,0);
-
-        sp_SWMatrix->setMatrixPointColor(1,1,1);
-        sp_SWMatrix->setMatrixPointColor(1,3,1);
-        sp_SWMatrix->setMatrixPointColor(1,4,1);
-        sp_SWMatrix->setMatrixPointColor(1,6,1);
-        sp_SWMatrix->setMatrixPointColor(2,1,1);
-        sp_SWMatrix->setMatrixPointColor(2,2,1);
-        sp_SWMatrix->setMatrixPointColor(2,3,1);
-        sp_SWMatrix->setMatrixPointColor(2,4,1);
-        sp_SWMatrix->setMatrixPointColor(2,5,1);
-        sp_SWMatrix->setMatrixPointColor(6,1,1);
-        sp_SWMatrix->setMatrixPointColor(6,2,1);
-        sp_SWMatrix->setMatrixPointColor(6,3,1);
-        sp_SWMatrix->setMatrixPointColor(6,4,1);
-        sp_SWMatrix->setMatrixPointColor(6,5,1);
-        sp_SWMatrix->setMatrixPointColor(7,1,1);
-        sp_SWMatrix->setMatrixPointColor(7,3,1);
-        sp_SWMatrix->setMatrixPointColor(7,4,1);
-        sp_SWMatrix->setMatrixPointColor(7,6,1);
-
-        sp_SWMatrix->setMatrixPointIsStart(1,1,1);
-        sp_SWMatrix->setMatrixPointIsStart(7,1,1);
-
-
-    }
-    else if(level==8){
-        int row = 7;
-        int col = 6;
-        sp_SWMatrix->initialMatrix(row,col,8);
-
-        sp_SWMatrix->setMatrixPointIsExist(1,1,0);
-        sp_SWMatrix->setMatrixPointIsExist(1,6,0);
-        sp_SWMatrix->setMatrixPointIsExist(7,1,0);
-        sp_SWMatrix->setMatrixPointIsExist(7,6,0);
-
-        sp_SWMatrix->setMatrixPointColor(3,2,1);
-        sp_SWMatrix->setMatrixPointColor(3,5,1);
-        sp_SWMatrix->setMatrixPointColor(4,1,1);
-        sp_SWMatrix->setMatrixPointColor(4,6,1);
-        sp_SWMatrix->setMatrixPointColor(5,1,1);
-        sp_SWMatrix->setMatrixPointColor(5,6,1);
-        sp_SWMatrix->setMatrixPointColor(6,1,1);
-        sp_SWMatrix->setMatrixPointColor(6,2,1);
-        sp_SWMatrix->setMatrixPointColor(6,5,1);
-        sp_SWMatrix->setMatrixPointColor(6,6,1);
-
-        sp_SWMatrix->setMatrixPointIsStart(1,2,1);
-        sp_SWMatrix->setMatrixPointIsStart(1,5,1);
-
-
-    }
-    else if(level==9){
-        int row = 7;
-        int col = 6;
-        sp_SWMatrix->initialMatrix(row,col,9);
-
-        sp_SWMatrix->setMatrixPointIsExist(3,2,0);
-        sp_SWMatrix->setMatrixPointIsExist(3,5,0);
-        sp_SWMatrix->setMatrixPointIsExist(4,2,0);
-        sp_SWMatrix->setMatrixPointIsExist(4,5,0);
-        sp_SWMatrix->setMatrixPointIsExist(5,2,0);
-        sp_SWMatrix->setMatrixPointIsExist(5,5,0);
-
-
-        sp_SWMatrix->setMatrixPointColor(1,1,1);
-        sp_SWMatrix->setMatrixPointColor(1,2,1);
-        sp_SWMatrix->setMatrixPointColor(1,5,1);
-        sp_SWMatrix->setMatrixPointColor(1,6,1);
-        sp_SWMatrix->setMatrixPointColor(2,3,1);
-        sp_SWMatrix->setMatrixPointColor(2,4,1);
-        sp_SWMatrix->setMatrixPointColor(3,3,1);
-        sp_SWMatrix->setMatrixPointColor(3,4,1);
-        sp_SWMatrix->setMatrixPointColor(4,3,1);
-        sp_SWMatrix->setMatrixPointColor(4,4,1);
-        sp_SWMatrix->setMatrixPointColor(5,3,1);
-        sp_SWMatrix->setMatrixPointColor(5,4,1);
-        sp_SWMatrix->setMatrixPointColor(6,4,1);
-        sp_SWMatrix->setMatrixPointColor(6,3,1);
-        sp_SWMatrix->setMatrixPointColor(7,1,1);
-        sp_SWMatrix->setMatrixPointColor(7,2,1);
-        sp_SWMatrix->setMatrixPointColor(7,6,1);
-        sp_SWMatrix->setMatrixPointColor(7,5,1);
-
-        sp_SWMatrix->setMatrixPointIsStart(1,3,1);
-        sp_SWMatrix->setMatrixPointIsStart(7,4,1);
-
-
-    }
-    else if(level==10){
-        int row = 7;
-        int col = 6;
-        sp_SWMatrix->initialMatrix(row,col,10);
-
-        sp_SWMatrix->setMatrixPointIsExist(2,2,0);
-        sp_SWMatrix->setMatrixPointIsExist(2,5,0);
-        sp_SWMatrix->setMatrixPointIsExist(6,2,0);
-        sp_SWMatrix->setMatrixPointIsExist(6,5,0);
-
-        sp_SWMatrix->setMatrixPointColor(1,1,1);
-        sp_SWMatrix->setMatrixPointColor(1,2,1);
-        sp_SWMatrix->setMatrixPointColor(1,5,1);
-        sp_SWMatrix->setMatrixPointColor(1,6,1);
-        sp_SWMatrix->setMatrixPointColor(2,2,1);
-        sp_SWMatrix->setMatrixPointColor(2,3,1);
-        sp_SWMatrix->setMatrixPointColor(3,2,1);
-        sp_SWMatrix->setMatrixPointColor(3,3,1);
-        sp_SWMatrix->setMatrixPointColor(4,2,1);
-        sp_SWMatrix->setMatrixPointColor(4,3,1);
-        sp_SWMatrix->setMatrixPointColor(5,1,1);
-        sp_SWMatrix->setMatrixPointColor(5,2,1);
-        sp_SWMatrix->setMatrixPointColor(5,5,1);
-        sp_SWMatrix->setMatrixPointColor(5,6,1);
-        sp_SWMatrix->setMatrixPointColor(6,1,1);
-        sp_SWMatrix->setMatrixPointColor(6,6,1);
-
-
-        sp_SWMatrix->setMatrixPointIsStart(1,1,1);
-        sp_SWMatrix->setMatrixPointIsStart(1,6,1);
-
-
-    }
-   else  if(level==11){
-        int row = 5;
-        int col = 4;
-        sp_SWMatrix->initialMatrix(row,col,11);
-        for(int j=1;j<=col;j++){
-            sp_SWMatrix->setMatrixPointColor(2,j,1);
-            sp_SWMatrix->setMatrixPointColor(4,j,1);
-        }
-        sp_SWMatrix->setMatrixPointIsStart(5,1,1);
-        sp_SWMatrix->setMatrixPointIsStart(5,4,1);
-
-
-    }
-    else if(level==8){
-        int row = 6;
-        int col = 5;
-        sp_SWMatrix->initialMatrix(row,col,8);
-
-        sp_SWMatrix->setMatrixPointColor(1,2,1);
-        sp_SWMatrix->setMatrixPointColor(1,4,1);
-        sp_SWMatrix->setMatrixPointColor(2,2,1);
-        sp_SWMatrix->setMatrixPointColor(2,4,1);
-        sp_SWMatrix->setMatrixPointColor(3,1,1);
-        sp_SWMatrix->setMatrixPointColor(3,3,1);
-        sp_SWMatrix->setMatrixPointColor(3,5,1);
-        sp_SWMatrix->setMatrixPointColor(4,2,1);
-        sp_SWMatrix->setMatrixPointColor(4,4,1);
-        sp_SWMatrix->setMatrixPointColor(5,2,1);
-        sp_SWMatrix->setMatrixPointColor(5,3,1);
-        sp_SWMatrix->setMatrixPointColor(5,4,1);
-
-        sp_SWMatrix->setMatrixPointIsStart(1,2,1);
-        sp_SWMatrix->setMatrixPointIsStart(3,5,1);
-
-    }
-    else if(level==10){
-        int row = 6;
-        int col = 5;
-        sp_SWMatrix->initialMatrix(row,col,10);
-
-        sp_SWMatrix->setMatrixPointIsExist(1,1,0);
-        sp_SWMatrix->setMatrixPointIsExist(1,5,0);
-
-        sp_SWMatrix->setMatrixPointColor(1,2,1);
-        sp_SWMatrix->setMatrixPointColor(2,1,1);
-        sp_SWMatrix->setMatrixPointColor(2,3,1);
-        sp_SWMatrix->setMatrixPointColor(2,4,1);
-        sp_SWMatrix->setMatrixPointColor(3,2,1);
-        sp_SWMatrix->setMatrixPointColor(3,4,1);
-        sp_SWMatrix->setMatrixPointColor(4,2,1);
-        sp_SWMatrix->setMatrixPointColor(4,4,1);
-        sp_SWMatrix->setMatrixPointColor(5,2,1);
-        sp_SWMatrix->setMatrixPointColor(5,3,1);
-        sp_SWMatrix->setMatrixPointColor(5,5,1);
-        sp_SWMatrix->setMatrixPointColor(6,4,1);
-
-        sp_SWMatrix->setMatrixPointIsStart(1,2,1);
-        sp_SWMatrix->setMatrixPointIsStart(6,4,1);
-
-    }
-   else  if(level==12){
-        int row = 6;
-        int col = 5;
-        sp_SWMatrix->initialMatrix(row,col,12);
-
-        for(int i=2;i<=5;i++){
-            sp_SWMatrix->setMatrixPointColor(i,1,1);
-            sp_SWMatrix->setMatrixPointColor(i,2,1);
-            sp_SWMatrix->setMatrixPointColor(i,4,1);
-            sp_SWMatrix->setMatrixPointColor(i,5,1);
-        }
-
-        sp_SWMatrix->setMatrixPointIsStart(6,1,1);
-        sp_SWMatrix->setMatrixPointIsStart(6,5,1);
-
-    }
-    else if(level==13){
-        int row = 5;
-        int col = 4;
-        sp_SWMatrix->initialMatrix(row,col,13);
-
-        sp_SWMatrix->setMatrixPointColor(1,1,1);
-        sp_SWMatrix->setMatrixPointColor(2,1,1);
-        sp_SWMatrix->setMatrixPointColor(4,1,1);
-        sp_SWMatrix->setMatrixPointColor(5,1,1);
-        sp_SWMatrix->setMatrixPointColor(1,3,1);
-        sp_SWMatrix->setMatrixPointColor(5,3,1);
-
-        sp_SWMatrix->setMatrixPointIsStart(1,2,1);
-        sp_SWMatrix->setMatrixPointIsStart(3,4,1);
-        sp_SWMatrix->setMatrixPointIsStart(5,2,1);
-
-
-    }
-    else if(level==14){
-        int row = 6;
-        int col = 5;
-        sp_SWMatrix->initialMatrix(row,col,14);
-
-        sp_SWMatrix->setMatrixPointIsExist(1,1,0);
-        sp_SWMatrix->setMatrixPointIsExist(1,2,0);
-        sp_SWMatrix->setMatrixPointIsExist(1,4,0);
-        sp_SWMatrix->setMatrixPointIsExist(1,5,0);
-
-        sp_SWMatrix->setMatrixPointColor(2,2,1);
-        sp_SWMatrix->setMatrixPointColor(2,4,1);
-        sp_SWMatrix->setMatrixPointColor(3,2,1);
-        sp_SWMatrix->setMatrixPointColor(3,4,1);
-        sp_SWMatrix->setMatrixPointColor(4,1,1);
-        sp_SWMatrix->setMatrixPointColor(4,2,1);
-        sp_SWMatrix->setMatrixPointColor(4,4,1);
-        sp_SWMatrix->setMatrixPointColor(4,5,1);
-        sp_SWMatrix->setMatrixPointColor(5,1,1);
-        sp_SWMatrix->setMatrixPointColor(5,5,1);
-        sp_SWMatrix->setMatrixPointColor(6,1,1);
-        sp_SWMatrix->setMatrixPointColor(6,2,1);
-        sp_SWMatrix->setMatrixPointColor(6,4,1);
-        sp_SWMatrix->setMatrixPointColor(6,5,1);
-
-        sp_SWMatrix->setMatrixPointIsStart(1,3,1);
-        sp_SWMatrix->setMatrixPointIsStart(6,3,1);
-
-
-    }
-    else if(level==15){
-        int row = 6;
-        int col = 5;
-        sp_SWMatrix->initialMatrix(row,col,15);
-
-        sp_SWMatrix->setMatrixPointIsExist(1,4,0);
-        sp_SWMatrix->setMatrixPointIsExist(1,5,0);
-        sp_SWMatrix->setMatrixPointIsExist(2,4,0);
-        sp_SWMatrix->setMatrixPointIsExist(2,5,0);
-        sp_SWMatrix->setMatrixPointIsExist(5,1,0);
-        sp_SWMatrix->setMatrixPointIsExist(5,2,0);
-        sp_SWMatrix->setMatrixPointIsExist(6,1,0);
-        sp_SWMatrix->setMatrixPointIsExist(6,2,0);
-
-        sp_SWMatrix->setMatrixPointColor(1,1,1);
-        sp_SWMatrix->setMatrixPointColor(2,1,1);
-        sp_SWMatrix->setMatrixPointColor(2,2,1);
-        sp_SWMatrix->setMatrixPointColor(3,2,1);
-        sp_SWMatrix->setMatrixPointColor(4,4,1);
-        sp_SWMatrix->setMatrixPointColor(5,4,1);
-        sp_SWMatrix->setMatrixPointColor(5,5,1);
-        sp_SWMatrix->setMatrixPointColor(6,5,1);
-
-
-        sp_SWMatrix->setMatrixPointIsStart(1,1,1);
-        sp_SWMatrix->setMatrixPointIsStart(6,4,1);
-
-
-    }
-    Fire_OnPropertyChanged("SWMatrix");
-
-}
-
-
-void PrModel::changePointColor(int curRow, int curCol){
-    if(sp_SWMatrix->getMatrixPointColor(curRow,curCol)==0){
-        sp_SWMatrix->setMatrixPointColor(curRow,curCol,1);
-    }
-    else{
-        sp_SWMatrix->setMatrixPointColor(curRow,curCol,0);
+    int trans_begin = fCnt - (fCnt < 10 ? fCnt : 10);
+    int trans_end = fCnt + (video.fCnt < 10 ? video.fCnt : 10);
+
+    cout << ">> Video linking ..." << endl;
+    frames.insert(frames.end(), video.frames.begin(), video.frames.end());
+    fCnt += video.fCnt;
+    cout << ">> Video linked sucessful." << endl;
+
+    if(trans_mode != NIL)
+    {
+        cout << ">> Transition effect adding ..." << endl;
+        this->addFilter(trans_mode, trans_begin, trans_end);
+        cout << ">> Video linked sucessful." << endl;
     }
 }
 
-void PrModel::mouseMoveChange(int curRow, int curCol)
+PrModel link(const PrModel &video_1, const PrModel &video_2, int trans_mode)
 {
-    if(curCol==0){
-        if(sp_SWMatrix->isTrackNotNull()==0){
-            return; //濡傛灉track涓虹┖锛屼笉鍋氫换浣曚簨
-        }
-complete:   std::vector<passPoint> track=sp_SWMatrix->getTrack();
-        sp_SWMatrix->setMatrixPointIsStart( track[0].row,track[0].col,0);
-        for(int i = 0; i < track.size(); i++){
-            changePointColor(track[i].row,track[i].col);//缈昏浆姣忎釜鐐圭殑棰滆壊
-        }
-        sp_SWMatrix->trackClear(); //娓呯┖track
-        //妫€鏌ラ€昏緫
-        int nrow = sp_SWMatrix->getMatrixRow();
-        int ncol = sp_SWMatrix->getMatrixCol();
-        bool flag = 0;
-        int IsStart_flag =0;
-        int curColor = -1;
-        for(int i=1;i<=nrow;i++){
-            for(int j=1;j<=ncol;j++){
-                if(sp_SWMatrix->getMatrixPointIsExist(i,j)==0) continue;
-            IsStart_flag+=sp_SWMatrix->getMatrixPointIsStart(i,j);
-            if(curColor==-1)curColor=sp_SWMatrix->getMatrixPointColor(i,j);
-            if(curColor!=sp_SWMatrix->getMatrixPointColor(i,j)) flag=1;
+    PrModel video(video_1);
+    video.link(video_2, trans_mode);
+    return video;
+}
+
+void PrModel::play()
+{
+    int slidp = 0;
+    namedWindow("display", CV_WINDOW_AUTOSIZE);
+    cvCreateTrackbar("framenum", "display", &slidp, fCnt);
+
+    for (int i = 0; i < fCnt; i++)
+    {
+        bool isEscape = false;
+        setTrackbarPos("framenum", "display", slidp);
+        imshow("display", frames[i]);
+        slidp++;
+
+        switch (waitKey((double)1000 / fps))
+        {
+        case 32:
+            switch (waitKey())
+            {
+            case 27:
+                isEscape = true;
+                break;
+            default:
+                break;
             }
+            break;
+        case 27:
+            isEscape = true;
+            break;
         }
 
-            if(IsStart_flag==0){
-                Fire_OnPropertyChanged("SWMatrix");
-//                Sleep(1000);
-                if(!flag)  Fire_OnPropertyChanged("GameComplete");
-                else  Fire_OnPropertyChanged("GameFailed");
-            }
-            return ;
-        }
-    else if(sp_SWMatrix->isTrackNotNull()==0){
-        if(sp_SWMatrix->getMatrixPointIsStart(curRow,curCol))
-            sp_SWMatrix->setTrackFront(curRow,curCol); //濡傛灉鏄捣鐐癸紝璁板綍璧风偣
-        return ; //涓嶆槸璧风偣锛宒o nothing
+        if (isEscape) break;
     }
-    else if(sp_SWMatrix->getLastPointofTrack().row==curRow&&sp_SWMatrix->getLastPointofTrack().col==curCol){
-        ;//鍋滅暀鍦ㄥ綋鍓嶇偣锛宒o nothing
+}
+
+void PrModel::changeSpeed(double speed)
+{
+    cout << ">> Changing speed ... " << endl;
+
+    if (speed < 1) {
+        fps = fps * speed;
+    } else {
+        fCnt = (int)(double(fCnt) / speed);
+        for (int i = 0; i < fCnt; i++)
+        {
+            frames[i] = frames[(int)(i * speed)];
+            progress(0, fCnt, i);
+        }
     }
 
-    else{
-        passPoint lastpoint=sp_SWMatrix->getLastPointofTrack();
-        int delta_row = curRow - lastpoint.row;
-        int delta_col = curCol - lastpoint.col;
-        if((delta_row==0 && delta_col==1)||(delta_row==0 && delta_col==-1)
-                ||(delta_row==-1 && delta_col==0)||(delta_row==1 && delta_col==0)){
-            if(sp_SWMatrix->getMatrixPointIsExist(curRow,curCol)==0) return ;
-            if(sp_SWMatrix->isPassOn(curRow,curCol)){
-               passPoint secondlastpoint = sp_SWMatrix->getSecondLastPointofTrack();
-               if(secondlastpoint.col==0){
-                   ;
-               }
-               else if(secondlastpoint.col=curCol&&secondlastpoint.row==curRow){
-                   sp_SWMatrix->setTrackBack();
-                   return ;
-               }
-               else{
-                return;
-               }
+    cout << ">> Speed changed sucessful." << endl;
+}
+
+void PrModel::addSticker(const string& imagename, int pos_x, int pos_y, int start_frame, int end_frame)
+{
+    Mat image = imread(imagename);
+
+    for (int i = start_frame; i < end_frame; i++)
+    {
+        int width, height;
+        if (frames[i].rows < image.rows + pos_y) {
+            height = frames[i].rows - pos_y;
+        } else {
+            height = image.rows;
+        }
+
+        if (frames[i].cols < image.cols + pos_x) {
+            width = frames[i].cols - pos_x;
+        } else {
+            width = image.cols;
+        }
+
+        for (int y = 0; y < height; y++)
+        {
+            uchar* bkgP = frames[i].ptr<uchar>(y);
+            uchar* imgP = image.ptr<uchar>(y);
+            for (int x = 0; x < width; x++)
+            {
+                bkgP[3 * (x + pos_x)] = imgP[3 * x];
+                bkgP[3 * (x + pos_x) + 1] = imgP[3 * x + 1];
+                bkgP[3 * (x + pos_x) + 2] = imgP[3 * x + 2];
             }
-        sp_SWMatrix->setTrackFront(curRow,curCol);//绾綍鏂扮偣
-        }
-        else if(sp_SWMatrix->isPassOn(curRow,curCol)){
-            ;
-        }
-        else{//鍏朵粬鎯呭喌锛屾湰娆¤繛绾跨粨鏉?
-       //     goto complete;
         }
     }
-    Fire_OnPropertyChanged("SWMatrix");
+}
+
+void PrModel::addFilter(int mode, int start_frame, int end_frame)
+{
+
+    if (start_frame == NIL) {
+        start_frame = 0;
+    }
+    if (end_frame == NIL) {
+        end_frame = fCnt;
+    }
+
+    cout << ">> Filter adding ... " << endl;
+    for (int i = start_frame; i < end_frame; i++)
+    {
+        double p = (double)progress(start_frame, end_frame, i) / 100;
+        double arg = (0.5 - fabs(p - 0.5)) * 2;
+        switch (mode) {
+        case 0:
+            filter_mirror(frames[i]);
+            break;
+        case 1:
+            filter_rotation(frames[i]);
+            break;
+        case 2:
+            filter_feather(frames[i], 1 - arg);
+            break;
+        case 3:
+            filter_fudiao(frames[i]);
+            break;
+        case 4:
+            filter_diaoke(frames[i]);
+            break;
+        case 5:
+            filter_kuozhang(frames[i]);
+            break;
+        case 6:
+            filter_jiya(frames[i]);
+            break;
+        case 7:
+            filter_bolang(frames[i]);
+            break;
+        case 8:
+            filter_jingxiangsuofang(frames[i], (int)(arg * 40) + 1);
+            break;
+        case 9:
+            filter_jingxiangxuanzhuan(frames[i], (int)(arg * 40) + 1);
+            break;
+        case 10:
+            filter_feng(frames[i], (int)(arg * 20) + 1);
+            break;
+        case 11:
+            filter_xuanwo(frames[i], arg * 20);
+            break;
+        case 12:
+            filter_sumiao(frames[i]);
+            break;
+        case 13:
+            filter_huaijiu(frames[i]);
+            break;
+        case 14:
+            filter_qiangguang(frames[i]);
+            break;
+        default:
+            break;
+        }
+        progress(start_frame, end_frame, i);
+    }
+
+    cout << ">> Filter added sucessfully." << endl;
+}
+
+void PrModel::addSubtitle(const string &text, int start_frame, int end_frame, double x, double y, int fontSize, double r, double g, double b)
+{
+    if (start_frame > fCnt) {
+        cout << ">> [Warning] Wrong start time!" << endl;
+        return;
+    } else if (end_frame > fCnt) {
+        cout << ">> [Warning] Wrong end time." << endl;
+        end_frame = fCnt;
+    }
+
+    cout << ">> Adding subtitle ... " << endl;
+
+    for (int i = start_frame; i < end_frame; i++)
+    {
+        putText(frames[i], text, Point(x, y), FONT_HERSHEY_COMPLEX, fontSize, Scalar(r, g, b), 2, 8, 0);
+        progress(start_frame, end_frame, i);
+    }
+
+    cout << ">> Subtitle added sucessful." << endl;
+}
+
+void PrModel::writer(const string &video_path, int start_frame, int end_frame)
+{
+    if (start_frame == NIL) {
+        start_frame = 0;
+    }
+    if (end_frame == NIL) {
+        end_frame = fCnt;
+    }
+
+    if (start_frame > fCnt) {
+        cout << ">> [Error] Unavailable start time!" << endl;
+        return;
+    } else if (end_frame > fCnt) {
+        cout << ">> [Warning] Wrong end time." << endl;
+        end_frame = fCnt;
+    }
+
+    cout << ">> Video exporting ..." << endl;
+
+    VideoWriter writer(video_path, CV_FOURCC('M', 'J', 'P', 'G'), fps, Size(wSize.width, wSize.height));
+    for (int i = start_frame; i < end_frame; i++)
+    {
+        writer.write(frames[i]);
+        progress(start_frame, end_frame, i);
+    }
+    writer.release();
+
+    cout << ">> Video exported sucessful. (Path: " << video_path << ")" << endl;
 }
