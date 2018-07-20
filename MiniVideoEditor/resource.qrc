@@ -1,6 +1,0 @@
-<RCC>
-    <qresource prefix="/images">
-        <file>images/button1.png</file>
-        <file>images/frame1.jpeg</file>
-    </qresource>
-</RCC>
