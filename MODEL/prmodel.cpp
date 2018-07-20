@@ -1,0 +1,526 @@
+#include "prmodel.h"
+#include "Windows.h"
+
+PrModel::PrModel()
+{
+    sp_SWMatrix = std::make_shared<SWMatrix>();
+}
+
+std::shared_ptr<PrMatrix> PrModel::getSWMatrix(){
+    return sp_SWMatrix;
+}
+
+void PrModel::newLayout(int level)
+{
+
+    if(level == 1||level==16){
+        int row = 5;
+        int col = 5;
+        sp_SWMatrix->initialMatrix(row,col,1);
+
+        sp_SWMatrix->setMatrixPointIsExist(1,1,0);
+        sp_SWMatrix->setMatrixPointIsExist(1,5,0);
+        sp_SWMatrix->setMatrixPointIsExist(1,1,0);
+        sp_SWMatrix->setMatrixPointIsExist(5,1,0);
+        sp_SWMatrix->setMatrixPointIsExist(5,5,0);
+
+        for(int j=1;j<=col;j++){
+            sp_SWMatrix->setMatrixPointColor(3,j,1);
+        }
+        sp_SWMatrix->setMatrixPointIsStart(3,1,1);
+
+    }
+    else if(level == 2){
+        int row = 5;
+        int col = 4;
+        sp_SWMatrix->initialMatrix(row,col,2);
+
+        sp_SWMatrix->setMatrixPointIsExist(1,1,0);
+        sp_SWMatrix->setMatrixPointIsExist(1,4,0);
+        sp_SWMatrix->setMatrixPointIsExist(5,1,0);
+        sp_SWMatrix->setMatrixPointIsExist(5,4,0);
+
+        for(int j=1;j<=row;j++){
+            sp_SWMatrix->setMatrixPointColor(j,2,1);
+            sp_SWMatrix->setMatrixPointColor(j,3,1);
+        }
+        sp_SWMatrix->setMatrixPointIsStart(1,2,1);
+        sp_SWMatrix->setMatrixPointIsStart(5,3,1);
+
+    }
+
+    else if(level == 3){
+         int row =6;
+         int col =7;
+         sp_SWMatrix->initialMatrix(row,col,3);
+         sp_SWMatrix->setMatrixPointIsExist(1,1,0);
+         sp_SWMatrix->setMatrixPointIsExist(1,7,0);
+         sp_SWMatrix->setMatrixPointIsExist(4,1,0);
+         sp_SWMatrix->setMatrixPointIsExist(4,7,0);
+         sp_SWMatrix->setMatrixPointIsExist(5,1,0);
+         sp_SWMatrix->setMatrixPointIsExist(5,2,0);
+         sp_SWMatrix->setMatrixPointIsExist(5,6,0);
+         sp_SWMatrix->setMatrixPointIsExist(5,7,0);
+         sp_SWMatrix->setMatrixPointIsExist(6,1,0);
+         sp_SWMatrix->setMatrixPointIsExist(6,2,0);
+         sp_SWMatrix->setMatrixPointIsExist(6,3,0);
+         sp_SWMatrix->setMatrixPointIsExist(6,5,0);
+         sp_SWMatrix->setMatrixPointIsExist(6,6,0);
+         sp_SWMatrix->setMatrixPointIsExist(6,7,0);
+
+         sp_SWMatrix->setMatrixPointColor(1,3,1);
+         sp_SWMatrix->setMatrixPointColor(1,5,1);
+         sp_SWMatrix->setMatrixPointColor(2,3,1);
+         sp_SWMatrix->setMatrixPointColor(2,5,1);
+         sp_SWMatrix->setMatrixPointColor(3,3,1);
+         sp_SWMatrix->setMatrixPointColor(3,5,1);
+         sp_SWMatrix->setMatrixPointColor(4,3,1);
+         sp_SWMatrix->setMatrixPointColor(4,5,1);
+         sp_SWMatrix->setMatrixPointColor(5,3,1);
+         sp_SWMatrix->setMatrixPointColor(5,5,1);
+
+         sp_SWMatrix->setMatrixPointIsStart(1,3,1);
+         sp_SWMatrix->setMatrixPointIsStart(5,5,1);
+
+     }
+    else if(level == 4){
+         int row = 5;
+         int col = 4;
+         sp_SWMatrix->initialMatrix(row,col,4);
+         for(int i=1;i<=row;i++){
+             sp_SWMatrix->setMatrixPointColor(i,3,1);
+         }
+         for(int j=1;j<=col;j++){
+             sp_SWMatrix->setMatrixPointColor(3,j,1);
+         }
+         sp_SWMatrix->setMatrixPointColor(3,3,0);
+         sp_SWMatrix->setMatrixPointIsStart(1,3,1);
+         sp_SWMatrix->setMatrixPointIsStart(3,4,1);
+
+     }
+    else if(level == 5){
+         int row =6;
+         int col =5;
+         sp_SWMatrix->initialMatrix(row,col,5);
+         sp_SWMatrix->setMatrixPointIsExist(1,3,0);
+         sp_SWMatrix->setMatrixPointIsExist(3,1,0);
+         sp_SWMatrix->setMatrixPointIsExist(3,5,0);
+         sp_SWMatrix->setMatrixPointIsExist(6,3,0);
+
+
+         sp_SWMatrix->setMatrixPointColor(1,1,1);
+         sp_SWMatrix->setMatrixPointColor(1,5,1);
+         sp_SWMatrix->setMatrixPointColor(2,1,1);
+         sp_SWMatrix->setMatrixPointColor(2,3,1);
+         sp_SWMatrix->setMatrixPointColor(2,5,1);
+         sp_SWMatrix->setMatrixPointColor(3,3,1);
+         sp_SWMatrix->setMatrixPointColor(4,2,1);
+         sp_SWMatrix->setMatrixPointColor(4,4,1);
+         sp_SWMatrix->setMatrixPointColor(5,1,1);
+         sp_SWMatrix->setMatrixPointColor(5,5,1);
+         sp_SWMatrix->setMatrixPointColor(6,1,1);
+         sp_SWMatrix->setMatrixPointColor(6,2,1);
+         sp_SWMatrix->setMatrixPointColor(6,4,1);
+         sp_SWMatrix->setMatrixPointColor(6,5,1);
+
+
+
+
+
+         sp_SWMatrix->setMatrixPointIsStart(1,4,1);
+         sp_SWMatrix->setMatrixPointIsStart(4,5,1);
+
+     }
+    else if(level==6){
+        int row = 5;
+        int col = 4;
+        sp_SWMatrix->initialMatrix(row,col,6);
+
+        sp_SWMatrix->setMatrixPointIsExist(1,2,0);
+        sp_SWMatrix->setMatrixPointIsExist(1,3,0);
+        sp_SWMatrix->setMatrixPointIsExist(1,4,0);
+        sp_SWMatrix->setMatrixPointIsExist(5,1,0);
+        sp_SWMatrix->setMatrixPointIsExist(5,2,0);
+        sp_SWMatrix->setMatrixPointIsExist(5,3,0);
+
+        sp_SWMatrix->setMatrixPointColor(2,1,1);
+        sp_SWMatrix->setMatrixPointColor(3,2,1);
+        sp_SWMatrix->setMatrixPointColor(3,3,1);
+        sp_SWMatrix->setMatrixPointColor(4,4,1);
+        sp_SWMatrix->setMatrixPointIsStart(2,1,1);
+        sp_SWMatrix->setMatrixPointIsStart(4,4,1);
+
+
+    }
+    else if(level==7){
+        int row = 7;
+        int col = 6;
+        sp_SWMatrix->initialMatrix(row,col,7);
+
+        sp_SWMatrix->setMatrixPointIsExist(1,2,0);
+        sp_SWMatrix->setMatrixPointIsExist(1,5,0);
+        sp_SWMatrix->setMatrixPointIsExist(7,2,0);
+        sp_SWMatrix->setMatrixPointIsExist(7,5,0);
+
+        sp_SWMatrix->setMatrixPointColor(1,1,1);
+        sp_SWMatrix->setMatrixPointColor(1,3,1);
+        sp_SWMatrix->setMatrixPointColor(1,4,1);
+        sp_SWMatrix->setMatrixPointColor(1,6,1);
+        sp_SWMatrix->setMatrixPointColor(2,1,1);
+        sp_SWMatrix->setMatrixPointColor(2,2,1);
+        sp_SWMatrix->setMatrixPointColor(2,3,1);
+        sp_SWMatrix->setMatrixPointColor(2,4,1);
+        sp_SWMatrix->setMatrixPointColor(2,5,1);
+        sp_SWMatrix->setMatrixPointColor(6,1,1);
+        sp_SWMatrix->setMatrixPointColor(6,2,1);
+        sp_SWMatrix->setMatrixPointColor(6,3,1);
+        sp_SWMatrix->setMatrixPointColor(6,4,1);
+        sp_SWMatrix->setMatrixPointColor(6,5,1);
+        sp_SWMatrix->setMatrixPointColor(7,1,1);
+        sp_SWMatrix->setMatrixPointColor(7,3,1);
+        sp_SWMatrix->setMatrixPointColor(7,4,1);
+        sp_SWMatrix->setMatrixPointColor(7,6,1);
+
+        sp_SWMatrix->setMatrixPointIsStart(1,1,1);
+        sp_SWMatrix->setMatrixPointIsStart(7,1,1);
+
+
+    }
+    else if(level==8){
+        int row = 7;
+        int col = 6;
+        sp_SWMatrix->initialMatrix(row,col,8);
+
+        sp_SWMatrix->setMatrixPointIsExist(1,1,0);
+        sp_SWMatrix->setMatrixPointIsExist(1,6,0);
+        sp_SWMatrix->setMatrixPointIsExist(7,1,0);
+        sp_SWMatrix->setMatrixPointIsExist(7,6,0);
+
+        sp_SWMatrix->setMatrixPointColor(3,2,1);
+        sp_SWMatrix->setMatrixPointColor(3,5,1);
+        sp_SWMatrix->setMatrixPointColor(4,1,1);
+        sp_SWMatrix->setMatrixPointColor(4,6,1);
+        sp_SWMatrix->setMatrixPointColor(5,1,1);
+        sp_SWMatrix->setMatrixPointColor(5,6,1);
+        sp_SWMatrix->setMatrixPointColor(6,1,1);
+        sp_SWMatrix->setMatrixPointColor(6,2,1);
+        sp_SWMatrix->setMatrixPointColor(6,5,1);
+        sp_SWMatrix->setMatrixPointColor(6,6,1);
+
+        sp_SWMatrix->setMatrixPointIsStart(1,2,1);
+        sp_SWMatrix->setMatrixPointIsStart(1,5,1);
+
+
+    }
+    else if(level==9){
+        int row = 7;
+        int col = 6;
+        sp_SWMatrix->initialMatrix(row,col,9);
+
+        sp_SWMatrix->setMatrixPointIsExist(3,2,0);
+        sp_SWMatrix->setMatrixPointIsExist(3,5,0);
+        sp_SWMatrix->setMatrixPointIsExist(4,2,0);
+        sp_SWMatrix->setMatrixPointIsExist(4,5,0);
+        sp_SWMatrix->setMatrixPointIsExist(5,2,0);
+        sp_SWMatrix->setMatrixPointIsExist(5,5,0);
+
+
+        sp_SWMatrix->setMatrixPointColor(1,1,1);
+        sp_SWMatrix->setMatrixPointColor(1,2,1);
+        sp_SWMatrix->setMatrixPointColor(1,5,1);
+        sp_SWMatrix->setMatrixPointColor(1,6,1);
+        sp_SWMatrix->setMatrixPointColor(2,3,1);
+        sp_SWMatrix->setMatrixPointColor(2,4,1);
+        sp_SWMatrix->setMatrixPointColor(3,3,1);
+        sp_SWMatrix->setMatrixPointColor(3,4,1);
+        sp_SWMatrix->setMatrixPointColor(4,3,1);
+        sp_SWMatrix->setMatrixPointColor(4,4,1);
+        sp_SWMatrix->setMatrixPointColor(5,3,1);
+        sp_SWMatrix->setMatrixPointColor(5,4,1);
+        sp_SWMatrix->setMatrixPointColor(6,4,1);
+        sp_SWMatrix->setMatrixPointColor(6,3,1);
+        sp_SWMatrix->setMatrixPointColor(7,1,1);
+        sp_SWMatrix->setMatrixPointColor(7,2,1);
+        sp_SWMatrix->setMatrixPointColor(7,6,1);
+        sp_SWMatrix->setMatrixPointColor(7,5,1);
+
+        sp_SWMatrix->setMatrixPointIsStart(1,3,1);
+        sp_SWMatrix->setMatrixPointIsStart(7,4,1);
+
+
+    }
+    else if(level==10){
+        int row = 7;
+        int col = 6;
+        sp_SWMatrix->initialMatrix(row,col,10);
+
+        sp_SWMatrix->setMatrixPointIsExist(2,2,0);
+        sp_SWMatrix->setMatrixPointIsExist(2,5,0);
+        sp_SWMatrix->setMatrixPointIsExist(6,2,0);
+        sp_SWMatrix->setMatrixPointIsExist(6,5,0);
+
+        sp_SWMatrix->setMatrixPointColor(1,1,1);
+        sp_SWMatrix->setMatrixPointColor(1,2,1);
+        sp_SWMatrix->setMatrixPointColor(1,5,1);
+        sp_SWMatrix->setMatrixPointColor(1,6,1);
+        sp_SWMatrix->setMatrixPointColor(2,2,1);
+        sp_SWMatrix->setMatrixPointColor(2,3,1);
+        sp_SWMatrix->setMatrixPointColor(3,2,1);
+        sp_SWMatrix->setMatrixPointColor(3,3,1);
+        sp_SWMatrix->setMatrixPointColor(4,2,1);
+        sp_SWMatrix->setMatrixPointColor(4,3,1);
+        sp_SWMatrix->setMatrixPointColor(5,1,1);
+        sp_SWMatrix->setMatrixPointColor(5,2,1);
+        sp_SWMatrix->setMatrixPointColor(5,5,1);
+        sp_SWMatrix->setMatrixPointColor(5,6,1);
+        sp_SWMatrix->setMatrixPointColor(6,1,1);
+        sp_SWMatrix->setMatrixPointColor(6,6,1);
+
+
+        sp_SWMatrix->setMatrixPointIsStart(1,1,1);
+        sp_SWMatrix->setMatrixPointIsStart(1,6,1);
+
+
+    }
+   else  if(level==11){
+        int row = 5;
+        int col = 4;
+        sp_SWMatrix->initialMatrix(row,col,11);
+        for(int j=1;j<=col;j++){
+            sp_SWMatrix->setMatrixPointColor(2,j,1);
+            sp_SWMatrix->setMatrixPointColor(4,j,1);
+        }
+        sp_SWMatrix->setMatrixPointIsStart(5,1,1);
+        sp_SWMatrix->setMatrixPointIsStart(5,4,1);
+
+
+    }
+    else if(level==8){
+        int row = 6;
+        int col = 5;
+        sp_SWMatrix->initialMatrix(row,col,8);
+
+        sp_SWMatrix->setMatrixPointColor(1,2,1);
+        sp_SWMatrix->setMatrixPointColor(1,4,1);
+        sp_SWMatrix->setMatrixPointColor(2,2,1);
+        sp_SWMatrix->setMatrixPointColor(2,4,1);
+        sp_SWMatrix->setMatrixPointColor(3,1,1);
+        sp_SWMatrix->setMatrixPointColor(3,3,1);
+        sp_SWMatrix->setMatrixPointColor(3,5,1);
+        sp_SWMatrix->setMatrixPointColor(4,2,1);
+        sp_SWMatrix->setMatrixPointColor(4,4,1);
+        sp_SWMatrix->setMatrixPointColor(5,2,1);
+        sp_SWMatrix->setMatrixPointColor(5,3,1);
+        sp_SWMatrix->setMatrixPointColor(5,4,1);
+
+        sp_SWMatrix->setMatrixPointIsStart(1,2,1);
+        sp_SWMatrix->setMatrixPointIsStart(3,5,1);
+
+    }
+    else if(level==10){
+        int row = 6;
+        int col = 5;
+        sp_SWMatrix->initialMatrix(row,col,10);
+
+        sp_SWMatrix->setMatrixPointIsExist(1,1,0);
+        sp_SWMatrix->setMatrixPointIsExist(1,5,0);
+
+        sp_SWMatrix->setMatrixPointColor(1,2,1);
+        sp_SWMatrix->setMatrixPointColor(2,1,1);
+        sp_SWMatrix->setMatrixPointColor(2,3,1);
+        sp_SWMatrix->setMatrixPointColor(2,4,1);
+        sp_SWMatrix->setMatrixPointColor(3,2,1);
+        sp_SWMatrix->setMatrixPointColor(3,4,1);
+        sp_SWMatrix->setMatrixPointColor(4,2,1);
+        sp_SWMatrix->setMatrixPointColor(4,4,1);
+        sp_SWMatrix->setMatrixPointColor(5,2,1);
+        sp_SWMatrix->setMatrixPointColor(5,3,1);
+        sp_SWMatrix->setMatrixPointColor(5,5,1);
+        sp_SWMatrix->setMatrixPointColor(6,4,1);
+
+        sp_SWMatrix->setMatrixPointIsStart(1,2,1);
+        sp_SWMatrix->setMatrixPointIsStart(6,4,1);
+
+    }
+   else  if(level==12){
+        int row = 6;
+        int col = 5;
+        sp_SWMatrix->initialMatrix(row,col,12);
+
+        for(int i=2;i<=5;i++){
+            sp_SWMatrix->setMatrixPointColor(i,1,1);
+            sp_SWMatrix->setMatrixPointColor(i,2,1);
+            sp_SWMatrix->setMatrixPointColor(i,4,1);
+            sp_SWMatrix->setMatrixPointColor(i,5,1);
+        }
+
+        sp_SWMatrix->setMatrixPointIsStart(6,1,1);
+        sp_SWMatrix->setMatrixPointIsStart(6,5,1);
+
+    }
+    else if(level==13){
+        int row = 5;
+        int col = 4;
+        sp_SWMatrix->initialMatrix(row,col,13);
+
+        sp_SWMatrix->setMatrixPointColor(1,1,1);
+        sp_SWMatrix->setMatrixPointColor(2,1,1);
+        sp_SWMatrix->setMatrixPointColor(4,1,1);
+        sp_SWMatrix->setMatrixPointColor(5,1,1);
+        sp_SWMatrix->setMatrixPointColor(1,3,1);
+        sp_SWMatrix->setMatrixPointColor(5,3,1);
+
+        sp_SWMatrix->setMatrixPointIsStart(1,2,1);
+        sp_SWMatrix->setMatrixPointIsStart(3,4,1);
+        sp_SWMatrix->setMatrixPointIsStart(5,2,1);
+
+
+    }
+    else if(level==14){
+        int row = 6;
+        int col = 5;
+        sp_SWMatrix->initialMatrix(row,col,14);
+
+        sp_SWMatrix->setMatrixPointIsExist(1,1,0);
+        sp_SWMatrix->setMatrixPointIsExist(1,2,0);
+        sp_SWMatrix->setMatrixPointIsExist(1,4,0);
+        sp_SWMatrix->setMatrixPointIsExist(1,5,0);
+
+        sp_SWMatrix->setMatrixPointColor(2,2,1);
+        sp_SWMatrix->setMatrixPointColor(2,4,1);
+        sp_SWMatrix->setMatrixPointColor(3,2,1);
+        sp_SWMatrix->setMatrixPointColor(3,4,1);
+        sp_SWMatrix->setMatrixPointColor(4,1,1);
+        sp_SWMatrix->setMatrixPointColor(4,2,1);
+        sp_SWMatrix->setMatrixPointColor(4,4,1);
+        sp_SWMatrix->setMatrixPointColor(4,5,1);
+        sp_SWMatrix->setMatrixPointColor(5,1,1);
+        sp_SWMatrix->setMatrixPointColor(5,5,1);
+        sp_SWMatrix->setMatrixPointColor(6,1,1);
+        sp_SWMatrix->setMatrixPointColor(6,2,1);
+        sp_SWMatrix->setMatrixPointColor(6,4,1);
+        sp_SWMatrix->setMatrixPointColor(6,5,1);
+
+        sp_SWMatrix->setMatrixPointIsStart(1,3,1);
+        sp_SWMatrix->setMatrixPointIsStart(6,3,1);
+
+
+    }
+    else if(level==15){
+        int row = 6;
+        int col = 5;
+        sp_SWMatrix->initialMatrix(row,col,15);
+
+        sp_SWMatrix->setMatrixPointIsExist(1,4,0);
+        sp_SWMatrix->setMatrixPointIsExist(1,5,0);
+        sp_SWMatrix->setMatrixPointIsExist(2,4,0);
+        sp_SWMatrix->setMatrixPointIsExist(2,5,0);
+        sp_SWMatrix->setMatrixPointIsExist(5,1,0);
+        sp_SWMatrix->setMatrixPointIsExist(5,2,0);
+        sp_SWMatrix->setMatrixPointIsExist(6,1,0);
+        sp_SWMatrix->setMatrixPointIsExist(6,2,0);
+
+        sp_SWMatrix->setMatrixPointColor(1,1,1);
+        sp_SWMatrix->setMatrixPointColor(2,1,1);
+        sp_SWMatrix->setMatrixPointColor(2,2,1);
+        sp_SWMatrix->setMatrixPointColor(3,2,1);
+        sp_SWMatrix->setMatrixPointColor(4,4,1);
+        sp_SWMatrix->setMatrixPointColor(5,4,1);
+        sp_SWMatrix->setMatrixPointColor(5,5,1);
+        sp_SWMatrix->setMatrixPointColor(6,5,1);
+
+
+        sp_SWMatrix->setMatrixPointIsStart(1,1,1);
+        sp_SWMatrix->setMatrixPointIsStart(6,4,1);
+
+
+    }
+    Fire_OnPropertyChanged("SWMatrix");
+
+}
+
+
+void PrModel::changePointColor(int curRow, int curCol){
+    if(sp_SWMatrix->getMatrixPointColor(curRow,curCol)==0){
+        sp_SWMatrix->setMatrixPointColor(curRow,curCol,1);
+    }
+    else{
+        sp_SWMatrix->setMatrixPointColor(curRow,curCol,0);
+    }
+}
+
+void PrModel::mouseMoveChange(int curRow, int curCol)
+{
+    if(curCol==0){
+        if(sp_SWMatrix->isTrackNotNull()==0){
+            return; //濡傛灉track涓虹┖锛屼笉鍋氫换浣曚簨
+        }
+complete:   std::vector<passPoint> track=sp_SWMatrix->getTrack();
+        sp_SWMatrix->setMatrixPointIsStart( track[0].row,track[0].col,0);
+        for(int i = 0; i < track.size(); i++){
+            changePointColor(track[i].row,track[i].col);//缈昏浆姣忎釜鐐圭殑棰滆壊
+        }
+        sp_SWMatrix->trackClear(); //娓呯┖track
+        //妫€鏌ラ€昏緫
+        int nrow = sp_SWMatrix->getMatrixRow();
+        int ncol = sp_SWMatrix->getMatrixCol();
+        bool flag = 0;
+        int IsStart_flag =0;
+        int curColor = -1;
+        for(int i=1;i<=nrow;i++){
+            for(int j=1;j<=ncol;j++){
+                if(sp_SWMatrix->getMatrixPointIsExist(i,j)==0) continue;
+            IsStart_flag+=sp_SWMatrix->getMatrixPointIsStart(i,j);
+            if(curColor==-1)curColor=sp_SWMatrix->getMatrixPointColor(i,j);
+            if(curColor!=sp_SWMatrix->getMatrixPointColor(i,j)) flag=1;
+            }
+        }
+
+            if(IsStart_flag==0){
+                Fire_OnPropertyChanged("SWMatrix");
+//                Sleep(1000);
+                if(!flag)  Fire_OnPropertyChanged("GameComplete");
+                else  Fire_OnPropertyChanged("GameFailed");
+            }
+            return ;
+        }
+    else if(sp_SWMatrix->isTrackNotNull()==0){
+        if(sp_SWMatrix->getMatrixPointIsStart(curRow,curCol))
+            sp_SWMatrix->setTrackFront(curRow,curCol); //濡傛灉鏄捣鐐癸紝璁板綍璧风偣
+        return ; //涓嶆槸璧风偣锛宒o nothing
+    }
+    else if(sp_SWMatrix->getLastPointofTrack().row==curRow&&sp_SWMatrix->getLastPointofTrack().col==curCol){
+        ;//鍋滅暀鍦ㄥ綋鍓嶇偣锛宒o nothing
+    }
+
+    else{
+        passPoint lastpoint=sp_SWMatrix->getLastPointofTrack();
+        int delta_row = curRow - lastpoint.row;
+        int delta_col = curCol - lastpoint.col;
+        if((delta_row==0 && delta_col==1)||(delta_row==0 && delta_col==-1)
+                ||(delta_row==-1 && delta_col==0)||(delta_row==1 && delta_col==0)){
+            if(sp_SWMatrix->getMatrixPointIsExist(curRow,curCol)==0) return ;
+            if(sp_SWMatrix->isPassOn(curRow,curCol)){
+               passPoint secondlastpoint = sp_SWMatrix->getSecondLastPointofTrack();
+               if(secondlastpoint.col==0){
+                   ;
+               }
+               else if(secondlastpoint.col=curCol&&secondlastpoint.row==curRow){
+                   sp_SWMatrix->setTrackBack();
+                   return ;
+               }
+               else{
+                return;
+               }
+            }
+        sp_SWMatrix->setTrackFront(curRow,curCol);//绾綍鏂扮偣
+        }
+        else if(sp_SWMatrix->isPassOn(curRow,curCol)){
+            ;
+        }
+        else{//鍏朵粬鎯呭喌锛屾湰娆¤繛绾跨粨鏉?
+       //     goto complete;
+        }
+    }
+    Fire_OnPropertyChanged("SWMatrix");
+}
