@@ -4,25 +4,26 @@
 
 #include "../VIEW/mainwindow.h"
 #include "../VIEW/dialog_edit.h"
-#include "../VIEW/dialog_intergratedvideo.h"
+#include "../VIEW/dialog_integratedvideo.h"
 
 #include "../MODEL/prmodel.h"
 #include "../VIEWMODEL/prviewmodel.h"
 
-#include "commands/addmediacommand.h"
+#include "commands/addvideocommand.h"
+
 
 
 class miniPrAPP
 {
 private:
     MainWindow _mainWindow;
-    Dialog_edit _editWindow;
-    Dialog_IntergratedVideo _intergratedWindow;
+//    Dialog_edit _editWindow;
+//    Dialog_IntegratedVideo _integratedWindow;
 
     std::shared_ptr<PrModel> model;
     std::shared_ptr<PrViewModel> viewmodel;
     
-    std::shared_ptr<AddMediaCommand> _spAddMediaCommand;
+
 
 public:
     miniPrAPP();
@@ -30,6 +31,6 @@ public:
     void run();
 
     MainWindow *getMainWindow();
-    Dialog_edit *getEditWindow();
-    Dialog_IntergratedVideo *getIntergratedWindow();
+//    Dialog_edit *getEditWindow();
+//    Dialog_IntegratedVideo *getIntegratedWindow();
 };

@@ -1,13 +1,13 @@
-#include "Commands/addmediacommand.h"
+#include "../commands/addvideocommand.h"
 
 
-AddVideoCommmand::AddVideoCommand(std::shared_ptr<PrViewModel> vm):viewmodel(vm)
+AddVideoCommand::AddVideoCommand(std::shared_ptr<PrViewModel> vm):viewmodel(vm)
 {
 }
-AddVideoCommmand::~AddVideoCommmand()
+AddVideoCommand::~AddVideoCommand()
 {}
 
-void AddVideoCommmand::Exec()
+void AddVideoCommand::exec()
 {
 	std::string path = std::static_pointer_cast<PathParameters, Parameters>(Command::params)->get_path();
     viewmodel->exec_add_video_command(path);

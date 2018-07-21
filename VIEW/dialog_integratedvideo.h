@@ -3,17 +3,14 @@
 
 #include <QDialog>
 #include <iostream>
-#include "VideoPlay.h"
-#include "Video.h"
+#include "..\common\Video.h"
 #include <QMessageBox>
 #include <vector>
 #include <QString>
 #include <QTableWidget>
 #include <QFileDialog>
 
-extern VideoPlay globalplay;
-extern QVector <QString> res;
-
+/*
 namespace Ui {
 class Dialog_IntegratedVideo;
 }
@@ -38,4 +35,5 @@ private slots:
 	void on_pushButton_2_clicked();
 };
 
+*/
 #endif // DIALOG_INTEGRATEDVIDEO_H

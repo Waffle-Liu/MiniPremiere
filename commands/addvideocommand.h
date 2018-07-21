@@ -1,11 +1,9 @@
 #ifndef ADDVEDIOCOMMAND_H
 #define ADDVEDIOCOMMAND_H
 
-#include "command.h"
-#include "VIEWMODEL/prviewmodel.h"
+#include "../common/command.h"
+#include "../VIEWMODEL/prviewmodel.h"
 #include <string>
-#include <memory>
-#include <Qdebug>
 
 class AddVideoCommand: public Command
 {
@@ -14,7 +12,7 @@ private:
 public:
     AddVideoCommand(std::shared_ptr<PrViewModel> vm);
     ~AddVideoCommand();
-    virtual void Exec();
+    virtual void exec();
 };
 
 #endif // ADDMEDIACOMMAND_H

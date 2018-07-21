@@ -13,12 +13,12 @@ Dialog_edit::~Dialog_edit()
     delete ui;
 }
 
-void Dialog_edit::setSpeedConfirmCommand(std::shared_ptr<ICommandBase> ptr_speedconfirm)
+void Dialog_edit::setSpeedConfirmCommand(std::shared_ptr<Command> ptr_speedconfirm)
 {
 	ptr_speedconfirmCommand = ptr_speedconfirm;
 }
 
-void Dialog_edit::setCutConfirmCommand(std::shared_ptr<ICommandBase> ptr_cutconfirm)
+void Dialog_edit::setCutConfirmCommand(std::shared_ptr<Command> ptr_cutconfirm)
 {
 	ptr_cutconfirmCommand = ptr_cutconfirm;
 }
@@ -38,10 +38,10 @@ void Dialog_edit::on_pushButton_2_clicked()//cut
 	QString startstring = ui->lineEdit->text();
 	QString endstring = ui->lineEdit_2->text();
 	int start = startstring.toInt();
-	int end = endstring.toInt();
+	int end = endstring.toInt();/*
 	ptr_cutconfirmCommand->SetParameter(_new_any_space_::any_cast<double>(start));
-	ptr_cutconfirmCommand->SetParameter(_new_any_space_::any_cast<double>(end));
-	ptr_cutconfirmCommand->Exec();
+	ptr_cutconfirmCommand->SetParameter(_new_any_space_::any_cast<double>(end));*/
+	//ptr_cutconfirmCommand->Exec();
 }
 
 void Dialog_edit::on_pushButton_clicked()//change speed
@@ -53,8 +53,8 @@ void Dialog_edit::on_pushButton_clicked()//change speed
 	globalplay.PlayList[globalplay.subindex].changeSpeed(speed);
 	QMessageBox::about(0, QObject::tr("success"), "Edit sucessfully!");
 	ui->pushButton->setEnabled(true);*/
-	QString speedValue = ui->comboBox->currentText();
-	double speed = speedValue.toDouble();
-	ptr_speedconfirmCommand->SetParameter(_new_any_space_::any_cast<double>(speed));
-	ptr_speedconfirmCommand->Exec();
+	//QString speedValue = ui->comboBox->currentText();
+	//double speed = speedValue.toDouble();
+	//ptr_speedconfirmCommand->SetParameter(_new_any_space_::any_cast<double>(speed));
+	//ptr_speedconfirmCommand->Exec();
 }

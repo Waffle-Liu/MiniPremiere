@@ -3,6 +3,7 @@
 #include <QVector>
 using namespace std;
 
+/*
 Dialog_IntegratedVideo::Dialog_IntegratedVideo(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Dialog_IntegratedVideo)
@@ -159,3 +160,5 @@ void Dialog_IntegratedVideo::on_pushButton_2_clicked()//export
 
 	QMessageBox::about(0, QObject::tr("success"), "Export success!");
 }
+
+*/

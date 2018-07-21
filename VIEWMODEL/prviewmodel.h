@@ -1,11 +1,11 @@
 #pragma once
 
-#include "stdafx.h"
-#include "prmodel.h"
+#include "../common/stdafx.h"
+#include "../MODEL/prmodel.h"
+#include "../common/command.h"
 using namespace std;
 
 class Command;
-class AddVideoCommand;
 
 class PrViewModel
 {
