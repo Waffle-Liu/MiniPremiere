@@ -9,6 +9,6 @@ PlayVideoCommand::~PlayVideoCommand()
 
 void PlayVideoCommand::exec()
 {
-	std::string path = std::static_pointer_cast<PathParameters, Parameters>(Command::params)->get_path();
-    viewmodel->exec_play_video_command(path);
+	int index = std::static_pointer_cast<IntParameters, Parameters>(Command::params)->getvalue();
+    viewmodel->exec_play_video_command(index);
 }
