@@ -45,6 +45,9 @@ public:
     void setDisplayFiveCommand(std::shared_ptr<Command>);
     void setDisplaySixCommand(std::shared_ptr<Command>);
     //void setIntergratedCommand(std::shared_ptr<Command> ptr_intergrated);
+    std::shared_ptr<Notification> get_update_mainwindow_notification();
+
+    void update_load_state();
 
 private:
     Ui::MainWindow *ui;
@@ -71,6 +74,7 @@ private:
     std::shared_ptr<Command> ptr_displayfiveCommand;
     std::shared_ptr<Command> ptr_displaysixCommand;
     //std::shared_ptr<Command> ptr_intergratedCommand;
+    std::shared_ptr<Notification> update_mainwindow_notification;
 
 private slots :
     void on_AddMedia_clicked();

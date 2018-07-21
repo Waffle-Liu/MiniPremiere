@@ -56,6 +56,16 @@ void MainWindow::setDisplaySixCommand(std::shared_ptr<Command> command)
 {
     ptr_displaysixCommand = command;
 }
+
+std::shared_ptr<Notification> MainWindow::get_update_view_notification(){
+    return update_mainwindow_notification;
+}
+
+void MainWindow::update_load_state()
+{
+    QMessageBox::about(0,QObject::tr("fail"),"No sub video!");
+}
+
 //slot
 void MainWindow::on_AddMedia_clicked()
 {
