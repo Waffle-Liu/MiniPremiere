@@ -3,12 +3,12 @@
 
 #include <QDialog>
 #include <QMessageBox>
-#include "VideoPlay.h"
-#include "stdafx.h"
-#include "Video.h"
-using namespace cv;
+//#include "VideoPlay.h"
+//#include "stdafx.h"
+//#include "Video.h"
+//using namespace cv;
 
-extern VideoPlay globalplay;
+//extern VideoPlay globalplay;
 
 namespace Ui {
 class Dialog_edit;
@@ -21,9 +21,13 @@ class Dialog_edit : public QDialog
 public:
     explicit Dialog_edit(QWidget *parent = 0);
     ~Dialog_edit();
+    void setSpeedConfirmCommand(std::shared_ptr<ICommandBase> ptr_speedconfirm);
+    void setCutConfirmCommand(std::shared_ptr<ICommandBase> ptr_cutconfirm);
 
 private:
     Ui::Dialog_edit *ui;
+    std::shared_ptr<ICommandBase> ptr_speedconfirmCommand;
+    std::shared_ptr<ICommandBase> ptr_cutconfirmCommand;
 
 private slots:
 	void on_pushButton_2_clicked();
