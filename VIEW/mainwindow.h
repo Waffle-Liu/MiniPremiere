@@ -5,13 +5,11 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include <string>
-//#include "dialog_edit.h"
-//#include "dialog_integratedvideo.h"
-//#include "VideoPlay.h"
-//#include "Video.h"
 #include "../common/command.h"
 
 //extern VideoPlay globalplay;
+
+class Notification;
 
 namespace Ui {
 class MainWindow;
@@ -38,12 +36,7 @@ public:
     void setEditFourCommand(std::shared_ptr<Command> ptr_editfour);
     void setEditFiveCommand(std::shared_ptr<Command> ptr_editfive);
     void setEditSixCommand(std::shared_ptr<Command> ptr_editsix);*/
-    void setDisplayOneCommand(std::shared_ptr<Command>);
-    void setDisplayTwoCommand(std::shared_ptr<Command>);
-    void setDisplayThreeCommand(std::shared_ptr<Command>);
-    void setDisplayFourCommand(std::shared_ptr<Command>);
-    void setDisplayFiveCommand(std::shared_ptr<Command>);
-    void setDisplaySixCommand(std::shared_ptr<Command>);
+    void setPlayVideoCommand(std::shared_ptr<Command>);
     //void setIntergratedCommand(std::shared_ptr<Command> ptr_intergrated);
     std::shared_ptr<Notification> get_update_mainwindow_notification();
 
@@ -67,12 +60,7 @@ private:
     std::shared_ptr<Command> ptr_editfourCommand;
     std::shared_ptr<Command> ptr_editfiveCommmand;
     std::shared_ptr<Command> ptr_editsixCommand;*/
-    std::shared_ptr<Command> ptr_displayoneCommand;
-    std::shared_ptr<Command> ptr_displaytwoCommand;
-    std::shared_ptr<Command> ptr_displaythreeCommand;
-    std::shared_ptr<Command> ptr_displayfourCommand;
-    std::shared_ptr<Command> ptr_displayfiveCommand;
-    std::shared_ptr<Command> ptr_displaysixCommand;
+    std::shared_ptr<Command> ptr_playvideoCommand;
     //std::shared_ptr<Command> ptr_intergratedCommand;
     std::shared_ptr<Notification> update_mainwindow_notification;
 

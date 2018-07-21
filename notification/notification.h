@@ -1,7 +1,6 @@
 #pragma once
 
-#include <memory>
-#include "../VIEWMODEL/prviewmodel.h"
+#include "..\common\stdafx.h"
 
 
 class Notification

@@ -70,4 +70,5 @@ void Video::play()
 
 		if (isEscape) break;
 	}
+	cvDestroyWindow("display");
 }

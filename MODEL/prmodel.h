@@ -13,7 +13,7 @@ private:
 	int videoNum;
 	vector<shared_ptr<Video>> videoList;
 
-	shared_ptr<Notification> wrong_index_notification;
+	shared_ptr<Notification> index_error_notification;
 
 public:
 	PrModel();
@@ -22,5 +22,6 @@ public:
 	void addVideo(const string& video_path);
 	void playVideo(int index);
 
-	void wrong_index_notify();
+	void set_index_error_notification(shared_ptr<Notification> ntf);
+	void index_error_notify();
 };

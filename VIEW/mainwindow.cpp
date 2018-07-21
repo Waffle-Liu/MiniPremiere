@@ -2,6 +2,8 @@
 #include "ui_mainwindow.h"
 #include <QBoxLayout>
 #include <iostream>
+#include "../notification/notification.h"
+#include "../notification/wrongindexnotification.h"
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -15,6 +17,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->label_4->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
     ui->label_5->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
     ui->label_6->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");*/
+	update_mainwindow_notification = std::static_pointer_cast<Notification, UpdateViewNotification>(std::shared_ptr<UpdateViewNotification>(new UpdateViewNotification(std::shared_ptr<MainWindow>(this))));
 }
 
 MainWindow::~MainWindow()
@@ -27,43 +30,19 @@ void MainWindow::setAddVideoCommand(std::shared_ptr<Command> command)
     add_video_Command = command;
 }
 
-void MainWindow::setDisplayOneCommand(std::shared_ptr<Command> command)
+void MainWindow::setPlayVideoCommand(std::shared_ptr<Command> command)
 {
-    ptr_displayoneCommand = command;
+	ptr_playvideoCommand = command;
 }
 
-void MainWindow::setDisplayTwoCommand(std::shared_ptr<Command> command)
-{
-    ptr_displaytwoCommand = command;
-}
 
-void MainWindow::setDisplayThreeCommand(std::shared_ptr<Command> command)
-{
-    ptr_displaythreeCommand = command;
-}
-
-void MainWindow::setDisplayFourCommand(std::shared_ptr<Command> command)
-{
-    ptr_displayfourCommand = command;
-}
-
-void MainWindow::setDisplayFiveCommand(std::shared_ptr<Command> command)
-{
-    ptr_displayfiveCommand = command;
-}
-
-void MainWindow::setDisplaySixCommand(std::shared_ptr<Command> command)
-{
-    ptr_displaysixCommand = command;
-}
-
-std::shared_ptr<Notification> MainWindow::get_update_view_notification(){
+std::shared_ptr<Notification> MainWindow::get_update_mainwindow_notification(){
     return update_mainwindow_notification;
 }
 
 void MainWindow::update_load_state()
 {
-    QMessageBox::about(0,QObject::tr("fail"),"No sub video!");
+    QMessageBox::about(0, QObject::tr("fail"),"No sub video!");
 }
 
 //slot
@@ -204,62 +183,32 @@ void MainWindow::on_mediaSix_clicked()
 //mediaOne_2 —— mediaOne_7 : display button 
 void MainWindow::on_mediaOne_2_clicked()
 {
-    /*if(globalplay.size >= 1){
-        globalplay.PlayList[0].play();
-    }
-    else{
-        QMessageBox::about(0,QObject::tr("fail"),"此处子视频未导入");
-    }*/
-    ptr_displayoneCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(0))));
-    ptr_displayoneCommand->exec();
+	ptr_playvideoCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(0))));
+	ptr_playvideoCommand->exec();
 }
 
 void MainWindow::on_mediaOne_3_clicked()
 {
-    /*if(globalplay.size  >= 2){
-        globalplay.PlayList[1].play();
-    }
-    else{
-        QMessageBox::about(0,QObject::tr("fail"),"此处子视频未导入");
-    }*/
-    ptr_displaytwoCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(1))));
-    ptr_displaytwoCommand->exec();
+	ptr_playvideoCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(1))));
+	ptr_playvideoCommand->exec();
 }
 
 void MainWindow::on_mediaOne_4_clicked()
 {
-    /*if(globalplay.size >= 3){
-        globalplay.PlayList[2].play();
-    }
-    else{
-        QMessageBox::about(0,QObject::tr("fail"),"此处子视频未导入");
-    }*/
-    ptr_displaythreeCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(2))));
-    ptr_displaythreeCommand->exec();
+	ptr_playvideoCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(2))));
+	ptr_playvideoCommand->exec();
 }
 
 void MainWindow::on_mediaOne_5_clicked()
 {
-    /*if(globalplay.size >= 4){
-        globalplay.PlayList[3].play();
-    }
-    else{
-        QMessageBox::about(0,QObject::tr("fail"),"此处子视频未导入");
-    }*/
-    ptr_displayfourCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(3))));
-    ptr_displayfourCommand->exec();
+	ptr_playvideoCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(3))));
+	ptr_playvideoCommand->exec();
 }
 
 void MainWindow::on_mediaOne_6_clicked()
 {
-    /*if(globalplay.size >= 5){
-        globalplay.PlayList[4].play();
-    }
-    else{
-        QMessageBox::about(0,QObject::tr("fail"),"此处子视频未导入");
-    }*/
-    ptr_displayfiveCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(4))));
-    ptr_displayfiveCommand->exec();
+	ptr_playvideoCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(4))));
+	ptr_playvideoCommand->exec();
 }
 
 void MainWindow::on_mediaOne_7_clicked()
@@ -270,8 +219,8 @@ void MainWindow::on_mediaOne_7_clicked()
     else{
         QMessageBox::about(0,QObject::tr("fail"),"此处子视频未导入");
     }*/
-    ptr_displaysixCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(5))));
-    ptr_displaysixCommand->exec();
+	ptr_playvideoCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(5))));
+	ptr_playvideoCommand->exec();
 }
 
 //pushButton —— pushButton_8 :delete button for each video

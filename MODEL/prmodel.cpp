@@ -2,6 +2,7 @@
 
 PrModel::PrModel()
 {
+	videoNum = 0;
 }
 
 PrModel::~PrModel()
@@ -12,17 +13,24 @@ void PrModel::addVideo(const string &video_path)
 {
 	shared_ptr<Video> video(new Video(video_path));
 	videoList.push_back(video);
+	videoNum++;
 }
 
 void PrModel::playVideo(int index)
 {
 	if (index >= videoNum) {
-		wrong_index_notify();
+		index_error_notify();
+		return;
 	}
 	videoList[index]->play();
 }
 
-void wrong_index_notify()
+void PrModel::set_index_error_notification(shared_ptr<Notification> ntf)
 {
-	wrong_index_notification->exec();
+	index_error_notification = ntf;
+}
+
+void PrModel::index_error_notify()
+{
+	index_error_notification->exec();
 }

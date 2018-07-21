@@ -8,6 +8,6 @@ Notification::~Notification()
 {
 }
 
-void exec()
+void Notification::exec()
 {
 }
