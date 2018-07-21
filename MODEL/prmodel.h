@@ -12,9 +12,10 @@ private:
 	int videoNum;
 	vector<shared_ptr<Video>> videoList;
 
-public:	
+public:
 	PrModel();
 	~PrModel();
 
 	void addVideo(const string& video_path);
+	void playVideo(int index);
 };
