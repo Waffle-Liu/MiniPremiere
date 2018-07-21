@@ -16,5 +16,13 @@ void PrModel::addVideo(const string &video_path)
 
 void PrModel::playVideo(int index)
 {
+	if (index >= videoNum) {
+		wrong_index_notify();
+	}
 	videoList[index]->play();
+}
+
+void wrong_index_notify()
+{
+	wrong_index_notification->exec();
 }
