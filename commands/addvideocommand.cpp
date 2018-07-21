@@ -1,19 +1,14 @@
-#include "addmediacommand.h"
-#include "../app.h"
+#include "Commands/addmediacommand.h"
 
 
-AddVedioCommmand::AddVedioCommand(miniPrAPP *ptr_App)
+AddVideoCommmand::AddVideoCommand(std::shared_ptr<PrViewModel> vm):viewmodel(vm)
 {
-    ptrApp = ptr_App;
 }
-AddVedioCommmand::~AddVedioCommmand()
+AddVideoCommmand::~AddVideoCommmand()
 {}
-void AddVedioCommmand::SetParameter(const _new_any_space_::any& param)
-{
 
-}
-void AddVedioCommmand::Exec()
+void AddVideoCommmand::Exec()
 {
-    (ptrApp->getFormWindow())->close();
-    (ptrApp->getGameWindow())->show();
+	std::string path = std::static_pointer_cast<PathParameters, Parameters>(Command::params)->get_path();
+    viewmodel->exec_add_video_command(path);
 }

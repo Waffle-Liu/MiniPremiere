@@ -3,16 +3,17 @@
 
 #include "command.h"
 #include "VIEWMODEL/prviewmodel.h"
+#include <string>
+#include <memory>
+#include <Qdebug>
 
-class miniPrAPP;
 class AddVideoCommand: public Command
 {
 private:
-    miniPrAPP *ptrApp;
+    std::shared_ptr<PrViewModel> viewmodel;
 public:
-    AddVedioCommand(miniPrAPP *ptr_App);
-    ~AddVedioCommand();
-    virtual void SetParameter(const _new_any_space_::any& param);
+    AddVideoCommand(std::shared_ptr<PrViewModel> vm);
+    ~AddVideoCommand();
     virtual void Exec();
 };
 
