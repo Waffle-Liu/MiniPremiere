@@ -1,5 +1,6 @@
 #pragma once
 
+#include <memory>
 
 #include "../VIEW/mainwindow.h"
 #include "../VIEW/dialog_edit.h"

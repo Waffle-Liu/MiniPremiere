@@ -1,7 +1,8 @@
-#ifndef ADDVEDIO_H
-#define ADDVEDIO_H
+#ifndef ADDVEDIOCOMMAND_H
+#define ADDVEDIOCOMMAND_H
 
-#include "../../common/etlbase.h"
+#include "command.h"
+#include "VIEWMODEL/prviewmodel.h"
 
 class miniPrAPP;
 class AddVideoCommand: public Command
@@ -15,4 +16,4 @@ public:
     virtual void Exec();
 };
 
-#endif // ADDMEDIA_H
+#endif // ADDMEDIACOMMAND_H
