@@ -10,6 +10,7 @@
 #include "../VIEWMODEL/prviewmodel.h"
 
 #include "commands/addvideocommand.h"
+#include "commands/playvideocommand.h"
 
 
 

@@ -20,4 +20,5 @@ public:
 	~Video();
 
 	bool capture(const string &video_path);  // this->capture(video_path): Capture the video at the destination path.
+	void play();  // this->play(): Play the video.
 };

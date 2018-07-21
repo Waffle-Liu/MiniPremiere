@@ -8,7 +8,7 @@ miniPrAPP::miniPrAPP(){
 	viewmodel->bind(model);
 
 	_mainWindow.setAddVideoCommand(viewmodel->get_add_video_command());
-
+	_mainWindow.setPlayVideoCommand(viewdmodel->get_play_video_command());
 }
 miniPrAPP::~miniPrAPP(){}
 void miniPrAPP::run()
