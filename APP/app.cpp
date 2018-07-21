@@ -9,6 +9,11 @@ void miniPrAPP::run()
 
     viewmodel->setSWModel(model);
 
+    _mainWindow.setAddMediaCommand(std::static_pointer_cast<ICommandBase>(this->_spAddMediaCommand));
+
+
+    _spAddMediaCommand = std::make_shared<AddMediaCommand>(this);
+
 }
 
 mainWindow* miniPrApp::getMainWindow()
@@ -16,11 +21,11 @@ mainWindow* miniPrApp::getMainWindow()
     return &_mainWindow;
 }
 
-editWindow* miniPrApp::getEditWindow()
+Dialog_edit* miniPrApp::getEditWindow()
 {
     return &_editWindow;
 }
 
-intergratedWindow* miniPrApp::getIntergratedWindow(){
+Dialog_IntergratedVideo* miniPrApp::getIntergratedWindow(){
     return & _intergratedWindow;
 }
