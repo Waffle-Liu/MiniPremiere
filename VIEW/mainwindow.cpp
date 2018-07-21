@@ -27,6 +27,35 @@ void MainWindow::setAddVideoCommand(std::shared_ptr<Command> command)
     add_video_Command = command;
 }
 
+void MainWindow::setDisplayOneCommand(std::shared_ptr<Command> command)
+{
+    ptr_displayoneCommand = command;
+}
+
+void MainWindow::setDisplayTwoCommand(std::shared_ptr<Command> command)
+{
+    ptr_displaytwoCommand = command;
+}
+
+void MainWindow::setDisplayThreeCommand(std::shared_ptr<Command> command)
+{
+    ptr_displaythreeCommand = command;
+}
+
+void MainWindow::setDisplayFourCommand(std::shared_ptr<Command> command)
+{
+    ptr_displayfourCommand = command;
+}
+
+void MainWindow::setDisplayFiveCommand(std::shared_ptr<Command> command)
+{
+    ptr_displayfiveCommand = command;
+}
+
+void MainWindow::setDisplaySixCommand(std::shared_ptr<Command> command)
+{
+    ptr_displaysixCommand = command;
+}
 //slot
 void MainWindow::on_AddMedia_clicked()
 {
@@ -159,72 +188,84 @@ void MainWindow::on_mediaSix_clicked()
         editWindow->show();
     else
         QMessageBox::about(0, QObject::tr("fail"), "NO VIDEO LOADED: can not edit the vedio");
-}
+}*/
 
 
 //mediaOne_2 —— mediaOne_7 : display button 
 void MainWindow::on_mediaOne_2_clicked()
 {
-    if(globalplay.size >= 1){
+    /*if(globalplay.size >= 1){
         globalplay.PlayList[0].play();
     }
     else{
         QMessageBox::about(0,QObject::tr("fail"),"此处子视频未导入");
-    }
+    }*/
+    ptr_displayoneCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(0))));
+    ptr_displayoneCommand->exec();
 }
 
 void MainWindow::on_mediaOne_3_clicked()
 {
-    if(globalplay.size  >= 2){
+    /*if(globalplay.size  >= 2){
         globalplay.PlayList[1].play();
     }
     else{
         QMessageBox::about(0,QObject::tr("fail"),"此处子视频未导入");
-    }
+    }*/
+    ptr_displaytwoCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(1))));
+    ptr_displaytwoCommand->exec();
 }
 
 void MainWindow::on_mediaOne_4_clicked()
 {
-    if(globalplay.size >= 3){
+    /*if(globalplay.size >= 3){
         globalplay.PlayList[2].play();
     }
     else{
         QMessageBox::about(0,QObject::tr("fail"),"此处子视频未导入");
-    }
+    }*/
+    ptr_displaythreeCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(2))));
+    ptr_displaythreeCommand->exec();
 }
 
 void MainWindow::on_mediaOne_5_clicked()
 {
-    if(globalplay.size >= 4){
+    /*if(globalplay.size >= 4){
         globalplay.PlayList[3].play();
     }
     else{
         QMessageBox::about(0,QObject::tr("fail"),"此处子视频未导入");
-    }
+    }*/
+    ptr_displayfourCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(3))));
+    ptr_displayfourCommand->exec();
 }
 
 void MainWindow::on_mediaOne_6_clicked()
 {
-    if(globalplay.size >= 5){
+    /*if(globalplay.size >= 5){
         globalplay.PlayList[4].play();
     }
     else{
         QMessageBox::about(0,QObject::tr("fail"),"此处子视频未导入");
-    }
+    }*/
+    ptr_displayfiveCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(4))));
+    ptr_displayfiveCommand->exec();
 }
 
 void MainWindow::on_mediaOne_7_clicked()
 {
-    if(globalplay.size >= 6){
+    /*if(globalplay.size >= 6){
         globalplay.PlayList[5].play();
     }
     else{
         QMessageBox::about(0,QObject::tr("fail"),"此处子视频未导入");
-    }
+    }*/
+    ptr_displaysixCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(5))));
+    ptr_displaysixCommand->exec();
 }
 
 //pushButton —— pushButton_8 :delete button for each video
-void MainWindow::on_pushButton_clicked()
+/*void MainWindow::on_pushButton_clicked()
 {
     if(globalplay.size<1){
         QMessageBox::about(0,QObject::tr("fail"),"此处子视频未导入");
