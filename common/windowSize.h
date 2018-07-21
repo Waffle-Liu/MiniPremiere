@@ -1,6 +1,7 @@
 #pragma once
 
 #include "stdafx.h"
+
 #define nullSize windowSize(-1, -1)
 
 struct windowSize {
