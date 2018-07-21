@@ -3,7 +3,6 @@
 #include <QBoxLayout>
 #include <iostream>
 
-using namespace std;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -23,9 +22,9 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::setAddMediaCommand(std::shared_ptr<ICommandBase> ptr_addmedia)
+void MainWindow::setAddMediaCommand(std::shared_ptr<Command> command)
 {
-    ptr_addmediaCommand = ptr_addmedia;
+    add_video_Command = command;
 }
 
 //slot
@@ -70,8 +69,8 @@ void MainWindow::on_AddMedia_clicked()
     QStringList fileNames = QFileDialog::getOpenFileNames(this, tr("Open Files"));
     QString temp = fileNames.join("\\");
     String filename = temp.toStdString();
-    ptr_addmediaCommand->setParameter(_new_any_space_::any_cast<std::string>(filenames));
-    ptr_addmediaCommand->Exec();
+    add_video_Command->set_parameters(std::static_pointer_cast<Parameters, PathParameters>(std::shared_ptr<PathParameters>(new PathParameters(filename))));
+    add_video_Command->exec();
 }
 
 /*void MainWindow::on_DeleteAllMedia_clicked()

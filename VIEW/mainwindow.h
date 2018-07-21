@@ -9,7 +9,7 @@
 //#include "dialog_integratedvideo.h"
 //#include "VideoPlay.h"
 //#include "Video.h"
-#include "../common/etlbase.h"
+#include "../common/command.h"
 
 //extern VideoPlay globalplay;
 
@@ -24,8 +24,8 @@ class MainWindow : public QMainWindow
 public:
 	explicit MainWindow(QWidget *parent = 0);
 	~MainWindow();
-    void setAddMediaCommand(std::shared_ptr<ICommandBase> ptr_addmedia);
-    void setDeletaAllCommand(std::shared_ptr<ICommandBase> ptr_deleteall);
+    void set_add_media_command(std::shared_ptr<Command>);
+    /*void setDeletaAllCommand(std::shared_ptr<ICommandBase> ptr_deleteall);
     void setDeleteOneCommand(std::shared_ptr<ICommandBase> ptr_deleteone);
     void setDeleteTwoCommand(std::shared_ptr<ICommandBase> ptr_deletetwo);
     void setDeleteThreeCommand(std::shared_ptr<ICommandBase> ptr_deletethree);
@@ -44,14 +44,14 @@ public:
     void setDisplayFourCommand(std::shared_ptr<ICommandBase> ptr_displayfour);
     void setDisplayFiveCommand(std::shared_ptr<ICommandBase> ptr_displayfive);
     void setDisplaySixCommand(std::shared_ptr<ICommandBase> ptr_displaysix);
-    void setIntergratedCommand(std::shared_ptr<ICommandBase> ptr_intergrated);
+    void setIntergratedCommand(std::shared_ptr<ICommandBase> ptr_intergrated);*/
 
 private:
     Ui::MainWindow *ui;
     //Dialog_edit *editWindow = new Dialog_edit;
     //Dialog_IntegratedVideo *integratedWindow = new Dialog_IntegratedVideo;//two sub-windows
-    std::shared_ptr<ICommandBase> ptr_addmediaCommand;
-    std::shared_ptr<ICommandBase> ptr_deleteallCommand;
+    std::shared_ptr<Command> add_video_Command;
+    /*std::shared_ptr<ICommandBase> ptr_deleteallCommand;
     std::shared_ptr<ICommandBase> ptr_deleteoneCommand;
     std::shared_ptr<ICommandBase> ptr_deletetwoCommand;
     std::shared_ptr<ICommandBase> ptr_deletethreeCommand;
@@ -70,7 +70,7 @@ private:
     std::shared_ptr<ICommandBase> ptr_displayfourCommand;
     std::shared_ptr<ICommandBase> ptr_displayfiveCommand;
     std::shared_ptr<ICommandBase> ptr_displaysixCommand;
-    std::shared_ptr<ICommandBase> ptr_intergratedCommand;
+    std::shared_ptr<ICommandBase> ptr_intergratedCommand;*/
 
 private slots :
     void on_AddMedia_clicked();
