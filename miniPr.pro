@@ -22,11 +22,45 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+INCLUDEPATH += opencv/win32/include
+LIBS += opencv/win32/lib/*.lib
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    APP/app.cpp \
+    APP/main.cpp \
+    commands/addvideocommand.cpp \
+    commands/playvideocommand.cpp \
+    common/command.cpp \
+    common/Video.cpp \
+    common/windowSize.cpp \
+    MODEL/prmodel.cpp \
+    notification/notification.cpp \
+    notification/wrongindexnotification.cpp \
+    Parameters/parameters.cpp \
+    VIEW/dialog_edit.cpp \
+    VIEW/dialog_integratedvideo.cpp \
+    VIEW/mainwindow.cpp \
+    VIEWMODEL/prviewmodel.cpp
 
-HEADERS  += \
+HEADERS  += mainwindow.h \
+    APP/app.h \
+    commands/addvideocommand.h \
+    commands/playvideocommand.h \
+    common/command.h \
+    common/stdafx.h \
+    common/Video.h \
+    common/windowSize.h \
+    MODEL/prmodel.h \
+    notification/notification.h \
+    notification/wrongindexnotification.h \
+    Parameters/parameters.h \
+    VIEW/dialog_edit.h \
+    VIEW/dialog_integratedvideo.h \
+    VIEW/mainwindow.h \
+    VIEWMODEL/prviewmodel.h
 
-
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    VIEW/dialog_edit.ui \
+    VIEW/dialog_integratedvideo.ui \
+    VIEW/mainwindow.ui
