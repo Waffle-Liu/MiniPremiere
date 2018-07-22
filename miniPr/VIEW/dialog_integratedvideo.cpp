@@ -51,6 +51,11 @@ void Dialog_IntegratedVideo::setFunnyCommand(std::shared_ptr<Command> command)
 	ptr_addfunnyCommand = command;
 }
 
+void MainWindow::setPlayVideoCommand(std::shared_ptr<Command> command)
+{
+    ptr_playvideoCommand = command;
+}
+
 void Dialog_IntegratedVideo::on_pushButton_17_clicked()//Subtitle confirm button
 {
 	
@@ -98,12 +103,13 @@ void Dialog_IntegratedVideo::on_pushButton_17_clicked()//Subtitle confirm button
 	ui->lineEdit_9->clear();
 
 }
-/*
+
 void Dialog_IntegratedVideo::on_preview_clicked()//preview button
 {
-	globalplay.PlayList[0].play();
+	ptr_playvideoCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(0))));
+    ptr_playvideoCommand->exec();
 }
-
+/*
 void Dialog_IntegratedVideo::on_pushButton_clicked()//display the size of video
 {
 	//display size
