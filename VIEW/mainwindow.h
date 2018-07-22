@@ -25,6 +25,7 @@ public:
     void setAddVideoCommand(std::shared_ptr<Command>);
     //void setDeletaAllCommand(std::shared_ptr<Command> ptr_deleteall);
     void setRemoveVideoCommand(std::shared_ptr<Command>);
+    void setShowEditWindowCommand(std::shared_ptr<Command>);
     /*void setDeleteTwoCommand(std::shared_ptr<Command> ptr_deletetwo);
     void setDeleteThreeCommand(std::shared_ptr<Command> ptr_deletethree);
     void setDeleteFourCommand(std::shared_ptr<Command> ptr_deletefour);
@@ -39,8 +40,10 @@ public:
     void setPlayVideoCommand(std::shared_ptr<Command>);
     //void setIntergratedCommand(std::shared_ptr<Command> ptr_intergrated);
     std::shared_ptr<Notification> get_update_mainwindow_notification();
+    std::shared_ptr<Notification> get_show_edit_notification();
 
     void update_load_state();
+    void pop_edit_window();
 
 private:
     Ui::MainWindow *ui;
@@ -49,6 +52,7 @@ private:
     std::shared_ptr<Command> add_video_Command;
     //std::shared_ptr<Command> ptr_deleteallCommand;
     std::shared_ptr<Command> ptr_removevideoCommand;
+    std::shared_ptr<Command> ptr_showeditwindowCommand;
     /*std::shared_ptr<Command> ptr_deletetwoCommand;
     std::shared_ptr<Command> ptr_deletethreeCommand;
     std::shared_ptr<Command> ptr_deletefourCommand;
@@ -63,6 +67,7 @@ private:
     std::shared_ptr<Command> ptr_playvideoCommand;
     //std::shared_ptr<Command> ptr_intergratedCommand;
     std::shared_ptr<Notification> update_mainwindow_notification;
+    srd::shared_ptr<Notification> show_edit_notification;
 
 private slots :
     void on_AddMedia_clicked();
