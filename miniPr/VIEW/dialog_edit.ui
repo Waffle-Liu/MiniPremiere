@@ -288,7 +288,7 @@
         <string>转场特效选择：</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton_2">
+      <widget class="QPushButton" name="pushButton_3">
        <property name="geometry">
         <rect>
          <x>150</x>
