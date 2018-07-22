@@ -198,3 +198,36 @@ bool Video::addSubtitle(const string &text, int start_frame, int end_frame, doub
 	}
 	return true;
 }
+
+bool Video::addSticker(const string& image_path, int start_frame, int end_frame, double pos_x, double pos_y)
+{
+	Mat image = imread(image_path);
+
+	for (int i = start_frame; i < end_frame; i++)
+	{
+		int width, height;
+		if (*frames[i].rows < image.rows + pos_y) {
+			height = *frames[i].rows - pos_y;
+		} else {
+			height = image.rows;
+		}
+		if (*frames[i].cols < image.cols + pos_x) {
+			width = *frames[i].cols - pos_x;
+		} else {
+			width = image.cols;
+		}
+
+		for (int y = 0; y < height; y++)
+		{
+			uchar* bkgP = *frames[i].ptr<uchar>(y);
+			uchar* imgP = image.ptr<uchar>(y);
+			for (int x = 0; x < width; x++)
+			{
+				bkgP[3 * (x + pos_x)] = imgP[3 * x];
+				bkgP[3 * (x + pos_x) + 1] = imgP[3 * x + 1];
+				bkgP[3 * (x + pos_x) + 2] = imgP[3 * x + 2];
+			}
+		}
+	}
+	return true;
+}

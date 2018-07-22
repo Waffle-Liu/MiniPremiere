@@ -8,6 +8,7 @@
 #include "../commands/speedchangecommand.h"
 #include "../commands/integrateallvideocommand.h"
 #include "../commands/addsubtitlecommand.h"
+#include "../commands/addstickercommand.h"
 
 #include "../notification/wrongindexnotification.h"
 #include "../notification/showeditvideonotification.h"
@@ -24,6 +25,7 @@ PrViewModel::PrViewModel(){
 	changespeed_video_command = static_pointer_cast<Command, SpeedChangeCommand>(shared_ptr<SpeedChangeCommand>(new SpeedChangeCommand(shared_ptr<PrViewModel>(this))));
 	integrate_all_video_command = static_pointer_cast<Command, IntegrateAllVideoCommand>(shared_ptr<IntegrateAllVideoCommand>(new IntegrateAllVideoCommand(shared_ptr<PrViewModel>(this))));
 	add_subtitle_command = static_pointer_cast<Command, AddSubtitleCommand>(shared_ptr<AddSubtitleCommand>(new AddSubtitleCommand(shared_ptr<PrViewModel>(this))));
+	add_sticker_command = static_pointer_cast<Command, AddStickerCommand>(shared_ptr<AddStickerCommand>(new AddStickerCommand(shared_ptr<PrViewModel>(this))));
 
 	index_error_notification = static_pointer_cast<Notification, UpdateInfoNotification>(shared_ptr<UpdateInfoNotification>(new UpdateInfoNotification(shared_ptr<PrViewModel>(this))));
 	edit_enable_notification = static_pointer_cast<Notification, UpdateEditEnableNotification>(shared_ptr<UpdateEditEnableNotification>(new UpdateEditEnableNotification(shared_ptr<PrViewModel>(this))));
@@ -75,6 +77,11 @@ void PrViewModel::exec_add_subtitle_command(const string &text, int start_frame,
 	model->addSubtitle(text, start_frame, end_frame, pos_x, pos_y, color_r, color_g, color_b, size, isbold);
 }
 
+void PrViewModel::exec_add_sticker_command(const string &img_path, int start_frame, int end_frame, double pos_x, double pos_y)
+{
+	model->addSticker(img_path, start_frame, end_frame, pos_x, pos_y);
+}
+
 /*=============================================================================*/
 
 shared_ptr<Command> PrViewModel::get_add_video_command()
@@ -116,6 +123,11 @@ shared_ptr<Command> PrViewModel::get_integrate_all_video_command()
 shared_ptr<Command> PrViewModel::get_add_subtitle_command()
 {
 	return add_subtitle_command;
+}
+
+shared_ptr<Command> PrViewModel::get_add_sticker_command()
+{
+	return add_sticker_command;
 }
 
 /*============================================================================*/

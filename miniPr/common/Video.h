@@ -27,4 +27,6 @@ public:
 	bool changeSpeed(double rate);
 	bool addFilter(int mode, int start_frame, int end_frame);
 	bool addSubtitle(const string &text, int start_frame, int end_frame, double x, double y, double r, double g, double b, double fontSize, bool isbold);
+	bool addSticker(const string &image_path, int start_frame, int end_frame, double pos_x, double pos_y);
+
 };

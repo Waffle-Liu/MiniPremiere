@@ -69,7 +69,6 @@ void PrModel::integrateAllVideo()
 	}
 	videoNum = 1;
 	curEditIndex = 0;
-	info_notify("Integrate success!");
 	integrate_complete_notify();
 }
 
@@ -89,6 +88,12 @@ void PrModel::addSubtitle(const string &text, int start_frame, int end_frame, do
 {
 	videoList[curEditIndex]->addSubtitle(text, start_frame, end_frame, pos_x, pos_y, color_r, color_g, color_b, size, isbold);
 	info_notify("Subtitle added success!");
+}
+
+void PrModel::addSticker(const string &img_path, int start_frame, int end_frame, double pos_x, double pos_y)
+{
+	videoList[curEditIndex]->addSticker(img_path, start_frame, end_frame, pos_x, pos_y);
+	info_notify("Sticker added success!");
 }
 
 /*=============================================================================*/
