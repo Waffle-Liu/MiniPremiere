@@ -22,6 +22,11 @@ private:
 	shared_ptr<Command> add_subtitle_command;
 	shared_ptr<Command> add_sticker_command;
 
+	shared_ptr<Command> mirror_command;
+	shared_ptr<Command> rotate_command;
+	shared_ptr<Command> add_filter_command;
+	shared_ptr<Command> funny_command;
+
 	shared_ptr<Notification> update_view_notification;
 	shared_ptr<Notification> index_error_notification;
 	shared_ptr<Notification> show_edit_window_notification;
@@ -42,6 +47,11 @@ public:
 	void exec_integrate_all_video_command();
 	void exec_add_subtitle_command(const string &text, int start_frame, int end_frame, double pos_x, double pos_y, double color_r, double color_g, double color_b, double size, bool isbold);
 	void exec_add_sticker_command(const string &img_path, int start_frame, int end_frame, double pos_x, double pos_y);
+	void exec_mirror_command(int start_frame, int end_frame, int mode);
+	void exec_rotate_command(int start_frame, int end_frame, int mode);
+	void exec_add_filter_command(int start_frame, int end_frame, int mode);
+	void exec_funny_command(int start_frame, int end_frame, int mode);
+
 
 	shared_ptr<Command> get_add_video_command();
 	shared_ptr<Command> get_play_video_command();
@@ -52,6 +62,10 @@ public:
 	shared_ptr<Command> get_integrate_all_video_command();
 	shared_ptr<Command> get_add_subtitle_command();
 	shared_ptr<Command> get_add_sticker_command();
+	shared_ptr<Command> get_mirror_command();
+	shared_ptr<Command> get_rotate_command();
+	shared_ptr<Command> get_add_filter_command();
+	shared_ptr<Command> get_funny_command();
 
 	shared_ptr<Notification> get_index_error_notification();
 	shared_ptr<Notification> get_edit_enable_notification();

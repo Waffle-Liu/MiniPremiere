@@ -96,6 +96,47 @@ void PrModel::addSticker(const string &img_path, int start_frame, int end_frame,
 	info_notify("Sticker added success!");
 }
 
+void PrModel::addFilter(int start_frame, int start_frame, int mode)
+{
+	videoList[curEditIndex]->addFilter(mode, start_frame, end_frame);
+	switch (mode)
+	{
+	case 0:
+		info_notify("Mirror success!");
+		break;
+	case 1:
+		info_notify("Rotate success!");
+		break;
+	case 3:
+		info_notify("Adding filter \"FuDiao\" success!");
+		break;
+	case 4:
+		info_notify("Adding filter \"FuDiao\" success!");
+		break;
+	case 5:
+		info_notify("Adding funny filter \"KuoZhang\" success!");
+		break;
+	case 6:
+		info_notify("Adding funny filter \"JiYa\" success!");
+		break;
+	case 7:
+		info_notify("Adding funny filter \"BoLang\" success!");
+		break;
+	case 12:
+		info_notify("Adding filter \"SuMiao\" success!");
+		break;
+	case 13:
+		info_notify("Adding filter \"HuaiJiu\" success!");
+		break;
+	case 14:
+		info_notify("Adding filter \"QiangGuang\" success!");
+		break;
+	default:
+		info_notify("Failed adding filter!");
+		break;
+	}
+}
+
 /*=============================================================================*/
 
 void PrModel::set_index_error_notification(shared_ptr<Notification> ntf)
