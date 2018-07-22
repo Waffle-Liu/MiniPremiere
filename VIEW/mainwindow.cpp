@@ -4,6 +4,7 @@
 #include <iostream>
 #include "../notification/notification.h"
 #include "../notification/wrongindexnotification.h"
+#include "../notification/showeditvideonotification.h"
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -18,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->label_5->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
     ui->label_6->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");*/
 	update_mainwindow_notification = std::static_pointer_cast<Notification, UpdateViewNotification>(std::shared_ptr<UpdateViewNotification>(new UpdateViewNotification(std::shared_ptr<MainWindow>(this))));
+	show_edit_notification = std::static_pointer_cast<Notification, UpdateShowEditVideoNotification>(std::shared_ptr<UpdateShowEditVideoNotification>(new UpdateShowEditVideoNotification(std::shared_ptr<MainWindow>(this))));
 }
 
 MainWindow::~MainWindow()
@@ -39,6 +41,11 @@ void MainWindow::setPlayVideoCommand(std::shared_ptr<Command> command)
 void MainWindow::setRemoveVideoCommand(std::shared_ptr<Command> command)
 {
     ptr_removevideoCommand = command;
+}
+
+void MainWindow::setShowEditWindowCommand(std::shared_ptr<Command> command)
+{
+	ptr_showeditwindowCommand = command;
 }
 
 void MainWindow::setSelectEditVideoCommand(std::shared_ptr<Command> command)
@@ -63,7 +70,7 @@ void MainWindow::update_load_state()
 
 void MainWindow::pop_edit_window()
 {
-    ptr_showeditwindowCommand->exec();
+	ptr_showeditwindowCommand->exec();
 }
 
 //slot
@@ -150,37 +157,37 @@ void MainWindow::on_DeleteAllMedia_clicked()
 void MainWindow::on_mediaOne_clicked()
 {
     ptr_selecteditvideoCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(0))));
-    ptr_selecteditvideoCommand->exec()
+	ptr_selecteditvideoCommand->exec();
 }
 
 void MainWindow::on_mediaTwo_clicked()
 {
     ptr_selecteditvideoCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(1))));
-    ptr_selecteditvideoCommand->exec()
+	ptr_selecteditvideoCommand->exec();
 }
 
 void MainWindow::on_mediaThree_clicked()
 {
     ptr_selecteditvideoCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(2))));
-    ptr_selecteditvideoCommand->exec()
+	ptr_selecteditvideoCommand->exec();
 }
 
 void MainWindow::on_mediaFour_clicked()
 {
     ptr_selecteditvideoCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(3))));
-    ptr_selecteditvideoCommand->exec()
+	ptr_selecteditvideoCommand->exec();
 }
 
 void MainWindow::on_mediaFive_clicked()
 {
     ptr_selecteditvideoCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(4))));
-    ptr_selecteditvideoCommand->exec()
+	ptr_selecteditvideoCommand->exec();
 }
 
 void MainWindow::on_mediaSix_clicked()
 {
     ptr_selecteditvideoCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(5))));
-    ptr_selecteditvideoCommand->exec()
+	ptr_selecteditvideoCommand->exec();
 }
 
 

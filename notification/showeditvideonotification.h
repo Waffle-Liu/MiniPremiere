@@ -19,6 +19,6 @@ class UpdateEditEnableNotification: public Notification
 private:
     shared_ptr<PrViewModel> viewmodel;
 public:
-    UpdateEditEnableNorification(shared_ptr<PrViewModel> vm);
+    UpdateEditEnableNotification(shared_ptr<PrViewModel> vm);
     void exec();
-}
+};

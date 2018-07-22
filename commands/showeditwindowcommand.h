@@ -4,7 +4,7 @@
 #include "../common/command.h"
 #include <string>
 
-class miniPrAPP
+class miniPrAPP;
 class ShowEditWindowCommand: public Command
 {
 private:

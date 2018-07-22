@@ -1,7 +1,7 @@
 #include "../commands/showeditwindowcommand.h"
-#include "app.h"
+#include "../APP/app.h"
 
-ShowEditWindowCommand::ShowEditWindowCommand(miniPrAPP *ptrAPP):ptrAPP(pa)
+ShowEditWindowCommand::ShowEditWindowCommand(miniPrAPP *ptrAPP):ptrAPP(ptrAPP)
 {
 }
 ShowEditWindowCommand::~ShowEditWindowCommand()

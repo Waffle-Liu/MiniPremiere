@@ -39,7 +39,7 @@ public:
 	shared_ptr<Notification> get_index_error_notification();
 	shared_ptr<Notification> get_edit_enable_notification();
 	void set_update_view_notification(shared_ptr<Notification> ntf);
-	void set_edit_window_notification(shared_ptr<Notification> ntf);
+	void set_show_edit_window_notification(shared_ptr<Notification> ntf);
 	void update_view_notified();
 	void show_edit_window_notified();
 };

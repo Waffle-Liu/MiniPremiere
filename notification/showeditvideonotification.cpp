@@ -10,12 +10,12 @@ void UpdateShowEditVideoNotification::exec()
     mainwindow->pop_edit_window();
 }
 
-UpdateEditEnableNorification::UpdateEditEnableNorification(shared_ptr<PrViewModel> vm)
+UpdateEditEnableNotification::UpdateEditEnableNotification(shared_ptr<PrViewModel> vm)
 {
     viewmodel = vm;
 }
 
-void UpdateEditEnableNorification::exec()
+void UpdateEditEnableNotification::exec()
 {
     viewmodel->show_edit_window_notified();
 }
