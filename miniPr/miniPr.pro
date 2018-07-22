@@ -57,7 +57,8 @@ SOURCES += \
     commands/integrateallvideocommand.cpp \
     commands/showintegratewindowcommand.cpp \
     common/FilterFunction.cpp \
-    notification/showintegratewindownotification.cpp
+    notification/showintegratewindownotification.cpp \
+    commands/addsubtitlecommand.cpp
 
 HEADERS  += \
     APP/app.h \
@@ -84,7 +85,8 @@ HEADERS  += \
     commands/integrateallvideocommand.h \
     commands/showintegratewindowcommand.h \
     common/FilterFunction.h \
-    notification/showintegratewindownotification.h
+    notification/showintegratewindownotification.h \
+    commands/addsubtitlecommand.h
 
 FORMS    += \
     VIEW/dialog_edit.ui \
