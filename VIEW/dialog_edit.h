@@ -27,7 +27,7 @@ public:
     explicit Dialog_edit(QWidget *parent = 0);
     ~Dialog_edit();
     void setSpeedChangeCommand(std::shared_ptr<Command>);
-    //void setCutConfirmCommand(std::shared_ptr<Command> ptr_cutconfirm);
+    void setCutVideoCommand(std::shared_ptr<Command>);
     std::shared_ptr<Notification> get_pop_window_notification();
 
     void pop_window(const string &tip);
@@ -35,7 +35,7 @@ public:
 private:
     Ui::Dialog_edit *ui;
     std::shared_ptr<Command> ptr_speedchangeCommand;
-    //std::shared_ptr<Command> ptr_cutconfirmCommand;
+    std::shared_ptr<Command> ptr_cutvideoCommand;
     std::shared_ptr<Notification> pop_window_notification;
 
 private slots:

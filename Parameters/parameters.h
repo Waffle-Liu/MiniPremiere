@@ -41,6 +41,17 @@ public:
     int getvalue() { return value; }
 };
 
+class Int2Parameters :public Parameters {
+private:
+    int value1;
+    int value2;
+public:
+    Int2Parameters(int v, int u) :value1(v),value2(u) {}
+    void setvalue(int v, int u) { value1 = v; value2 = u; }
+    int getvalue1() { return value1; }
+    int getvalue2() { return value2; }
+};
+
 class DoubleParameters :public Parameters {
 private:
     double value;

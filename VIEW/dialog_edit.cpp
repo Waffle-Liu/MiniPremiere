@@ -19,10 +19,10 @@ void Dialog_edit::setSpeedChangeCommand(std::shared_ptr<Command> command)
 	ptr_speedchangeCommand = command;
 }
 
-/*void Dialog_edit::setCutConfirmCommand(std::shared_ptr<Command> ptr_cutconfirm)
+void Dialog_edit::setCutVideoCommand(std::shared_ptr<Command> command)
 {
-	ptr_cutconfirmCommand = ptr_cutconfirm;
-}*/
+	ptr_cutvideoCommand = command;
+}
 
 std::shared_ptr<Notification> Dialog_edit::get_pop_window_notification()
 {
@@ -36,7 +36,12 @@ void Dialog_edit::pop_window(const string &tip)
 
 void Dialog_edit::on_pushButton_2_clicked()//cut
 {
-
+	QString startstring = ui->lineEdit->text();
+	QString endstring = ui->lineEdit_2->text();
+	int start = startstring.toInt();
+	int end = endstring.toInt();
+	ptr_cutvideoCommand->set_parameters(std::static_pointer_cast<Parameters, Int2Parameters>(std::shared_ptr<Int2Parameters>(new Int2Parameters(start, end))));
+	ptr_cutvideoCommand->exec();
 }
 
 void Dialog_edit::on_pushButton_clicked()//change speed
