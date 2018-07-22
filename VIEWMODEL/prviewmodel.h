@@ -15,6 +15,8 @@ private:
 	shared_ptr<Command> add_video_command;
 	shared_ptr<Command> play_video_command;
 	shared_ptr<Command> remove_video_command;
+	shared_ptr<Command> cut_video_command;
+	shared_ptr<Command> changespeed_video_command;
 	shared_ptr<Command> select_edit_video_command;
 
 	shared_ptr<Notification> update_view_notification;
@@ -34,6 +36,8 @@ public:
 	shared_ptr<Command> get_add_video_command();
 	shared_ptr<Command> get_play_video_command();
 	shared_ptr<Command> get_remove_video_command();
+	shared_ptr<Command> get_cut_video_command();
+	shared_ptr<Command> get_changspeed_video_command();
 	shared_ptr<Command> get_select_edit_video_command();
 
 	shared_ptr<Notification> get_index_error_notification();

@@ -72,3 +72,23 @@ void Video::play()
 	}
 	cvDestroyWindow("display");
 }
+
+void Video::cut(int start_frame, int end_frame)
+{
+	frames.erase(frames.begin(), frames.begin() + start_frame);
+	frames.erase(frames.begin() + (end_frame - start_frame), frames.end());
+	fCnt = end_frame - start_frame;
+}
+
+void Video::changeSpeed(double rate)
+{
+	if (rate < 1) {
+		fps = fps * rate;
+	} else {
+		fCnt = (int)(double(fCnt) / rate);
+		for (int i = 0; i < fCnt; i++)
+		{
+			frames[i] = frames[(int)(i * rate)];
+		}
+	}
+}

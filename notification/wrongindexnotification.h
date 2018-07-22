@@ -15,11 +15,11 @@ public:
 };
 
 
-class UpdateIndexErrorNotification : public Notification
+class UpdateInfoNotification : public Notification
 {
 private:
 	shared_ptr<PrViewModel> viewmodel;
 public:
-	UpdateIndexErrorNotification(shared_ptr<PrViewModel> vm);
+	UpdateInfoNotification(shared_ptr<PrViewModel> vm);
 	void exec();
 };

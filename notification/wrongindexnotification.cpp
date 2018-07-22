@@ -10,11 +10,12 @@ void UpdateViewNotification::exec()
     mainwindow->update_load_state();
 }
 
-UpdateIndexErrorNotification::UpdateIndexErrorNotification(shared_ptr<PrViewModel> vm) : viewmodel(vm)
+UpdateInfoNotification::UpdateInfoNotification(shared_ptr<PrViewModel> vm) : viewmodel(vm)
 {
 }
 
-void UpdateIndexErrorNotification::exec()
+void UpdateInfoNotification::exec()
 {
-	viewmodel->update_view_notified();
+	std::string str = std::static_pointer_cast<PathParameters, Parameters>(Notification::params)->get_path();
+	viewmodel->update_view_notified(str);
 }

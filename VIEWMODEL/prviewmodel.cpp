@@ -13,8 +13,10 @@ PrViewModel::PrViewModel(){
 	play_video_command = static_pointer_cast<Command, PlayVideoCommand>(shared_ptr<PlayVideoCommand>(new PlayVideoCommand(shared_ptr<PrViewModel>(this))));
 	remove_video_command = static_pointer_cast<Command, RemoveVideoCommand>(shared_ptr<RemoveVideoCommand>(new RemoveVideoCommand(shared_ptr<PrViewModel>(this))));
 	select_edit_video_command = static_pointer_cast<Command, SelectEditVideoCommand>(shared_ptr<SelectEditVideoCommand>(new SelectEditVideoCommand(shared_ptr<PrViewModel>(this))));
+	cut_video_command = static_pointer_cast<Command, CutVideoCommand>(shared_ptr<CutVideoCommand>(new CutVideoCommand(shared_ptr<PrViewModel>(this))));
+	changespeed_video_command = static_pointer_cast<Command, SpeedChangeCommand>(shared_ptr<SpeedChangeCommand>(new SpeedChangeCommand(shared_ptr<PrViewModel>(this))));
 
-	index_error_notification = static_pointer_cast<Notification, UpdateIndexErrorNotification>(shared_ptr<UpdateIndexErrorNotification>(new UpdateIndexErrorNotification(shared_ptr<PrViewModel>(this))));
+	index_error_notification = static_pointer_cast<Notification, UpdateInfoNotification>(shared_ptr<UpdateInfoNotification>(new UpdateInfoNotification(shared_ptr<PrViewModel>(this))));
 	edit_enable_notification = static_pointer_cast<Notification, UpdateEditEnableNotification>(shared_ptr<UpdateEditEnableNotification>(new UpdateEditEnableNotification(shared_ptr<PrViewModel>(this))));
 }
 
@@ -56,6 +58,16 @@ shared_ptr<Command> PrViewModel::get_play_video_command()
 shared_ptr<Command> PrViewModel::get_remove_video_command()
 {
 	return remove_video_command;
+}
+
+shared_ptr<Command> PrViewModel::get_cut_video_command()
+{
+	return cut_video_command;
+}
+
+shared_ptr<Command> PrViewModel::get_changspeed_video_command()
+{
+	return changespeed_video_command;
 }
 
 shared_ptr<Command> PrViewModel::get_select_edit_video_command()

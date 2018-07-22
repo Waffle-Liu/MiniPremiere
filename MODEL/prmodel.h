@@ -16,7 +16,7 @@ private:
 	vector<shared_ptr<Video>> videoList;
 	int curEditIndex;
 
-	shared_ptr<Notification> index_error_notification;
+	shared_ptr<Notification> info_notification;
 	shared_ptr<Notification> edit_enable_notification;
 
 public:
@@ -26,13 +26,15 @@ public:
 	void addVideo(const string& video_path);
 	void playVideo(int index);
 	void removeVideo(int index);
+	void changespeedVideo(double rate);
+	void cutVideo(int start_frame, int end_frame);
 
 	void setEditIndex(int index);
 
 
 	void set_index_error_notification(shared_ptr<Notification> ntf);
 	void set_edit_enable_notification(shared_ptr<Notification> ntf);
-	void index_error_notify();
+	void info_notify(const string& info);
 	void edit_enable_notify();
 
 };

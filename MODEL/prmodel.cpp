@@ -20,7 +20,7 @@ void PrModel::addVideo(const string &video_path)
 void PrModel::playVideo(int index)
 {
 	if (index >= videoNum) {
-		index_error_notify();
+		info_notify("No video");
 		return;
 	}
 	videoList[index]->play();
@@ -33,7 +33,7 @@ void PrModel::removeVideo(int index)
 		videoNum = 0;
 		return;
 	} else if (index >= videoNum) {
-		index_error_notify();
+		info_notify("No video");
 		return;
 	}
 
@@ -41,11 +41,22 @@ void PrModel::removeVideo(int index)
 	videoNum--;
 }
 
+void PrModel::changespeedVideo(double rate)
+{
+	videoList[curEditIndex]->changeSpeed(rate);
+}
+
+void PrModel::cutVideo(int start_frame, int end_frame)
+{
+	videoList[curEditIndex]->cut(start_frame, end_frame);
+	info_notify("Cut success!");
+}
+
 
 void PrModel::setEditIndex(int index)
 {
 	if (index >= videoNum) {
-		index_error_notify();
+		info_notify("No video!");
 		return;
 	}
 
@@ -56,13 +67,15 @@ void PrModel::setEditIndex(int index)
 
 void PrModel::set_index_error_notification(shared_ptr<Notification> ntf)
 {
-	index_error_notification = ntf;
+	info_notification = ntf;
 }
 
-void PrModel::index_error_notify()
+void PrModel::info_notify(const string& info)
 {
-	index_error_notification->exec();
+	info_notification->set_parameters(std::static_pointer_cast<Parameters, PathParameters>(std::shared_ptr<PathParameters>(new PathParameters(info))));
+	info_notification->exec();
 }
+
 
 void PrModel::set_edit_enable_notification(shared_ptr<Notification> ntf)
 {
