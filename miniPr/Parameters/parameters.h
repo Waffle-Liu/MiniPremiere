@@ -121,4 +121,16 @@ public:
     double getx(){return x;}
     double gety(){return y;}
 };
+
+class FilterParameters: public Parameters {
+private:
+    int startframe;
+    int endframe;
+    int mode;
+public:
+    FilterParameters(int startframe_,int endframe_,int mode_):startframe(startframe_),endframe(endframe_),mode(mode_){}
+    int getstartframe(){return startframe;}
+    int getendframe(){return endframe;}
+    int mode(){return mode;}
+};
 #endif // PARAMETERS_H
