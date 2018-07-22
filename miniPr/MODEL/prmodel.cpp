@@ -68,6 +68,7 @@ void PrModel::integrateAllVideo()
 		videoList.erase(videoList.begin() + 1);
 	}
 	videoNum = 1;
+	curEditIndex = 0;
 	info_notify("Integrate success!");
 	integrate_complete_notify();
 }
@@ -84,6 +85,13 @@ void PrModel::setEditIndex(int index)
 	edit_enable_notify();
 }
 
+void PrModel::addSubtitle(const string &text, int start_frame, int end_frame, double pos_x, double pos_y, double color_r, double color_g, double color_b, int size, bool isbold)
+{
+	videoList[curEditIndex]->addSubtitle(text, start_frame, end_frame, pos_x, pos_y, color_r, color_b, color_g, color_b, size, isbold);
+	info_notify("Subtitle added success!");
+}
+
+/*=============================================================================*/
 
 void PrModel::set_index_error_notification(shared_ptr<Notification> ntf)
 {

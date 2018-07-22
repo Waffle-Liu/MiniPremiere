@@ -89,7 +89,7 @@ private:
     double g;
     double b;
     int size;
-    boolean isbold;
+    bool isbold;
 public:
     SubtitleParameters(string text_, int startframe_, int endframe_, double x_, double y_, double r_, double g_, double b_, int size_, bool isbold_):
     text(text_),startframe(startframe_),endframe(endframe_),x(x_),y(y_),r(r_),g(g_),b(b_),size(size_),isbold(isbold_){}
@@ -102,6 +102,6 @@ public:
     double getg(){return g;}
     double getb(){return b;}
     int getsize(){return size;}
-    boolean getisbold(){return isbold;}
+    bool getisbold(){return isbold;}
 };
 #endif // PARAMETERS_H

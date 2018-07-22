@@ -30,6 +30,7 @@ public:
 	void changespeedVideo(double rate);
 	void cutVideo(int start_frame, int end_frame);
 	void integrateAllVideo();
+	void addSubtitle(int start_frame, int end_frame, int pos_x, int pos_y, int color_r, int color_g, int color_b, int size, bool isbold);
 
 	void setEditIndex(int index);
 
@@ -37,6 +38,7 @@ public:
 	void set_index_error_notification(shared_ptr<Notification> ntf);
 	void set_edit_enable_notification(shared_ptr<Notification> ntf);
 	void set_integrate_complete_notification(shared_ptr<Notification> ntf);
+	
 	void info_notify(const string& info);
 	void edit_enable_notify();
 	void integrate_complete_notify();

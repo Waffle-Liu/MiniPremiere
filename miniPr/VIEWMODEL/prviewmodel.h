@@ -19,6 +19,7 @@ private:
 	shared_ptr<Command> changespeed_video_command;
 	shared_ptr<Command> select_edit_video_command;
 	shared_ptr<Command> integrate_all_video_command;
+	shared_ptr<Command> add_subtitle_command;
 
 	shared_ptr<Notification> update_view_notification;
 	shared_ptr<Notification> index_error_notification;
@@ -38,6 +39,7 @@ public:
 	void exec_cut_video_command(int start_frame, int end_frame);
 	void exec_speed_change_command(double rate);
 	void exec_integrate_all_video_command();
+	void exec_add_subtitle_command(const string &text, int start_frame, int end_frame, double pos_x, double pos_y, double color_r, double color_g, double color_b, int size, bool isbold);
 
 	shared_ptr<Command> get_add_video_command();
 	shared_ptr<Command> get_play_video_command();
@@ -46,6 +48,7 @@ public:
 	shared_ptr<Command> get_speed_change_command();
 	shared_ptr<Command> get_select_edit_video_command();
 	shared_ptr<Command> get_integrate_all_video_command();
+	shared_ptr<Command> get_add_subtitle_command();
 
 	shared_ptr<Notification> get_index_error_notification();
 	shared_ptr<Notification> get_edit_enable_notification();

@@ -185,3 +185,16 @@ bool Video::addFilter(int mode, int start_frame, int end_frame)
 	}
 	return true;
 }
+
+bool Video::addSubtitle(const string &text, int start_frame, int end_frame, double x, double y, double r, double g, double b, int fontSize, bool isbold)
+{
+	if (start_frame > fCnt) {
+		return false;
+	}
+
+	for (int i = start_frame; i < end_frame; i++)
+	{
+		putText(frames[i], text, Point(x, y), FONT_HERSHEY_COMPLEX, fontSize, Scalar(r, g, b), isbold ? 2 : 1, 8, 0);
+	}
+	return true;
+}
