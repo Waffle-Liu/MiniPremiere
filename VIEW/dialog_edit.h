@@ -8,6 +8,7 @@
 #include <QString>
 #include <string>
 #include "../common/command.h"
+#include "../notification/notification.h"
 //#include "VideoPlay.h"
 //#include "stdafx.h"
 //#include "Video.h"
@@ -30,7 +31,7 @@ public:
     void setCutVideoCommand(std::shared_ptr<Command>);
     std::shared_ptr<Notification> get_pop_window_notification();
 
-    void pop_window(const string &tip);
+    //void pop_window(const std::string &tip);
 
 private:
     Ui::Dialog_edit *ui;

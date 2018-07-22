@@ -21,6 +21,6 @@ public:
 
 	bool capture(const string &video_path);  // this->capture(video_path): Capture the video at the destination path.
 	void play();  // this->play(): Play the video.
-	void cut(int start_frame, int end_frame);
-	void changeSpeed(double rate);
+	bool cut(int start_frame, int end_frame);
+	bool changeSpeed(double rate);
 };

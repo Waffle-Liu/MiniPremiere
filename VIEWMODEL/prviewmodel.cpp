@@ -3,6 +3,8 @@
 #include "../commands/playvideocommand.h"
 #include "../commands/removevideocommand.h"
 #include "../commands/selecteditvideocommand.h"
+#include "../commands/cutvideocommand.h"
+#include "../commands/speedchangecommand.h"
 #include "../notification/wrongindexnotification.h"
 #include "../notification/showeditvideonotification.h"
 
@@ -45,6 +47,16 @@ void PrViewModel::exec_select_edit_video_command(int index)
 	model->setEditIndex(index);
 }
 
+void PrViewModel::exec_cut_video_command(int start_frame, int end_frame)
+{
+	model->cutVideo(start_frame, end_frame);
+}
+
+void PrViewModel::exec_speed_change_command(double rate)
+{
+	model->changespeedVideo(rate);
+}
+
 shared_ptr<Command> PrViewModel::get_add_video_command()
 {
 	return add_video_command;
@@ -65,7 +77,7 @@ shared_ptr<Command> PrViewModel::get_cut_video_command()
 	return cut_video_command;
 }
 
-shared_ptr<Command> PrViewModel::get_changspeed_video_command()
+shared_ptr<Command> PrViewModel::get_speed_change_command()
 {
 	return changespeed_video_command;
 }
@@ -91,8 +103,9 @@ void PrViewModel::set_update_view_notification(shared_ptr<Notification> ntf)
 }
 
 
-void PrViewModel::update_view_notified()
+void PrViewModel::update_view_notified(const string &str)
 {
+	update_view_notification->set_parameters(std::static_pointer_cast<Parameters, PathParameters>(std::shared_ptr<PathParameters>(new PathParameters(str))));
 	update_view_notification->exec();
 }
 

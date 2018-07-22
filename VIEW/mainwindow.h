@@ -32,7 +32,7 @@ public:
     std::shared_ptr<Notification> get_update_mainwindow_notification();
     std::shared_ptr<Notification> get_show_edit_notification();
 
-    void update_load_state();
+    void update_load_state(const std::string&);
     void pop_edit_window();
 
 private:

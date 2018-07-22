@@ -7,7 +7,8 @@ UpdateViewNotification::UpdateViewNotification(shared_ptr<MainWindow> mw)
 
 void UpdateViewNotification::exec()
 {
-    mainwindow->update_load_state();
+	std::string str = std::static_pointer_cast<PathParameters, Parameters>(Notification::params)->get_path();
+    mainwindow->update_load_state(str);
 }
 
 UpdateInfoNotification::UpdateInfoNotification(shared_ptr<PrViewModel> vm) : viewmodel(vm)
