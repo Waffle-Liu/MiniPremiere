@@ -96,7 +96,7 @@ void PrModel::addSticker(const string &img_path, int start_frame, int end_frame,
 	info_notify("Sticker added success!");
 }
 
-void PrModel::addFilter(int start_frame, int start_frame, int mode)
+void PrModel::addFilter(int start_frame, int end_frame, int mode)
 {
 	videoList[curEditIndex]->addFilter(mode, start_frame, end_frame);
 	switch (mode)
