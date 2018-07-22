@@ -64,7 +64,8 @@ SOURCES += \
     commands/rotatecommand.cpp \
     commands/addfiltercommand.cpp \
     commands/funnycommand.cpp \
-    commands/exportvideocommand.cpp
+    commands/exportvideocommand.cpp \
+    commands/transmodecommand.cpp
 
 HEADERS  += \
     APP/app.h \
@@ -98,7 +99,8 @@ HEADERS  += \
     commands/rotatecommand.h \
     commands/addfiltercommand.h \
     commands/funnycommand.h \
-    commands/exportvideocommand.h
+    commands/exportvideocommand.h \
+    commands/transmodecommand.h
 
 FORMS    += \
     VIEW/dialog_edit.ui \

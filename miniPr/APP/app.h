@@ -24,6 +24,7 @@
 #include "commands/addfiltercommand.h"
 #include "commands/funnycommand.h"
 #include "commands/exportvideocommand.h"
+#include "commands/transmodecommand.h"
 
 class miniPrAPP
 {
