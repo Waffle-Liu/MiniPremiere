@@ -36,6 +36,11 @@ void MainWindow::setPlayVideoCommand(std::shared_ptr<Command> command)
 }
 
 
+void MainWindow::setRemoveVideoCommand(std::shared_ptr<Command> command)
+{
+    ptr_removevideoCommand = command;
+}
+
 std::shared_ptr<Notification> MainWindow::get_update_mainwindow_notification(){
     return update_mainwindow_notification;
 }
@@ -91,24 +96,25 @@ void MainWindow::on_AddMedia_clicked()
     add_video_Command->exec();
 }
 
-/*void MainWindow::on_DeleteAllMedia_clicked()
+void MainWindow::on_DeleteAllMedia_clicked()
 {
-    ui->label->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
+    /*ui->label->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
     ui->label_2->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
     ui->label_3->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
     ui->label_4->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
     ui->label_5->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
-    ui->label_6->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
+    ui->label_6->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");*/
 
-    if (globalplay.size == 0) QMessageBox::about(0, QObject::tr("fail"), "no video to delete");
+    /*if (globalplay.size == 0) QMessageBox::about(0, QObject::tr("fail"), "no video to delete");
     else {
         globalplay.PlayList.clear();
         globalplay.size = 0;
-    }
-    
-    
-}
+    }*/
 
+    ptr_removevideoCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(6))));
+    ptr_removevideoCommand->exec()
+}
+/*
 void MainWindow::on_integrationDone_clicked()//the integrated video is stored in PlayList[0]
 {
     ui->integrationDone->setEnabled(false);
@@ -224,133 +230,39 @@ void MainWindow::on_mediaOne_7_clicked()
 }
 
 //pushButton —— pushButton_8 :delete button for each video
-/*void MainWindow::on_pushButton_clicked()
+void MainWindow::on_pushButton_clicked()
 {
-    if(globalplay.size<1){
-        QMessageBox::about(0,QObject::tr("fail"),"此处子视频未导入");
-        return;
-    }
-    if(globalplay.size ==1){
-        ui->label->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
-    }
-    if(globalplay.size ==2){
-        ui->label_2->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
-    }
-    if(globalplay.size ==3){
-        ui->label_3->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
-    }
-    if(globalplay.size ==4){
-        ui->label_4->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
-    }
-    if(globalplay.size ==5){
-        ui->label_5->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
-    }
-    if(globalplay.size ==6){
-        ui->label_6->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
-    }
-
-    globalplay.PlayList.erase(globalplay.PlayList.begin());
-    globalplay.size--;
-
+    ptr_removevideoCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(0))));
+    ptr_removevideoCommand->exec();
 }
 
 void MainWindow::on_pushButton_4_clicked()
 {
-    if(globalplay.size < 2){
-        QMessageBox::about(0,QObject::tr("fail"),"此处子视频未导入");
-        return;
-    }
-    if(globalplay.size == 2){
-        ui->label_2->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
-    }
-    if(globalplay.size == 3){
-        ui->label_3->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
-    }
-    if(globalplay.size == 4){
-        ui->label_4->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
-    }
-    if(globalplay.size == 5){
-        ui->label_5->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
-    }
-    if(globalplay.size == 6){
-        ui->label_6->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
-    }
-
-    globalplay.PlayList.erase(globalplay.PlayList.begin()+1);
-    globalplay.size--;
+    ptr_removevideoCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(1))));
+    ptr_removevideoCommand->exec();
 }
+
 
 void MainWindow::on_pushButton_5_clicked()
 {
-    if(globalplay.size<3){
-        QMessageBox::about(0,QObject::tr("fail"),"此处子视频未导入");
-        return;
-    }
-    if(globalplay.size ==3){
-        ui->label_3->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
-    }
-    if(globalplay.size ==4){
-        ui->label_4->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
-    }
-    if(globalplay.size ==5){
-        ui->label_5->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
-    }
-    if(globalplay.size ==6){
-        ui->label_6->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
-    }
-
-    globalplay.PlayList.erase(globalplay.PlayList.begin()+2);
-    globalplay.size--;
+    ptr_removevideoCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(2))));
+    ptr_removevideoCommand->exec();
 }
 
 void MainWindow::on_pushButton_6_clicked()
 {
-    if(globalplay.size<4){
-        QMessageBox::about(0,QObject::tr("fail"),"此处子视频未导入");
-        return;
-    }
-    if(globalplay.size ==4){
-        ui->label_4->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
-    }
-    if(globalplay.size ==5){
-        ui->label_5->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
-    }
-    if(globalplay.size ==6){
-        ui->label_6->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
-    }
-
-    globalplay.PlayList.erase(globalplay.PlayList.begin()+3);
-    globalplay.size--;
+    ptr_removevideoCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(3))));
+    ptr_removevideoCommand->exec();
 }
 
 void MainWindow::on_pushButton_7_clicked()
 {
-    if(globalplay.size<5){
-        QMessageBox::about(0,QObject::tr("fail"),"此处子视频未导入");
-        return;
-    }
-    if(globalplay.size ==5){
-        ui->label_5->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
-    }
-    if(globalplay.size ==6){
-        ui->label_6->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
-    }
-
-    globalplay.PlayList.erase(globalplay.PlayList.begin()+4);
-    globalplay.size--;
+    ptr_removevideoCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(4))));
+    ptr_removevideoCommand->exec();
 }
 
 void MainWindow::on_pushButton_8_clicked()
 {
-    if(globalplay.size<6){
-        QMessageBox::about(0,QObject::tr("fail"),"此处子视频未导入");
-        return;
-    }
-    if(globalplay.size ==6){
-        ui->label_6->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
-    }
-
-    globalplay.PlayList.erase(globalplay.PlayList.begin()+5);
-    globalplay.size--;
+    ptr_removevideoCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(5))));
+    ptr_removevideoCommand->exec();
 }
-*/

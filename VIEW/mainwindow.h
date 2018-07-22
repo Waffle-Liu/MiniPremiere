@@ -23,9 +23,9 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void setAddVideoCommand(std::shared_ptr<Command>);
-    /*void setDeletaAllCommand(std::shared_ptr<Command> ptr_deleteall);
-    void setDeleteOneCommand(std::shared_ptr<Command> ptr_deleteone);
-    void setDeleteTwoCommand(std::shared_ptr<Command> ptr_deletetwo);
+    //void setDeletaAllCommand(std::shared_ptr<Command> ptr_deleteall);
+    void setRemoveVideoCommand(std::shared_ptr<Command>);
+    /*void setDeleteTwoCommand(std::shared_ptr<Command> ptr_deletetwo);
     void setDeleteThreeCommand(std::shared_ptr<Command> ptr_deletethree);
     void setDeleteFourCommand(std::shared_ptr<Command> ptr_deletefour);
     void setDeleteFiveCommand(std::shared_ptr<Command> ptr_deletefive);
@@ -47,9 +47,9 @@ private:
     //Dialog_edit *editWindow = new Dialog_edit;
     //Dialog_IntegratedVideo *integratedWindow = new Dialog_IntegratedVideo;//two sub-windows
     std::shared_ptr<Command> add_video_Command;
-    /*std::shared_ptr<Command> ptr_deleteallCommand;
-    std::shared_ptr<Command> ptr_deleteoneCommand;
-    std::shared_ptr<Command> ptr_deletetwoCommand;
+    //std::shared_ptr<Command> ptr_deleteallCommand;
+    std::shared_ptr<Command> ptr_removevideoCommand;
+    /*std::shared_ptr<Command> ptr_deletetwoCommand;
     std::shared_ptr<Command> ptr_deletethreeCommand;
     std::shared_ptr<Command> ptr_deletefourCommand;
     std::shared_ptr<Command> ptr_deletefiveCommand;
@@ -66,8 +66,8 @@ private:
 
 private slots :
     void on_AddMedia_clicked();
-    /*void on_DeleteAllMedia_clicked();
-    void on_integrationDone_clicked();
+    void on_DeleteAllMedia_clicked();
+    /*void on_integrationDone_clicked();
     void on_mediaOne_clicked();
     void on_mediaTwo_clicked();
     void on_mediaThree_clicked();
@@ -80,12 +80,12 @@ private slots :
     void on_mediaOne_5_clicked();
     void on_mediaOne_6_clicked();
     void on_mediaOne_7_clicked();
-    /*void on_pushButton_clicked();
+    void on_pushButton_clicked();
     void on_pushButton_4_clicked();
     void on_pushButton_5_clicked();
     void on_pushButton_6_clicked();
     void on_pushButton_7_clicked();
-    void on_pushButton_8_clicked();*/
+    void on_pushButton_8_clicked();
 };
 
 #endif // MAINWINDOW_H
