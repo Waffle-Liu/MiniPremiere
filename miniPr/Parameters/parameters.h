@@ -2,6 +2,7 @@
 #define PARAMETERS_H
 
 #include <string>
+using namespace std;
 
 class Parameters
 {
@@ -80,7 +81,7 @@ public:
 
 class SubtitleParameters: public Parameters {
 private:
-    std::string text;
+    string text;
     int startframe;
     int endframe;
     double x;
@@ -91,7 +92,7 @@ private:
     int size;
     bool isbold;
 public:
-    SubtitleParameters(std::string text_, int startframe_, int endframe_, double x_, double y_, double r_, double g_, double b_, int size_, bool isbold_):
+    SubtitleParameters(string text_, int startframe_, int endframe_, double x_, double y_, double r_, double g_, double b_, int size_, bool isbold_):
     text(text_),startframe(startframe_),endframe(endframe_),x(x_),y(y_),r(r_),g(g_),b(b_),size(size_),isbold(isbold_){}
     int getstartframe(){return startframe;}
     int getendframe(){return endframe;}
