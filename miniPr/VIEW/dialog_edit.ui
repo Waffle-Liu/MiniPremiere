@@ -211,6 +211,9 @@
        <string>视频转场</string>
       </attribute>
       <widget class="QCheckBox" name="checkBox">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="geometry">
         <rect>
          <x>130</x>
@@ -218,6 +221,9 @@
          <width>71</width>
          <height>16</height>
         </rect>
+       </property>
+       <property name="acceptDrops">
+        <bool>false</bool>
        </property>
        <property name="text">
         <string>羽化</string>
@@ -250,6 +256,9 @@
        </property>
       </widget>
       <widget class="QCheckBox" name="checkBox_4">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="geometry">
         <rect>
          <x>250</x>
