@@ -1,12 +1,16 @@
 #include "../VIEWMODEL/prviewmodel.h"
+
 #include "../commands/addvideocommand.h"
 #include "../commands/playvideocommand.h"
 #include "../commands/removevideocommand.h"
 #include "../commands/selecteditvideocommand.h"
 #include "../commands/cutvideocommand.h"
 #include "../commands/speedchangecommand.h"
+#include "../commands/integrateallvideocommand.h"
+
 #include "../notification/wrongindexnotification.h"
 #include "../notification/showeditvideonotification.h"
+#include "../notification/showintegratewindownotification.h"
 
 using namespace std;
 
@@ -17,9 +21,11 @@ PrViewModel::PrViewModel(){
 	select_edit_video_command = static_pointer_cast<Command, SelectEditVideoCommand>(shared_ptr<SelectEditVideoCommand>(new SelectEditVideoCommand(shared_ptr<PrViewModel>(this))));
 	cut_video_command = static_pointer_cast<Command, CutVideoCommand>(shared_ptr<CutVideoCommand>(new CutVideoCommand(shared_ptr<PrViewModel>(this))));
 	changespeed_video_command = static_pointer_cast<Command, SpeedChangeCommand>(shared_ptr<SpeedChangeCommand>(new SpeedChangeCommand(shared_ptr<PrViewModel>(this))));
+	integrate_all_video_command = static_pointer_cast<Command, IntegrateAllVideoCommand>(shared_ptr<IntegrateAllVideoCommand>(new IntegrateAllVideoCommand(shared_ptr<PrViewModel>(this))));
 
 	index_error_notification = static_pointer_cast<Notification, UpdateInfoNotification>(shared_ptr<UpdateInfoNotification>(new UpdateInfoNotification(shared_ptr<PrViewModel>(this))));
 	edit_enable_notification = static_pointer_cast<Notification, UpdateEditEnableNotification>(shared_ptr<UpdateEditEnableNotification>(new UpdateEditEnableNotification(shared_ptr<PrViewModel>(this))));
+	integrate_complete_notification = static_pointer_cast<Notification, UpdateIntegrateCompleteNotification>(share_ptr<UpdateIntegrateCompleteNotification>(new UpdateIntegrateCompleteNotification(share_ptr<PrViewModel>(this))));
 }
 
 void PrViewModel::bind(shared_ptr<PrModel> model)
@@ -87,6 +93,12 @@ shared_ptr<Command> PrViewModel::get_select_edit_video_command()
 	return select_edit_video_command;
 }
 
+shared_ptr<Command> PrViewModel::get_integrate_all_video_command()
+{
+	return integrate_all_video_command;
+}
+
+
 shared_ptr<Notification> PrViewModel::get_index_error_notification()
 {
 	return index_error_notification;
@@ -97,11 +109,15 @@ shared_ptr<Notification> PrViewModel::get_edit_enable_notification()
 	return edit_enable_notification;
 }
 
+shared_ptr<Notification> PrViewModel::get_integrate_complete_notification()
+{
+	return integrate_complete_notification();
+}
+
 void PrViewModel::set_update_view_notification(shared_ptr<Notification> ntf)
 {
 	update_view_notification = ntf;
 }
-
 
 void PrViewModel::update_view_notified(const string &str)
 {
@@ -117,4 +133,14 @@ void PrViewModel::set_show_edit_window_notification(shared_ptr<Notification> ntf
 void PrViewModel::show_edit_window_notified()
 {
 	show_edit_window_notification->exec();
+}
+
+void PrViewModel::set_show_integrate_window_notification(shared_ptr<Notification> ntf)
+{
+	show_integrate_window_notification = ntf;
+}
+
+void PrViewModel::show_integrate_window_notified()
+{
+	show_integrate_window_notification->exec();
 }

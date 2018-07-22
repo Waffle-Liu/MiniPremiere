@@ -61,6 +61,16 @@ void PrModel::cutVideo(int start_frame, int end_frame)
 	}
 }
 
+void PrModel::integrateAllVideo()
+{
+	for (int i = 1; i < videoNum; i++) {
+		videoList[0]->link(videoList[1]);
+		videoList.erase(videoList.begin() + 1);
+	}
+	info_notify("Integrate success!");
+	integrate_complete_notify();
+}
+
 
 void PrModel::setEditIndex(int index)
 {

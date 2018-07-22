@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "windowSize.h"
+#include "FilterFuction.h"
 using namespace std;
 using namespace cv;
 
@@ -12,7 +13,7 @@ private:
 	int fCnt;  // frames count
 	double fps;  // frames per second
 	windowSize wSize;  // window size
-	VideoFrames frames;  // frames list 
+	VideoFrames frames;  // frames list
 
 public:
 	Video();
@@ -22,5 +23,7 @@ public:
 	bool capture(const string &video_path);  // this->capture(video_path): Capture the video at the destination path.
 	void play();  // this->play(): Play the video.
 	bool cut(int start_frame, int end_frame);
+	bool link(shared_ptr<Video> next_video, int mode = -1);
 	bool changeSpeed(double rate);
+	bool addFilter(int mode, int start_frame, int end_frame);
 };
