@@ -25,6 +25,11 @@ void Dialog_edit::setCutVideoCommand(std::shared_ptr<Command> command)
 	ptr_cutvideoCommand = command;
 }
 
+void Dialog_edit::setTransModeCommand(std::shared_ptr<Command> command)
+{
+	ptr_transmodeCommand = command;
+}
+
 std::shared_ptr<Notification> Dialog_edit::get_pop_window_notification()
 {
 	return pop_window_notification;
@@ -51,4 +56,37 @@ void Dialog_edit::on_pushButton_clicked()//change speed
 	double speed = speedValue.toDouble();
 	ptr_speedchangeCommand->set_parameters(std::static_pointer_cast<Parameters, DoubleParameters>(std::shared_ptr<DoubleParameters>(new DoubleParameters(speed))));
 	ptr_speedchangeCommand->exec();
+}
+
+void Dialog_edit::on_pushButton_3_clicked()//trans mode
+{
+	if(ui->checkBox->isChecked())
+	{
+		ptr_transmodeCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(2))));
+		ptr_transmodeCommand->exec();
+	}
+
+	else if(ui->checkBox_5->isChecked())
+	{
+		ptr_transmodeCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(11))));
+		ptr_transmodeCommand->exec();
+	}
+
+	else if(ui->checkBox_2->isChecked())
+	{
+		ptr_transmodeCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(8))));
+		ptr_transmodeCommand->exec();
+	}
+
+	else if(ui->checkBox_3->isChecked())
+	{
+		ptr_transmodeCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(9))));
+		ptr_transmodeCommand->exec();
+	}
+
+	else if(ui->checkBox_4->isChecked())
+	{
+		ptr_transmodeCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(10))));
+		ptr_transmodeCommand->exec();
+	}
 }

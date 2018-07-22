@@ -29,19 +29,21 @@ public:
     ~Dialog_edit();
     void setSpeedChangeCommand(std::shared_ptr<Command>);
     void setCutVideoCommand(std::shared_ptr<Command>);
+    void setTransModeCommand(std::shared_ptr<Command>);
     std::shared_ptr<Notification> get_pop_window_notification();
-
     //void pop_window(const std::string &tip);
 
 private:
     Ui::Dialog_edit *ui;
     std::shared_ptr<Command> ptr_speedchangeCommand;
     std::shared_ptr<Command> ptr_cutvideoCommand;
+    std::shared_ptr<Command> ptr_transmodeCommand;
     std::shared_ptr<Notification> pop_window_notification;
 
 private slots:
     void on_pushButton_2_clicked();
     void on_pushButton_clicked();
+    void on_pushButton_3_clicked();
 };
 
 #endif // DIALOG_EDIT_H
