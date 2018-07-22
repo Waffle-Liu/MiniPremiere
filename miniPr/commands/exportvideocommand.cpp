@@ -9,6 +9,6 @@ ExportVideoCommand::~ExportVideoCommand()
 
 void ExportVideoCommand::exec()
 {	
-	std::string path = std::static_pointer_cast<PathParameters, Parameters>(Command::params)->getpath();
+	std::string path = std::static_pointer_cast<PathParameters, Parameters>(Command::params)->get_path();
     viewmodel->exec_export_video_command(path);
 }

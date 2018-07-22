@@ -232,7 +232,7 @@ bool Video::addSticker(const string& image_path, int start_frame, int end_frame,
 	return true;
 }
 
-void Video::writer(const string &video_path)
+bool Video::writer(const string &video_path)
 {
 	VideoWriter writer(video_path, CV_FOURCC('M', 'J', 'P', 'G'), fps, Size(wSize.width, wSize.height));
 	for (int i = 0; i < fCnt; i++) {

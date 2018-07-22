@@ -51,7 +51,7 @@ public:
 	void exec_rotate_command(int start_frame, int end_frame, int mode);
 	void exec_add_filter_command(int start_frame, int end_frame, int mode);
 	void exec_funny_command(int start_frame, int end_frame, int mode);
-	void exec_export_video_command(const string &video_path)
+	void exec_export_video_command(const string &video_path);
 
 
 	shared_ptr<Command> get_add_video_command();

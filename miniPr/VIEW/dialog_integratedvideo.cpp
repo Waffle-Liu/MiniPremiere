@@ -16,6 +16,8 @@ Dialog_IntegratedVideo::Dialog_IntegratedVideo(QWidget *parent) :
 	
 }
 
+string Dialog_IntegratedVideo::filename = "";
+
 Dialog_IntegratedVideo::~Dialog_IntegratedVideo()
 {
     delete ui;
@@ -51,12 +53,12 @@ void Dialog_IntegratedVideo::setFunnyCommand(std::shared_ptr<Command> command)
 	ptr_addfunnyCommand = command;
 }
 
-void MainWindow::setPlayVideoCommand(std::shared_ptr<Command> command)
+void Dialog_IntegratedVideo::setPlayVideoCommand(std::shared_ptr<Command> command)
 {
     ptr_playvideoCommand = command;
 }
 
-void MainWindow::setExportVideoCommand(std::shared_ptr<Command> command)
+void Dialog_IntegratedVideo::setExportVideoCommand(std::shared_ptr<Command> command)
 {
 	ptr_exportvideoCommand = command;
 }
