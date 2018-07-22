@@ -46,13 +46,24 @@ void MainWindow::setSelectEditVideoCommand(std::shared_ptr<Command> command)
     ptr_selecteditvideoCommand = command;
 }
 
-std::shared_ptr<Notification> MainWindow::get_update_mainwindow_notification(){
+std::shared_ptr<Notification> MainWindow::get_update_mainwindow_notification()
+{
     return update_mainwindow_notification;
+}
+
+std::shared_ptr<Notification> MainWindow::get_show_edit_notification()
+{
+    return show_edit_notification;
 }
 
 void MainWindow::update_load_state()
 {
     QMessageBox::about(0, QObject::tr("fail"),"No sub video!");
+}
+
+void MainWindow::pop_edit_window()
+{
+    ptr_showeditwindowCommand->exec();
 }
 
 //slot
