@@ -1,16 +1,6 @@
 <RCC>
     <qresource prefix="/images">
-        <file>images/button1.png</file>
-        <file>images/frame1.jpeg</file>
-        <file>images/load1.jpg</file>
         <file>images/load2.jpg</file>
-        <file>images/load3.jpg</file>
-        <file>images/load4.jpg</file>
-        <file>images/load5.jpg</file>
-        <file>images/load6.jpg</file>
         <file>images/nothing.jpg</file>
-    </qresource>
-    <qresource prefix="/">
-        <file>images/load1.jpg</file>
     </qresource>
 </RCC>

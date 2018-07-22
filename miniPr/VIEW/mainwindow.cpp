@@ -99,6 +99,11 @@ void MainWindow::pop_integrate_window()
 //slot
 void MainWindow::on_AddMedia_clicked()
 {
+	QStringList fileNames = QFileDialog::getOpenFileNames(this, tr("Open Files"));
+	QString temp = fileNames.join("\\");
+	std::string filename = temp.toStdString();
+	add_video_Command->set_parameters(std::static_pointer_cast<Parameters, PathParameters>(std::shared_ptr<PathParameters>(new PathParameters(filename))));
+	add_video_Command->exec();
     MainWindow::num += 1;
     if (MainWindow::num == 0){
     }
@@ -120,11 +125,7 @@ void MainWindow::on_AddMedia_clicked()
     else if(MainWindow::num == 6){
         ui->label_6->setStyleSheet("border-image:url(:/images/images/load2.jpg)");
     }
-    QStringList fileNames = QFileDialog::getOpenFileNames(this, tr("Open Files"));
-    QString temp = fileNames.join("\\");
-    std::string filename = temp.toStdString();
-    add_video_Command->set_parameters(std::static_pointer_cast<Parameters, PathParameters>(std::shared_ptr<PathParameters>(new PathParameters(filename))));
-    add_video_Command->exec();
+
 }
 
 void MainWindow::on_DeleteAllMedia_clicked()

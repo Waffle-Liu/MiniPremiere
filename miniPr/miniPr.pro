@@ -25,7 +25,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 win32{
     CONFIG(debug, debug|release):LIBS += -L$$PWD/../opencv/win32/lib/ -lopencv_world341d
     CONFIG(release, debug|release):LIBS += -L$$PWD/../opencv/win32/lib/ -lopencv_world341
-    
+
     INCLUDEPATH += $$PWD/../opencv/win32/include
     DEPENDPATH += $$PWD/../opencv/win32/include
 }
@@ -106,3 +106,6 @@ FORMS    += \
     VIEW/dialog_edit.ui \
     VIEW/dialog_integratedvideo.ui \
     VIEW/mainwindow.ui
+
+RESOURCES += \
+    resource.qrc
