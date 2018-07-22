@@ -11,6 +11,7 @@ miniPrAPP::miniPrAPP(){
 	_mainWindow.setPlayVideoCommand(viewmodel->get_play_video_command());
 	_mainWindow.setRemoveVideoCommand(viewmodel->get_remove_video_command());
 	_mainWindow.setSelectEditVideoCommand(viewmodel->get_select_edit_video_command());
+	_editWindow.setSpeedChangeCommand(viewmodel->get_speed_change_command());
 
 	viewmodel->set_update_view_notification(_mainWindow.get_update_mainwindow_notification());
 	model->set_index_error_notification(viewmodel->get_index_error_notification());
