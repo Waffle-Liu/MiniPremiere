@@ -9,6 +9,10 @@
 #include "../commands/integrateallvideocommand.h"
 #include "../commands/addsubtitlecommand.h"
 #include "../commands/addstickercommand.h"
+#include "../commands/mirrorcommand.h"
+#include "../commands/rotatecommand.h"
+#include "../commands/addfiltercommand.h"
+#include "../commands/funnycommand.h"
 
 #include "../notification/wrongindexnotification.h"
 #include "../notification/showeditvideonotification.h"
@@ -26,6 +30,10 @@ PrViewModel::PrViewModel(){
 	integrate_all_video_command = static_pointer_cast<Command, IntegrateAllVideoCommand>(shared_ptr<IntegrateAllVideoCommand>(new IntegrateAllVideoCommand(shared_ptr<PrViewModel>(this))));
 	add_subtitle_command = static_pointer_cast<Command, AddSubtitleCommand>(shared_ptr<AddSubtitleCommand>(new AddSubtitleCommand(shared_ptr<PrViewModel>(this))));
 	add_sticker_command = static_pointer_cast<Command, AddStickerCommand>(shared_ptr<AddStickerCommand>(new AddStickerCommand(shared_ptr<PrViewModel>(this))));
+	mirror_command = static_pointer_cast<Command, MirrorCommand>(shared_ptr<MirrorCommand>(new MirrorCommand(shared_ptr<PrViewModel>(this))));
+	rotate_command = static_pointer_cast<Command, RotateCommand>(shared_ptr<RotateCommand>(new RotateCommand(shared_ptr<PrViewModel>(this))));
+	add_filter_command = static_pointer_cast<Command, AddFilterCommand>(shared_ptr<AddFilterCommand>(new AddFilterCommand(shared_ptr<PrViewModel>(this))));
+	funny_command = static_pointer_cast<Command, FunnyCommand>(shared_ptr<FunnyCommand>(new FunnyCommand(shared_ptr<PrViewModel>(this))));
 
 	index_error_notification = static_pointer_cast<Notification, UpdateInfoNotification>(shared_ptr<UpdateInfoNotification>(new UpdateInfoNotification(shared_ptr<PrViewModel>(this))));
 	edit_enable_notification = static_pointer_cast<Notification, UpdateEditEnableNotification>(shared_ptr<UpdateEditEnableNotification>(new UpdateEditEnableNotification(shared_ptr<PrViewModel>(this))));
@@ -82,6 +90,38 @@ void PrViewModel::exec_add_sticker_command(const string &img_path, int start_fra
 	model->addSticker(img_path, start_frame, end_frame, pos_x, pos_y);
 }
 
+void PrViewModel::exec_mirror_command(int start_frame, int end_frame, int mode)
+{
+	if (mode == -1) {
+		return;
+	}
+	model->addFilter(start_frame, end_frame, mode);
+}
+
+void PrViewModel::exec_rotate_command(int start_frame, int end_frame, int mode)
+{
+	if (mode == -1) {
+		return;
+	}
+	model->addFilter(start_frame, end_frame, mode);
+}
+
+void PrViewModel::exec_add_filter_command(int start_frame, int end_frame, int mode)
+{
+	if (mode == -1) {
+		return;
+	}
+	model->addFilter(start_frame, end_frame, mode);
+}
+
+void PrViewModel::exec_funny_command(int start_frame, int end_frame, int mode)
+{
+	if (mode == -1) {
+		return;
+	}
+	model->addFilter(start_frame, end_frame, mode);
+}
+
 /*=============================================================================*/
 
 shared_ptr<Command> PrViewModel::get_add_video_command()
@@ -128,6 +168,26 @@ shared_ptr<Command> PrViewModel::get_add_subtitle_command()
 shared_ptr<Command> PrViewModel::get_add_sticker_command()
 {
 	return add_sticker_command;
+}
+
+shared_ptr<Command> PrViewModel::get_mirror_command()
+{
+	return mirror_command;
+}
+
+shared_ptr<Command> PrViewModel::get_rotate_command()
+{
+	return rotate_command;
+}
+
+shared_ptr<Command> PrViewModel::get_add_filter_command()
+{
+	return add_filter_command;
+}
+
+shared_ptr<Command> PrViewModel::get_funny_command()
+{
+	return funny_command;
 }
 
 /*============================================================================*/
