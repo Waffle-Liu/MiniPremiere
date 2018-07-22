@@ -21,7 +21,7 @@ before_build:
   - cd %APPVEYOR_BUILD_FOLDER%
   - mkdir buildMVVM
   - cd buildMVVM
-  - qmake miniPr.pro
+  - qmake ../miniPr.pro
 
 
 # Build the projects
