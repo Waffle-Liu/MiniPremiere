@@ -12,6 +12,7 @@
 #include "commands/addvideocommand.h"
 #include "commands/playvideocommand.h"
 #include "commands/removevideocommand.h"
+#include "commands/selecteditvideocommand.h"
 
 
 
@@ -19,7 +20,7 @@ class miniPrAPP
 {
 private:
     MainWindow _mainWindow;
-//    Dialog_edit _editWindow;
+    Dialog_edit _editWindow;
 //    Dialog_IntegratedVideo _integratedWindow;
 
     std::shared_ptr<PrModel> model;
@@ -33,6 +34,6 @@ public:
     void run();
 
     MainWindow *getMainWindow();
-//    Dialog_edit *getEditWindow();
+    Dialog_edit *getEditWindow();
 //    Dialog_IntegratedVideo *getIntegratedWindow();
 };
