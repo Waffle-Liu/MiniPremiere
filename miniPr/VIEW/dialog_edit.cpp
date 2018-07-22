@@ -8,6 +8,12 @@ Dialog_edit::Dialog_edit(QWidget *parent) :
 {
     ui->setupUi(this);
     //pop_window_notification = std::static_pointer_cast<Notification, UpdateView>(std::shared_ptr<UpdateShowEditVideoNotification>(new UpdateShowEditVideoNotification(std::shared_ptr<MainWindow>(this))));
+    ui->checkBox->setEnabled(true);
+    ui->checkBox_2->setEnabled(true);
+    ui->checkBox_3->setEnabled(true);
+    ui->checkBox_4->setEnabled(true);
+    ui->checkBox_5->setEnabled(true);
+    ui->pushButton_3->setEnabled(true);
 }
 
 Dialog_edit::~Dialog_edit()
