@@ -41,6 +41,11 @@ void MainWindow::setRemoveVideoCommand(std::shared_ptr<Command> command)
     ptr_removevideoCommand = command;
 }
 
+void MainWindow::setSelectEditVideoCommand(std::shared_ptr<Command> command)
+{
+    ptr_selecteditvideoCommand = command;
+}
+
 std::shared_ptr<Notification> MainWindow::get_update_mainwindow_notification(){
     return update_mainwindow_notification;
 }
@@ -114,8 +119,8 @@ void MainWindow::on_DeleteAllMedia_clicked()
     ptr_removevideoCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(6))));
     ptr_removevideoCommand->exec()
 }
-/*
-void MainWindow::on_integrationDone_clicked()//the integrated video is stored in PlayList[0]
+
+/*void MainWindow::on_integrationDone_clicked()//the integrated video is stored in PlayList[0]
 {
     ui->integrationDone->setEnabled(false);
     int i;
@@ -126,64 +131,46 @@ void MainWindow::on_integrationDone_clicked()//the integrated video is stored in
     integratedWindow->show();
     globalplay.PlayList[0].play();
     ui->pushButton->setEnabled(true);
-}
+}*/
 
 
 //mediaOne ——mediaSix : editor dialog button
 //return the index to the editor
 void MainWindow::on_mediaOne_clicked()
 {
-    globalplay.subindex = 0;
-    if (globalplay.subindex + 1 <= globalplay.size)
-        editWindow->show();
-    else
-        QMessageBox::about(0, QObject::tr("fail"), "NO VIDEO LOADED: can not edit the vedio");
+    ptr_selecteditvideoCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(0))));
+    ptr_selecteditvideoCommand->exec()
 }
 
 void MainWindow::on_mediaTwo_clicked()
 {
-    globalplay.subindex = 1;
-    if (globalplay.subindex + 1 <= globalplay.size)
-        editWindow->show();
-    else
-        QMessageBox::about(0, QObject::tr("fail"), "NO VIDEO LOADED: can not edit the vedio");
+    ptr_selecteditvideoCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(1))));
+    ptr_selecteditvideoCommand->exec()
 }
 
 void MainWindow::on_mediaThree_clicked()
 {
-    globalplay.subindex = 2;
-    if (globalplay.subindex + 1 <= globalplay.size)
-        editWindow->show();
-    else
-        QMessageBox::about(0, QObject::tr("fail"), "NO VIDEO LOADED: can not edit the vedio");
+    ptr_selecteditvideoCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(2))));
+    ptr_selecteditvideoCommand->exec()
 }
 
 void MainWindow::on_mediaFour_clicked()
 {
-    globalplay.subindex = 3;
-    if (globalplay.subindex + 1 <= globalplay.size)
-        editWindow->show();
-    else
-        QMessageBox::about(0, QObject::tr("fail"), "NO VIDEO LOADED: can not edit the vedio");
+    ptr_selecteditvideoCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(3))));
+    ptr_selecteditvideoCommand->exec()
 }
 
 void MainWindow::on_mediaFive_clicked()
 {
-    globalplay.subindex = 4;
-    if (globalplay.subindex + 1 <= globalplay.size)
-        editWindow->show();
-    else
-        QMessageBox::about(0, QObject::tr("fail"), "NO VIDEO LOADED: can not edit the vedio");
+    ptr_selecteditvideoCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(4))));
+    ptr_selecteditvideoCommand->exec()
 }
 
 void MainWindow::on_mediaSix_clicked()
 {
-    globalplay.subindex = 5;
-    if (globalplay.subindex + 1 <= globalplay.size)
-        editWindow->show();
-    else
-        QMessageBox::about(0, QObject::tr("fail"), "NO VIDEO LOADED: can not edit the vedio");
-}*/
+    ptr_selecteditvideoCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(5))));
+    ptr_selecteditvideoCommand->exec()
+}
 
 
 //mediaOne_2 —— mediaOne_7 : display button 

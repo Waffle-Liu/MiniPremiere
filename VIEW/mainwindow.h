@@ -29,9 +29,9 @@ public:
     void setDeleteThreeCommand(std::shared_ptr<Command> ptr_deletethree);
     void setDeleteFourCommand(std::shared_ptr<Command> ptr_deletefour);
     void setDeleteFiveCommand(std::shared_ptr<Command> ptr_deletefive);
-    void setDeleteSixCommand(std::shared_ptr<Command> ptr_deletesix);
-    void setEditOneCommand(std::shared_ptr<Command> ptr_editone);
-    void setEditTwoCommand(std::shared_ptr<Command> ptr_edittwo);
+    void setDeleteSixCommand(std::shared_ptr<Command> ptr_deletesix);*/
+    void setSelectEditVideoCommand(std::shared_ptr<Command>);
+    /*void setEditTwoCommand(std::shared_ptr<Command> ptr_edittwo);
     void setEditThreeCommand(std::shared_ptr<Command> ptr_editthree);
     void setEditFourCommand(std::shared_ptr<Command> ptr_editfour);
     void setEditFiveCommand(std::shared_ptr<Command> ptr_editfive);
@@ -53,9 +53,9 @@ private:
     std::shared_ptr<Command> ptr_deletethreeCommand;
     std::shared_ptr<Command> ptr_deletefourCommand;
     std::shared_ptr<Command> ptr_deletefiveCommand;
-    std::shared_ptr<Command> ptr_deletesixCommand;
-    std::shared_ptr<Command> ptr_editoneCommand;
-    std::shared_ptr<Command> ptr_edittwoCommand;
+    std::shared_ptr<Command> ptr_deletesixCommand;*/
+    std::shared_ptr<Command> ptr_selecteditvideoCommand;
+    /*std::shared_ptr<Command> ptr_edittwoCommand;
     std::shared_ptr<Command> ptr_editthreeCommand;
     std::shared_ptr<Command> ptr_editfourCommand;
     std::shared_ptr<Command> ptr_editfiveCommmand;
@@ -67,13 +67,13 @@ private:
 private slots :
     void on_AddMedia_clicked();
     void on_DeleteAllMedia_clicked();
-    /*void on_integrationDone_clicked();
+    //void on_integrationDone_clicked();
     void on_mediaOne_clicked();
     void on_mediaTwo_clicked();
     void on_mediaThree_clicked();
     void on_mediaFour_clicked();
     void on_mediaFive_clicked();
-    void on_mediaSix_clicked();*/
+    void on_mediaSix_clicked();
     void on_mediaOne_2_clicked();
     void on_mediaOne_3_clicked();
     void on_mediaOne_4_clicked();
