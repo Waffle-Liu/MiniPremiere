@@ -5,7 +5,9 @@
 
 #include <QDialog>
 #include <QMessageBox>
-#include "common/command.h"
+#include <QString>
+#include <string>
+#include "../common/command.h"
 //#include "VideoPlay.h"
 //#include "stdafx.h"
 //#include "Video.h"
@@ -24,13 +26,17 @@ class Dialog_edit : public QDialog
 public:
     explicit Dialog_edit(QWidget *parent = 0);
     ~Dialog_edit();
-    void setSpeedConfirmCommand(std::shared_ptr<Command> ptr_speedconfirm);
-    void setCutConfirmCommand(std::shared_ptr<Command> ptr_cutconfirm);
+    void setSpeedChangeCommand(std::shared_ptr<Command>);
+    //void setCutConfirmCommand(std::shared_ptr<Command> ptr_cutconfirm);
+    std::shared_ptr<Notification> get_pop_window_notification();
+
+    void pop_window(const string &tip);
 
 private:
     Ui::Dialog_edit *ui;
-    std::shared_ptr<Command> ptr_speedconfirmCommand;
-    std::shared_ptr<Command> ptr_cutconfirmCommand;
+    std::shared_ptr<Command> ptr_speedchangeCommand;
+    //std::shared_ptr<Command> ptr_cutconfirmCommand;
+    std::shared_ptr<Notification> pop_window_notification;
 
 private slots:
     void on_pushButton_2_clicked();
