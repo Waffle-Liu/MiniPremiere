@@ -17,6 +17,7 @@ private:
 	int curEditIndex;
 
 	shared_ptr<Notification> index_error_notification;
+	shared_ptr<Notification> edit_enable_notification;
 
 public:
 	PrModel();
@@ -30,5 +31,8 @@ public:
 
 
 	void set_index_error_notification(shared_ptr<Notification> ntf);
+	void set_edit_enable_notification(shared_ptr<Notification> ntf);
 	void index_error_notify();
+	void edit_enable_notify();
+
 };

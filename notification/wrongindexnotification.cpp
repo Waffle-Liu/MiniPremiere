@@ -16,5 +16,5 @@ UpdateIndexErrorNotification::UpdateIndexErrorNotification(shared_ptr<PrViewMode
 
 void UpdateIndexErrorNotification::exec()
 {
-	viewmodel->index_error_notified();
+	viewmodel->update_view_notified();
 }

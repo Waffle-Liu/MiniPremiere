@@ -60,3 +60,13 @@ void PrModel::index_error_notify()
 {
 	index_error_notification->exec();
 }
+
+void PrModel::set_edit_enable_notification(shared_ptr<Notification> ntf)
+{
+	edit_enable_notification = ntf;
+}
+
+void PrModel::edit_enable_notify()
+{
+	edit_enable_notification->exec();
+}

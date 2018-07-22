@@ -19,6 +19,8 @@ private:
 
 	shared_ptr<Notification> update_view_notification;
 	shared_ptr<Notification> index_error_notification;
+	shared_ptr<Notification> show_edit_window_notification;
+	shared_ptr<Notification> edit_enable_notification;
 
 public:
 	PrViewModel();
@@ -35,6 +37,9 @@ public:
 	shared_ptr<Command> get_select_edit_video_command();
 
 	shared_ptr<Notification> get_index_error_notification();
+	shared_ptr<Notification> get_edit_enable_notification();
 	void set_update_view_notification(shared_ptr<Notification> ntf);
-	void index_error_notified();
+	void set_edit_window_notification(shared_ptr<Notification> ntf);
+	void update_view_notified();
+	void show_edit_window_notified();
 };
