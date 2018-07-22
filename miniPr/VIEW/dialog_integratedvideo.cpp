@@ -152,7 +152,7 @@ void Dialog_IntegratedVideo::on_pushButton_5_clicked()//stick pictures
 
 	QStringList fileNames = QFileDialog::getOpenFileNames(this, tr("Open Files"));
 	QString temp = fileNames.join("\\");
-	String filename = temp.toStdString();
+	string filename = temp.toStdString();
 
 	double x = ui->lineEdit_16->text().toDouble();
 	double y = ui->lineEdit_15->text().toDouble();
