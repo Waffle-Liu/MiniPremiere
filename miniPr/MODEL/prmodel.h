@@ -33,7 +33,7 @@ public:
 	void addSubtitle(const string &text, int start_frame, int end_frame, double pos_x, double pos_y, double color_r, double color_g, double color_b, double size, bool isbold);
 	void setEditIndex(int index);
 	void addSticker(const string &img_path, int start_frame, int end_frame, double pos_x, double pos_y);
-	void addFilter(int start_frame, int start_frame, int mode);
+	void addFilter(int start_frame, int end_frame, int mode);
 
 	void set_index_error_notification(shared_ptr<Notification> ntf);
 	void set_edit_enable_notification(shared_ptr<Notification> ntf);
