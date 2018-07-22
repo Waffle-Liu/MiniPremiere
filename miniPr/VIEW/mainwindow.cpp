@@ -7,18 +7,19 @@
 #include "../notification/showeditvideonotification.h"
 #include "../notification/showintegratewindownotification.h"
 
+static int num=0;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    /*ui->label->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
+    ui->label->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
     ui->label_2->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
     ui->label_3->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
     ui->label_4->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
     ui->label_5->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
-    ui->label_6->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");*/
+    ui->label_6->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
     update_mainwindow_notification = std::static_pointer_cast<Notification, UpdateViewNotification>(std::shared_ptr<UpdateViewNotification>(new UpdateViewNotification(std::shared_ptr<MainWindow>(this))));
     show_edit_notification = std::static_pointer_cast<Notification, UpdateShowEditVideoNotification>(std::shared_ptr<UpdateShowEditVideoNotification>(new UpdateShowEditVideoNotification(std::shared_ptr<MainWindow>(this))));
     show_integrate_notification=std::static_pointer_cast<Notification, UpdateShowIntegrateWindowNotification>(std::shared_ptr<UpdateShowIntegrateWindowNotification>(new UpdateShowIntegrateWindowNotification(std::shared_ptr<MainWindow>(this))));
@@ -98,6 +99,27 @@ void MainWindow::pop_integrate_window()
 //slot
 void MainWindow::on_AddMedia_clicked()
 {
+    MainWindow::num += 1;
+    if (MainWindow::num == 0){
+    }
+    else if(MainWindow::num == 1){
+        ui->label->setStyleSheet("border-image:url(:/images/images/load2.jpg)");
+    }
+    else if(MainWindow::num == 2){
+        ui->label_2->setStyleSheet("border-image:url(:/images/images/load2.jpg)");
+    }
+    else if(MainWindow::num == 3){
+        ui->label_3->setStyleSheet("border-image:url(:/images/images/load2.jpg)");
+    }
+    else if(MainWindow::num == 4){
+        ui->label_4->setStyleSheet("border-image:url(:/images/images/load2.jpg)");
+    }
+    else if(MainWindow::num == 5){
+        ui->label_5->setStyleSheet("border-image:url(:/images/images/load2.jpg)");
+    }
+    else if(MainWindow::num == 6){
+        ui->label_6->setStyleSheet("border-image:url(:/images/images/load2.jpg)");
+    }
     QStringList fileNames = QFileDialog::getOpenFileNames(this, tr("Open Files"));
     QString temp = fileNames.join("\\");
     std::string filename = temp.toStdString();
@@ -107,6 +129,13 @@ void MainWindow::on_AddMedia_clicked()
 
 void MainWindow::on_DeleteAllMedia_clicked()
 {
+    ui->label->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
+    ui->label_2->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
+    ui->label_3->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
+    ui->label_4->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
+    ui->label_5->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
+    ui->label_6->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
+    MainWindow::num = 0;
     ptr_removevideoCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(6))));
     ptr_removevideoCommand->exec();
 }
@@ -202,12 +231,47 @@ void MainWindow::on_mediaOne_7_clicked()
 //pushButton —— pushButton_8 :delete button for each video
 void MainWindow::on_pushButton_clicked()
 {
+    if(MainWindow::num ==1){
+        ui->label->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
+    }
+    if(MainWindow::num ==2){
+        ui->label_2->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
+    }
+    if(MainWindow::num ==3){
+        ui->label_3->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
+    }
+    if(MainWindow::num ==4){
+        ui->label_4->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
+    }
+    if(MainWindow::num ==5){
+        ui->label_5->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
+    }
+    if(MainWindow::num ==6){
+        ui->label_6->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
+    }
+    MainWindow::num -= 1;
     ptr_removevideoCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(0))));
     ptr_removevideoCommand->exec();
 }
 
 void MainWindow::on_pushButton_4_clicked()
 {
+    if(MainWindow::num == 2){
+        ui->label_2->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
+    }
+    if(MainWindow::num == 3){
+        ui->label_3->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
+    }
+    if(MainWindow::num == 4){
+        ui->label_4->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
+    }
+    if(MainWindow::num == 5){
+        ui->label_5->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
+    }
+    if(MainWindow::num == 6){
+        ui->label_6->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
+    }
+    MainWindow::num -= 1;
     ptr_removevideoCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(1))));
     ptr_removevideoCommand->exec();
 }
@@ -215,24 +279,59 @@ void MainWindow::on_pushButton_4_clicked()
 
 void MainWindow::on_pushButton_5_clicked()
 {
+    if(MainWindow::num ==3){
+        ui->label_3->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
+    }
+    if(MainWindow::num ==4){
+        ui->label_4->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
+    }
+    if(MainWindow::num ==5){
+        ui->label_5->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
+    }
+    if(MainWindow::num ==6){
+        ui->label_6->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
+    }
+    MainWindow::num -= 1;
     ptr_removevideoCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(2))));
     ptr_removevideoCommand->exec();
 }
 
 void MainWindow::on_pushButton_6_clicked()
 {
+    if(MainWindow::num ==4){
+        ui->label_4->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
+    }
+    if(MainWindow::num ==5){
+        ui->label_5->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
+    }
+    if(MainWindow::num ==6){
+        ui->label_6->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
+    }
+    MainWindow::num -= 1;
     ptr_removevideoCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(3))));
     ptr_removevideoCommand->exec();
 }
 
 void MainWindow::on_pushButton_7_clicked()
 {
+
+    if(MainWindow::num ==5){
+        ui->label_5->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
+    }
+    if(MainWindow::num ==6){
+        ui->label_6->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
+    }
+    MainWindow::num -= 1;
     ptr_removevideoCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(4))));
     ptr_removevideoCommand->exec();
 }
 
 void MainWindow::on_pushButton_8_clicked()
 {
+    if(MainWindow::num ==6){
+        ui->label_6->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
+    }
+    MainWindow::num -= 1;
     ptr_removevideoCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(5))));
     ptr_removevideoCommand->exec();
 }

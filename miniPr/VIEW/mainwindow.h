@@ -38,6 +38,7 @@ public:
     void update_load_state(const std::string&);
     void pop_edit_window();
     void pop_integrate_window();
+    static int num;
 
 private:
     Ui::MainWindow *ui;
