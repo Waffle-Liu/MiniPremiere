@@ -29,6 +29,7 @@ void PrModel::removeVideo(int index)
 {
 	if (index == 6) {
 		videoList.clear();
+		videoNum = 0;
 		return;
 	}
 	if (index >= videoNum) {
@@ -36,6 +37,7 @@ void PrModel::removeVideo(int index)
 		return;
 	}
 	videoList.erase(videoList.begin() + index);
+	videoNum--;
 }
 
 void PrModel::set_index_error_notification(shared_ptr<Notification> ntf)

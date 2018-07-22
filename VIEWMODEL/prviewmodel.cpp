@@ -29,6 +29,11 @@ void PrViewModel::exec_play_video_command(int index)
 	model->playVideo(index);
 }
 
+void PrViewModel::exec_remove_video_command(int index)
+{
+	model->removeVideo(index);
+}
+
 shared_ptr<Command> PrViewModel::get_add_video_command()
 {
 	return add_video_command;

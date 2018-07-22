@@ -112,7 +112,7 @@ void MainWindow::on_DeleteAllMedia_clicked()
     }*/
 
     ptr_removevideoCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(6))));
-    ptr_removevideoCommand->exec()
+	ptr_removevideoCommand->exec();
 }
 /*
 void MainWindow::on_integrationDone_clicked()//the integrated video is stored in PlayList[0]
