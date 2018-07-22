@@ -28,12 +28,16 @@ public:
     void setShowEditWindowCommand(std::shared_ptr<Command>);
     void setSelectEditVideoCommand(std::shared_ptr<Command>);
     void setPlayVideoCommand(std::shared_ptr<Command>);
+    void setIntegrateAllVideoCommand(std::shared_ptr<Command>);
+    void setShowIntegrateWindowCommand(std::shared_ptr<Command>);
     //void setIntergratedCommand(std::shared_ptr<Command> ptr_intergrated);
     std::shared_ptr<Notification> get_update_mainwindow_notification();
     std::shared_ptr<Notification> get_show_edit_notification();
+    std::shared_ptr<Notification> get_show_integrate_notification();
 
     void update_load_state(const std::string&);
     void pop_edit_window();
+    void pop_integrate_window();
 
 private:
     Ui::MainWindow *ui;
@@ -43,12 +47,13 @@ private:
     //std::shared_ptr<Command> ptr_deleteallCommand;
     std::shared_ptr<Command> ptr_removevideoCommand;
     std::shared_ptr<Command> ptr_showeditwindowCommand;
+    srd::shared_ptr<Command> ptr_showintegratewindowCommand;
     std::shared_ptr<Command> ptr_selecteditvideoCommand;
     std::shared_ptr<Command> ptr_playvideoCommand;
-
-    //std::shared_ptr<Command> ptr_intergratedCommand;
+    std::shared_ptr<Command> ptr_integrateallvideoCommand;
     std::shared_ptr<Notification> update_mainwindow_notification;
     std::shared_ptr<Notification> show_edit_notification;
+    std::shared_ptr<Notification> show_integrate_notification;
 
 private slots :
     void on_AddMedia_clicked();
