@@ -53,7 +53,11 @@ SOURCES += \
     commands/removevideocommand.cpp \
     commands/selecteditvideocommand.cpp \
     commands/showeditwindowcommand.cpp \
-    notification/showeditvideonotification.cpp
+    notification/showeditvideonotification.cpp \
+    commands/integrateallvideocommand.cpp \
+    commands/showintegratewindowcommand.cpp \
+    common/FilterFunction.cpp \
+    notification/showintegratewindownotification.cpp
 
 HEADERS  += \
     APP/app.h \
@@ -76,7 +80,11 @@ HEADERS  += \
     commands/removevideocommand.h \
     commands/selecteditvideocommand.h \
     commands/showeditwindowcommand.h \
-    notification/showeditvideonotification.h
+    notification/showeditvideonotification.h \
+    commands/integrateallvideocommand.h \
+    commands/showintegratewindowcommand.h \
+    common/FilterFunction.h \
+    notification/showintegratewindownotification.h
 
 FORMS    += \
     VIEW/dialog_edit.ui \
