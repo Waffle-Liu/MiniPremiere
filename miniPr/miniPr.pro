@@ -63,7 +63,8 @@ SOURCES += \
     commands/mirrorcommand.cpp \
     commands/rotatecommand.cpp \
     commands/addfiltercommand.cpp \
-    commands/funnycommand.cpp
+    commands/funnycommand.cpp \
+    commands/exportvideocommand.cpp
 
 HEADERS  += \
     APP/app.h \
@@ -96,7 +97,8 @@ HEADERS  += \
     commands/mirrorcommand.h \
     commands/rotatecommand.h \
     commands/addfiltercommand.h \
-    commands/funnycommand.h
+    commands/funnycommand.h \
+    commands/exportvideocommand.h
 
 FORMS    += \
     VIEW/dialog_edit.ui \
