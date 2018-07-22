@@ -1,9 +1,9 @@
 environment:
   matrix:
     - QTDIR: C:\Qt\5.11\msvc2017_64
-      CMD_VCVARSALL: '"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat" x86'
+      CMD_VCVARSALL: '"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat" x64'
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-      MSVC_PLATFORM: "x86"
+      MSVC_PLATFORM: "x64"
 
 configuration:
   - release
@@ -19,28 +19,30 @@ install:
 # Run qmake
 before_build:
   - cd %APPVEYOR_BUILD_FOLDER%
-  - cd miniPr
-  - qmake miniPr.pro
+  - mkdir buildMVVM
+  - cd buildMVVM
+  - qmake ..\miniPr\miniPr.pro
 
 
 # Build the projects
 build_script:
   - cd %APPVEYOR_BUILD_FOLDER%
-  - cd miniPr
+  - cd buildMVVM
   - nmake
   
 after_build:
-  - cd %APPVEYOR_BUILD_FOLDER%\miniPr\release
+  - cd %APPVEYOR_BUILD_FOLDER%\buildMVVM\release
   - mkdir release
   - cd release
-  - xcopy %APPVEYOR_BUILD_FOLDER%\miniPr\release\miniPr.exe %APPVEYOR_BUILD_FOLDER%\miniPr\release\release\
+  - xcopy %APPVEYOR_BUILD_FOLDER%\buildMVVM\release\miniPr.exe %APPVEYOR_BUILD_FOLDER%\buildMVVM\release\release\
   - windeployqt miniPr.exe
-  - cd ../..
-  - 7z a %MSVC_PLATFORM%-release.zip %APPVEYOR_BUILD_FOLDER%\game\release\release\*
-  
+
 
 artifacts:
-  - path: miniPr\*-release.zip
+  - path: buildMVVM\release\release\
+    name: MVVM_miniPr_bin
+  - path: miniPr\
+    name: MVVM_miniPr_src
 
 deploy:
   - provider: GitHub
