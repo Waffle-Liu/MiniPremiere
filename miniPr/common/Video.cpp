@@ -186,7 +186,7 @@ bool Video::addFilter(int mode, int start_frame, int end_frame)
 	return true;
 }
 
-bool Video::addSubtitle(const string &text, int start_frame, int end_frame, double x, double y, double r, double g, double b, int fontSize, bool isbold)
+bool Video::addSubtitle(const string &text, int start_frame, int end_frame, double x, double y, double r, double g, double b, double fontSize, bool isbold)
 {
 	if (start_frame > fCnt) {
 		return false;

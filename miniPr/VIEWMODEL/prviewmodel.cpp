@@ -70,7 +70,7 @@ void PrViewModel::exec_integrate_all_video_command()
 	model->integrateAllVideo();
 }
 
-void PrViewModel::exec_add_subtitle_command(const string &text, int start_frame, int end_frame, double pos_x, double pos_y, double color_r, double color_g, double color_b, int size, bool isbold)
+void PrViewModel::exec_add_subtitle_command(const string &text, int start_frame, int end_frame, double pos_x, double pos_y, double color_r, double color_g, double color_b, double size, bool isbold)
 {
 	model->addSubtitle(text, start_frame, end_frame, pos_x, pos_y, color_r, color_g, color_b, size, isbold);
 }

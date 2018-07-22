@@ -39,7 +39,7 @@ public:
 	void exec_cut_video_command(int start_frame, int end_frame);
 	void exec_speed_change_command(double rate);
 	void exec_integrate_all_video_command();
-	void exec_add_subtitle_command(const string &text, int start_frame, int end_frame, double pos_x, double pos_y, double color_r, double color_g, double color_b, int size, bool isbold);
+	void exec_add_subtitle_command(const string &text, int start_frame, int end_frame, double pos_x, double pos_y, double color_r, double color_g, double color_b, double size, bool isbold);
 
 	shared_ptr<Command> get_add_video_command();
 	shared_ptr<Command> get_play_video_command();

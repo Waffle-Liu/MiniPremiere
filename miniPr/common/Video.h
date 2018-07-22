@@ -26,5 +26,5 @@ public:
 	bool link(shared_ptr<Video> next_video, int mode = -1);
 	bool changeSpeed(double rate);
 	bool addFilter(int mode, int start_frame, int end_frame);
-	bool addSubtitle(const string &text, int start_frame, int end_frame, double x, double y, double r, double g, double b, int fontSize, bool isbold);
+	bool addSubtitle(const string &text, int start_frame, int end_frame, double x, double y, double r, double g, double b, double fontSize, bool isbold);
 };
