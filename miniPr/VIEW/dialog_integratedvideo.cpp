@@ -146,13 +146,9 @@ void Dialog_IntegratedVideo::on_pushButton_4_clicked()//add special effects
 	ui->lineEdit_26->clear();
 }
 */
-void Dialog_IntegratedVideo::on_pushButton_5_clicked()//stick pictures
+void Dialog_IntegratedVideo::on_pushButton_3_clicked()//stick pictures
 {
 	ui->pushButton_5->setEnabled(false);
-
-	QStringList fileNames = QFileDialog::getOpenFileNames(this, tr("Open Files"));
-	QString temp = fileNames.join("\\");
-	string filename = temp.toStdString();
 
 	double x = ui->lineEdit_16->text().toDouble();
 	double y = ui->lineEdit_15->text().toDouble();
@@ -162,7 +158,7 @@ void Dialog_IntegratedVideo::on_pushButton_5_clicked()//stick pictures
 	/*globalplay.PlayList[0].addSticker(filename, x, y, start, end);
 
 	QMessageBox::about(0, QObject::tr("success"), "Stick success!");*/
-	ptr_addstickerCommand->set_parameters(std::static_pointer_cast<Parameters, StickerParameters>(std::shared_ptr<StickerParameters>(new StickerParameters(filename,start,end,x,y))));
+	ptr_addstickerCommand->set_parameters(std::static_pointer_cast<Parameters, StickerParameters>(std::shared_ptr<StickerParameters>(new StickerParameters(Dialog_IntegratedVideo::filename,start,end,x,y))));
     ptr_addstickerCommand->exec();
 	ui->lineEdit_15->clear();
 	ui->lineEdit_16->clear();
@@ -177,3 +173,9 @@ void Dialog_IntegratedVideo::on_pushButton_2_clicked()//export
 	QMessageBox::about(0, QObject::tr("success"), "Export success!");
 }
 */
+void Dialog_IntegratedVideo::on_pushButton_5_clicked()
+{
+	QStringList fileNames = QFileDialog::getOpenFileNames(this, tr("Open Files"));
+	QString temp = fileNames.join("\\");
+	Dialog_IntegratedVideo::filename = temp.toStdString();
+}
