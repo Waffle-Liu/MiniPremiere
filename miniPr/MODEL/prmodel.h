@@ -30,7 +30,7 @@ public:
 	void changespeedVideo(double rate);
 	void cutVideo(int start_frame, int end_frame);
 	void integrateAllVideo();
-	void addSubtitle(const string &text, int start_frame, int end_frame, double pos_x, double pos_y, double color_r, double color_g, double color_b, int size, bool isbold);
+	void addSubtitle(const string &text, int start_frame, int end_frame, double pos_x, double pos_y, double color_r, double color_g, double color_b, double size, bool isbold);
 	void setEditIndex(int index);
 
 
