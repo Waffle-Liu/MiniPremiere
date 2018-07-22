@@ -23,14 +23,14 @@ class Dialog_IntegratedVideo : public QDialog
 public:
     explicit Dialog_IntegratedVideo(QWidget *parent = 0);
     ~Dialog_IntegratedVideo();
-
+    void setAddSubtitleCommand(std::shared_ptr<Command>);
 private:
     Ui::Dialog_IntegratedVideo *ui;
-
+    std::shared_ptr<Command> ptr_addsubtitleCommand;
 private slots:
-/*
+
 	void on_pushButton_17_clicked();
-	void on_preview_clicked();
+	/*void on_preview_clicked();
 	void on_pushButton_clicked();
 	void on_pushButton_4_clicked();
 	void on_pushButton_5_clicked();

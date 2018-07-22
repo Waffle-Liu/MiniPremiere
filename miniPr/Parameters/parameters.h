@@ -91,6 +91,8 @@ private:
     int size;
     boolean isbold;
 public:
+    SubtitleParameters(string text_, int startframe_, int endframe_, double x_, double y_, double r_, double g_, double b_, int size_, bool isbold_):
+    text(text_),startframe(startframe_),endframe(endframe_),x(x_),y(y_),r(r_),g(g_),b(b_),size(size_),isbold(isbold_){}
     int getstartframe(){return startframe;}
     int getendframe(){return endframe;}
     string gettext(){return text;}

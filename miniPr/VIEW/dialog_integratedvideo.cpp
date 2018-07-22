@@ -8,9 +8,9 @@ Dialog_IntegratedVideo::Dialog_IntegratedVideo(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Dialog_IntegratedVideo)
 {
-	/*
+	
     ui->setupUi(this);
-	ui->pushButton_15->setEnabled(false);
+	/*ui->pushButton_15->setEnabled(false);
 	ui->pushButton_16->setEnabled(false);
 	ui->lineEdit_12->setAlignment(Qt::AlignTop);//contrain the space of the input
 	*/
@@ -18,29 +18,32 @@ Dialog_IntegratedVideo::Dialog_IntegratedVideo(QWidget *parent) :
 
 Dialog_IntegratedVideo::~Dialog_IntegratedVideo()
 {
-	/*
     delete ui;
-	*/
 }
-/*
+
+void Dialog_IntegratedVideo::setAddSubtitleCommand(std::shared_ptr<Command> command)
+{
+	ptr_addsubtitleCommand = command;
+}
+
 void Dialog_IntegratedVideo::on_pushButton_17_clicked()//Subtitle confirm button
 {
 	
 	ui->pushButton_17->setEnabled(false);
 	//get parameters
 	string text = ui->lineEdit_12->text().toStdString();
-	int start_frame = ui->lineEdit_3->text().toInt();
-	int end_frame = ui->lineEdit_6->text().toInt();
+	int startframe = ui->lineEdit_3->text().toInt();
+	int endframe = ui->lineEdit_6->text().toInt();
 	double x = ui->lineEdit_10->text().toDouble();
 	double y = ui->lineEdit_11->text().toDouble();
-	double fontSize = ui->comboBox_2->currentText().toDouble();
-	fontSize = fontSize / 10.0;
-	double R = ui->lineEdit_7->text().toDouble();
-	double G = ui->lineEdit_8->text().toDouble();
-	double B = ui->lineEdit_9->text().toDouble();
-	boolean isBold = ui->checkBox_8->isChecked();
+	double size = ui->comboBox_2->currentText().toDouble();
+	size = size / 10.0;
+	double r = ui->lineEdit_7->text().toDouble();
+	double g = ui->lineEdit_8->text().toDouble();
+	double b = ui->lineEdit_9->text().toDouble();
+	bool isBold = ui->checkBox_8->isChecked();
 	//display vector
-	res.push_back(QString::fromStdString(text));
+	/*res.push_back(QString::fromStdString(text));
 	res.push_back(QString::number(start_frame, 10, 0));
 	res.push_back(QString::number(end_frame, 10, 0));
 	res.push_back(QString::number(x, 10, 1));
@@ -55,7 +58,9 @@ void Dialog_IntegratedVideo::on_pushButton_17_clicked()//Subtitle confirm button
 		{
 			ui->tableWidget_4->setItem(i, j, new QTableWidgetItem(res[5*i+j]));
 		}
-	}
+	}*/
+	ptr_addsubtitleCommand->set_parameters(std::static_pointer_cast<Parameters, SubtitleParameters>(std::shared_ptr<SubtitleParameters>(new SubtitleParameters(text,startframe,endframe,x,y,r,g,b,size,isBold))));
+    ptr_addsubtitleCommand->exec();
 
 	ui->pushButton_17->setEnabled(true);
 	ui->lineEdit_12->clear();
@@ -68,7 +73,7 @@ void Dialog_IntegratedVideo::on_pushButton_17_clicked()//Subtitle confirm button
 	ui->lineEdit_9->clear();
 
 }
-
+/*
 void Dialog_IntegratedVideo::on_preview_clicked()//preview button
 {
 	globalplay.PlayList[0].play();
