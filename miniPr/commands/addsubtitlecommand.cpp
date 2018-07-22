@@ -9,7 +9,7 @@ AddSubtitleCommand::~AddSubtitleCommand()
 
 void AddSubtitleCommand::exec()
 {	
-	string text = std::static_pointer_cast<SubtitleParameters, Parameters>(Command::params)->gettext();
+	std::string text = std::static_pointer_cast<SubtitleParameters, Parameters>(Command::params)->gettext();
 	int start = std::static_pointer_cast<SubtitleParameters, Parameters>(Command::params)->getstartframe();
 	int end = std::static_pointer_cast<SubtitleParameters, Parameters>(Command::params)->getendframe();
 	double x = std::static_pointer_cast<SubtitleParameters, Parameters>(Command::params)->getx();
