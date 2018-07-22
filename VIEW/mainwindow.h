@@ -26,17 +26,7 @@ public:
     //void setDeletaAllCommand(std::shared_ptr<Command> ptr_deleteall);
     void setRemoveVideoCommand(std::shared_ptr<Command>);
     //void setShowEditWindowCommand(std::shared_ptr<Command>);
-    /*void setDeleteTwoCommand(std::shared_ptr<Command> ptr_deletetwo);
-    void setDeleteThreeCommand(std::shared_ptr<Command> ptr_deletethree);
-    void setDeleteFourCommand(std::shared_ptr<Command> ptr_deletefour);
-    void setDeleteFiveCommand(std::shared_ptr<Command> ptr_deletefive);
-    void setDeleteSixCommand(std::shared_ptr<Command> ptr_deletesix);*/
     void setSelectEditVideoCommand(std::shared_ptr<Command>);
-    /*void setEditTwoCommand(std::shared_ptr<Command> ptr_edittwo);
-    void setEditThreeCommand(std::shared_ptr<Command> ptr_editthree);
-    void setEditFourCommand(std::shared_ptr<Command> ptr_editfour);
-    void setEditFiveCommand(std::shared_ptr<Command> ptr_editfive);
-    void setEditSixCommand(std::shared_ptr<Command> ptr_editsix);*/
     void setPlayVideoCommand(std::shared_ptr<Command>);
     //void setIntergratedCommand(std::shared_ptr<Command> ptr_intergrated);
     std::shared_ptr<Notification> get_update_mainwindow_notification();
@@ -53,17 +43,7 @@ private:
     //std::shared_ptr<Command> ptr_deleteallCommand;
     std::shared_ptr<Command> ptr_removevideoCommand;
     //std::shared_ptr<Command> ptr_showeditwindowCommand;
-    /*std::shared_ptr<Command> ptr_deletetwoCommand;
-    std::shared_ptr<Command> ptr_deletethreeCommand;
-    std::shared_ptr<Command> ptr_deletefourCommand;
-    std::shared_ptr<Command> ptr_deletefiveCommand;
-    std::shared_ptr<Command> ptr_deletesixCommand;*/
     std::shared_ptr<Command> ptr_selecteditvideoCommand;
-    /*std::shared_ptr<Command> ptr_edittwoCommand;
-    std::shared_ptr<Command> ptr_editthreeCommand;
-    std::shared_ptr<Command> ptr_editfourCommand;
-    std::shared_ptr<Command> ptr_editfiveCommmand;
-    std::shared_ptr<Command> ptr_editsixCommand;*/
     std::shared_ptr<Command> ptr_playvideoCommand;
     //std::shared_ptr<Command> ptr_intergratedCommand;
     std::shared_ptr<Notification> update_mainwindow_notification;
