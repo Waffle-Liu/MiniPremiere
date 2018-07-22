@@ -30,6 +30,7 @@ public:
     void setAddFilterCommand(std::shared_ptr<Command>);
     void setFunnyCommand(std::shared_ptr<Command>);
     void setPlayVideoCommand(std::shared_ptr<Command>);
+    void setExportVideoCommand(std::shared_ptr<Command>);
     static string filename;
 private:
     Ui::Dialog_IntegratedVideo *ui;
@@ -40,7 +41,7 @@ private:
     std::shared_ptr<Command> ptr_addfilterCommand;
     std::shared_ptr<Command> ptr_addfunnyCommand;
     std::shared_ptr<Command> ptr_playvideoCommand;
-
+    std::shared_ptr<Command> ptr_exportvideoCommand;
 private slots:
 
 	void on_pushButton_17_clicked();
