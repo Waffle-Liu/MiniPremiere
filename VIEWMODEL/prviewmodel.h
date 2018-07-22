@@ -14,19 +14,22 @@ private:
 
 	shared_ptr<Command> add_video_command;
 	shared_ptr<Command> play_video_command;
+	shared_ptr<Command> remove_video_command;
 
 	shared_ptr<Notification> update_view_notification;
 	shared_ptr<Notification> index_error_notification;
 
 public:
 	PrViewModel();
-	void bind(std::shared_ptr<PrModel> model);
+	void bind(shared_ptr<PrModel> model);
 
 	void exec_add_video_command(string path);
 	void exec_play_video_command(int index);
+	void exec_remove_video_command(int index);
 
 	shared_ptr<Command> get_add_video_command();
 	shared_ptr<Command> get_play_video_command();
+	shared_ptr<Command> get_remove_video_command();
 
 	shared_ptr<Notification> get_index_error_notification();
 	void set_update_view_notification(shared_ptr<Notification> ntf);

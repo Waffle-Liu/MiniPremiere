@@ -1,13 +1,17 @@
 #include "../VIEWMODEL/prviewmodel.h"
 #include "../commands/addvideocommand.h"
 #include "../commands/playvideocommand.h"
+#include "../commands/removevideocommand.h"
 #include "../notification/wrongindexnotification.h"
 
+using namespace std;
+
 PrViewModel::PrViewModel(){
-	add_video_command = std::static_pointer_cast<Command, AddVideoCommand>(std::shared_ptr<AddVideoCommand>(new AddVideoCommand(std::shared_ptr<PrViewModel> (this))));
+	add_video_command = static_pointer_cast<Command, AddVideoCommand>(shared_ptr<AddVideoCommand>(new AddVideoCommand(shared_ptr<PrViewModel> (this))));
 	play_video_command = static_pointer_cast<Command, PlayVideoCommand>(shared_ptr<PlayVideoCommand>(new PlayVideoCommand(shared_ptr<PrViewModel>(this))));
-	index_error_notification = std::static_pointer_cast<Notification, UpdateIndexErrorNotification>
-		(std::shared_ptr<UpdateIndexErrorNotification>(new UpdateIndexErrorNotification(std::shared_ptr<PrViewModel>(this))));
+	remove_video_command = static_pointer_cast<Command, RemoveVideoCommand>(shared_ptr<RemoveVideoCommand>(new RemoveVideoCommand(shared_ptr<PrViewModel>(this))));
+
+	index_error_notification = static_pointer_cast<Notification, UpdateIndexErrorNotification>(shared_ptr<UpdateIndexErrorNotification>(new UpdateIndexErrorNotification(shared_ptr<PrViewModel>(this))));
 }
 
 void PrViewModel::bind(shared_ptr<PrModel> model)
@@ -25,13 +29,19 @@ void PrViewModel::exec_play_video_command(int index)
 	model->playVideo(index);
 }
 
-shared_ptr<Command> PrViewModel::get_add_video_command() {
+shared_ptr<Command> PrViewModel::get_add_video_command()
+{
 	return add_video_command;
 }
 
 shared_ptr<Command> PrViewModel::get_play_video_command()
 {
 	return play_video_command;
+}
+
+shared_ptr<Command> PrViewModel::get_remove_video_command()
+{
+	return remove_video_command;
 }
 
 shared_ptr<Notification> PrViewModel::get_index_error_notification()

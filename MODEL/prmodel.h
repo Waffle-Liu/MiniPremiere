@@ -21,6 +21,7 @@ public:
 
 	void addVideo(const string& video_path);
 	void playVideo(int index);
+	void removeVideo(int index);
 
 	void set_index_error_notification(shared_ptr<Notification> ntf);
 	void index_error_notify();
