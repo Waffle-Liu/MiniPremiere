@@ -13,7 +13,7 @@
 #include "commands/playvideocommand.h"
 #include "commands/removevideocommand.h"
 #include "commands/selecteditvideocommand.h"
-
+#include "commands/showeditwindowcommand.h"
 
 
 class miniPrAPP
@@ -25,7 +25,8 @@ private:
 
     std::shared_ptr<PrModel> model;
     std::shared_ptr<PrViewModel> viewmodel;
-    
+
+    std::shared_ptr<ShowEditWindowCommand> _spShowEditWindowCommand;
 
 
 public:

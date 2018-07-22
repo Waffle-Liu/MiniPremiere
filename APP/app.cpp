@@ -14,6 +14,13 @@ miniPrAPP::miniPrAPP(){
 
 	viewmodel->set_update_view_notification(_mainWindow.get_update_mainwindow_notification());
 	model->set_index_error_notification(viewmodel->get_index_error_notification());
+
+	viewmodel->set_show_edit_window_notification(_mainWindow.get_show_edit_notification());
+	model->set_edit_enable_notification(viewmodel->get_edit_enable_notification());
+
+	_spShowEditWindowCommand = std::make_shared<ShowEditWindowCommand>(this);
+
+
 }
 miniPrAPP::~miniPrAPP(){}
 void miniPrAPP::run()
