@@ -129,7 +129,7 @@ font: 10pt &quot;黑体&quot;;</string>
      <string notr="true">border-image: url(:/images/images/button1.png);</string>
     </property>
     <property name="text">
-     <string>整合完毕</string>
+     <string>整合</string>
     </property>
    </widget>
    <widget class="QPushButton" name="mediaOne">
