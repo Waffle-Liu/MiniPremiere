@@ -47,7 +47,7 @@ private:
     //std::shared_ptr<Command> ptr_deleteallCommand;
     std::shared_ptr<Command> ptr_removevideoCommand;
     std::shared_ptr<Command> ptr_showeditwindowCommand;
-    srd::shared_ptr<Command> ptr_showintegratewindowCommand;
+    std::shared_ptr<Command> ptr_showintegratewindowCommand;
     std::shared_ptr<Command> ptr_selecteditvideoCommand;
     std::shared_ptr<Command> ptr_playvideoCommand;
     std::shared_ptr<Command> ptr_integrateallvideoCommand;
@@ -58,7 +58,7 @@ private:
 private slots :
     void on_AddMedia_clicked();
     void on_DeleteAllMedia_clicked();
-    //void on_integrationDone_clicked();
+    void on_integrationDone_clicked();
     void on_mediaOne_clicked();
     void on_mediaTwo_clicked();
     void on_mediaThree_clicked();

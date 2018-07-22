@@ -9,5 +9,5 @@ ShowIntegrateWindowCommand::~ShowIntegrateWindowCommand()
 
 void ShowIntegrateWindowCommand::exec()
 {
-	(ptrAPP->getIntegrateWindow())->show();
+	(ptrAPP->getIntegratedWindow())->show();
 }

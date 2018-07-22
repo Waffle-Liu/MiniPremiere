@@ -60,7 +60,7 @@ void MainWindow::setIntegrateAllVideoCommand(std::shared_ptr<Command> command)
     ptr_integrateallvideoCommand = command;
 }
 
-void setShowIntegrateWindowCommand(std::shared_ptr<Command> command)
+void MainWindow::setShowIntegrateWindowCommand(std::shared_ptr<Command> command)
 {
     ptr_showintegratewindowCommand = command;
 }

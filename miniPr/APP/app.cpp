@@ -12,7 +12,6 @@ miniPrAPP::miniPrAPP(){
 	_mainWindow.setRemoveVideoCommand(viewmodel->get_remove_video_command());
 	_mainWindow.setSelectEditVideoCommand(viewmodel->get_select_edit_video_command());
 	_mainWindow.setIntegrateAllVideoCommand(viewmodel->get_integrate_all_video_command());
-	_mainWindow.setShowIntegrateWindowCommand(_spShowIntegrateWindowCommand);
 	_editWindow.setSpeedChangeCommand(viewmodel->get_speed_change_command());
 	_editWindow.setCutVideoCommand(viewmodel->get_cut_video_command());
 
@@ -23,13 +22,14 @@ miniPrAPP::miniPrAPP(){
 	model->set_edit_enable_notification(viewmodel->get_edit_enable_notification());
 
 	viewmodel->set_show_integrate_window_notification(_mainWindow.get_show_integrate_notification());
-	model->set_integrate_enable_notification(viewmodel->get_integrate_enable_notification());
+	model->set_integrate_complete_notification(viewmodel->get_integrate_complete_notification());
 	//viewmodel->set(_editWindow.get_pop_window_notification());
 	//model->set()
 
 	_spShowEditWindowCommand = std::make_shared<ShowEditWindowCommand>(this);
-	_spShowIntegrateWindowCommand = std::make_shared<setShowIntegrateWindowCommand>;
+	_spShowIntegrateWindowCommand = std::make_shared<ShowIntegrateWindowCommand>(this);
 	_mainWindow.setShowEditWindowCommand(_spShowEditWindowCommand);
+	_mainWindow.setShowIntegrateWindowCommand(_spShowIntegrateWindowCommand);
 
 }
 miniPrAPP::~miniPrAPP(){}

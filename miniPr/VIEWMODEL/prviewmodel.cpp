@@ -25,7 +25,7 @@ PrViewModel::PrViewModel(){
 
 	index_error_notification = static_pointer_cast<Notification, UpdateInfoNotification>(shared_ptr<UpdateInfoNotification>(new UpdateInfoNotification(shared_ptr<PrViewModel>(this))));
 	edit_enable_notification = static_pointer_cast<Notification, UpdateEditEnableNotification>(shared_ptr<UpdateEditEnableNotification>(new UpdateEditEnableNotification(shared_ptr<PrViewModel>(this))));
-	integrate_complete_notification = static_pointer_cast<Notification, UpdateIntegrateCompleteNotification>(share_ptr<UpdateIntegrateCompleteNotification>(new UpdateIntegrateCompleteNotification(share_ptr<PrViewModel>(this))));
+	integrate_complete_notification = static_pointer_cast<Notification, UpdateIntegrateCompleteNotification>(shared_ptr<UpdateIntegrateCompleteNotification>(new UpdateIntegrateCompleteNotification(shared_ptr<PrViewModel>(this))));
 }
 
 void PrViewModel::bind(shared_ptr<PrModel> model)
@@ -61,6 +61,11 @@ void PrViewModel::exec_cut_video_command(int start_frame, int end_frame)
 void PrViewModel::exec_speed_change_command(double rate)
 {
 	model->changespeedVideo(rate);
+}
+
+void PrViewModel::exec_integrate_all_video_command()
+{
+	model->integrateAllVideo();
 }
 
 shared_ptr<Command> PrViewModel::get_add_video_command()
@@ -111,7 +116,7 @@ shared_ptr<Notification> PrViewModel::get_edit_enable_notification()
 
 shared_ptr<Notification> PrViewModel::get_integrate_complete_notification()
 {
-	return integrate_complete_notification();
+	return integrate_complete_notification;
 }
 
 void PrViewModel::set_update_view_notification(shared_ptr<Notification> ntf)

@@ -36,6 +36,7 @@ public:
 
 	void set_index_error_notification(shared_ptr<Notification> ntf);
 	void set_edit_enable_notification(shared_ptr<Notification> ntf);
+	void set_integrate_complete_notification(shared_ptr<Notification> ntf);
 	void info_notify(const string& info);
 	void edit_enable_notify();
 	void integrate_complete_notify();

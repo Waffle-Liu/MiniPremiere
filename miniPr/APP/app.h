@@ -30,6 +30,7 @@ private:
     std::shared_ptr<PrViewModel> viewmodel;
 
     std::shared_ptr<ShowEditWindowCommand> _spShowEditWindowCommand;
+	std::shared_ptr<ShowIntegrateWindowCommand> _spShowIntegrateWindowCommand;
 
 
 public:

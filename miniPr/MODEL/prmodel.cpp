@@ -67,6 +67,7 @@ void PrModel::integrateAllVideo()
 		videoList[0]->link(videoList[1]);
 		videoList.erase(videoList.begin() + 1);
 	}
+	videoNum = 1;
 	info_notify("Integrate success!");
 	integrate_complete_notify();
 }
@@ -101,7 +102,17 @@ void PrModel::set_edit_enable_notification(shared_ptr<Notification> ntf)
 	edit_enable_notification = ntf;
 }
 
+void PrModel::set_integrate_complete_notification(shared_ptr<Notification> ntf)
+{
+	integrate_complete_notification = ntf;
+}
+
 void PrModel::edit_enable_notify()
 {
 	edit_enable_notification->exec();
+}
+
+void PrModel::integrate_complete_notify()
+{
+	integrate_complete_notification->exec();
 }

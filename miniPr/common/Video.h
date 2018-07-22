@@ -2,7 +2,7 @@
 
 #include "stdafx.h"
 #include "windowSize.h"
-#include "FilterFuction.h"
+#include "FilterFunction.h"
 using namespace std;
 using namespace cv;
 

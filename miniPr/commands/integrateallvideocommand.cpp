@@ -1,9 +1,9 @@
 #include "../commands/integrateallvideocommand.h"
 
-IntegrateAllVideoCommand::IntegrateAllVideoCommandCommand(std::shared_ptr<PrViewModel> vm):viewmodel(vm)
+IntegrateAllVideoCommand::IntegrateAllVideoCommand(std::shared_ptr<PrViewModel> vm):viewmodel(vm)
 {
 }
-IntegrateAllVideoCommandCommand::~IntegrateAllVideoCommand()
+IntegrateAllVideoCommand::~IntegrateAllVideoCommand()
 {}
 
 void IntegrateAllVideoCommand::exec()

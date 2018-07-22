@@ -5,7 +5,7 @@ UpdateShowIntegrateWindowNotification::UpdateShowIntegrateWindowNotification(sha
     mainwindow = mw;
 }
 
-void UpdateShowEditVideoNotification::exec()
+void UpdateShowIntegrateWindowNotification::exec()
 {
     mainwindow->pop_integrate_window();
 }
@@ -15,7 +15,7 @@ UpdateIntegrateCompleteNotification::UpdateIntegrateCompleteNotification(shared_
     viewmodel = vm;
 }
 
-void UpdateEditEnableNotification::exec()
+void UpdateIntegrateCompleteNotification::exec()
 {
     viewmodel->show_integrate_window_notified();
 }

@@ -101,26 +101,26 @@ bool Video::changeSpeed(double rate)
 
 bool Video::link(shared_ptr<Video> next_video, int mode)
 {
-	if (wSize.width < video.wSize.width) {
-		wSize.width = video.wSize.width;
+	if (wSize.width < next_video->wSize.width) {
+		wSize.width = next_video->wSize.width;
 	}
-	if (wSize.height < video.wSize.height) {
-		wSize.height = video.wSize.height;
+	if (wSize.height < next_video->wSize.height) {
+		wSize.height = next_video->wSize.height;
 	}
 
 	int trans_begin = fCnt - (fCnt < 10 ? fCnt : 10);
-	int trans_end = fCnt + (video.fCnt < 10 ? video.fCnt : 10);
+	int trans_end = fCnt + (next_video->fCnt < 10 ? next_video->fCnt : 10);
 
-	frames.insert(frames.end(), video.frames.begin(), video.frames.end());
-	fCnt += video.fCnt;
+	frames.insert(frames.end(), next_video->frames.begin(), next_video->frames.end());
+	fCnt += next_video->fCnt;
 
-	if(trans_mode != -1) {
+	if(mode != -1) {
 		this->addFilter(mode, trans_begin, trans_end);
 	}
 	return true;
 }
 
-void Video::addFilter(int mode, int start_frame, int end_frame)
+bool Video::addFilter(int mode, int start_frame, int end_frame)
 {
 	if (start_frame == -1) {
 		start_frame = 0;
@@ -131,53 +131,53 @@ void Video::addFilter(int mode, int start_frame, int end_frame)
 
 	for (int i = start_frame; i < end_frame; i++)
 	{
-		double p = (double)progress(start_frame, end_frame, i) / 100;
+		double p = (double)(i - start_frame) / (end_frame - start_frame);
 		double arg = (0.5 - fabs(p - 0.5)) * 2;
 		switch (mode) {
 		case 0:
-			filter_mirror(frames[i]);
+			filter_mirror(*frames[i]);
 			break;
 		case 1:
-			filter_rotation(frames[i]);
+			filter_rotation(*frames[i]);
 			break;
 		case 2: // unavailable
-			filter_feather(frames[i], 1 - arg);
+			filter_feather(*frames[i], 1 - arg);
 			break;
 		case 3:
-			filter_fudiao(frames[i]);
+			filter_fudiao(*frames[i]);
 			break;
 		case 4:
-			filter_diaoke(frames[i]);
+			filter_diaoke(*frames[i]);
 			break;
 		case 5:
-			filter_kuozhang(frames[i]);
+			filter_kuozhang(*frames[i]);
 			break;
 		case 6:
-			filter_jiya(frames[i]);
+			filter_jiya(*frames[i]);
 			break;
 		case 7:
-			filter_bolang(frames[i]);
+			filter_bolang(*frames[i]);
 			break;
 		case 8:
-			filter_jingxiangsuofang(frames[i], (int)(arg * 40) + 1);
+			filter_jingxiangsuofang(*frames[i], (int)(arg * 40) + 1);
 			break;
 		case 9:
-			filter_jingxiangxuanzhuan(frames[i], (int)(arg * 40) + 1);
+			filter_jingxiangxuanzhuan(*frames[i], (int)(arg * 40) + 1);
 			break;
 		case 10:
-			filter_feng(frames[i], (int)(arg * 20) + 1);
+			filter_feng(*frames[i], (int)(arg * 20) + 1);
 			break;
 		case 11:
-			filter_xuanwo(frames[i], arg * 20);
+			filter_xuanwo(*frames[i], arg * 20);
 			break;
 		case 12:
-			filter_sumiao(frames[i]);
+			filter_sumiao(*frames[i]);
 			break;
 		case 13:
-			filter_huaijiu(frames[i]);
+			filter_huaijiu(*frames[i]);
 			break;
 		case 14:
-			filter_qiangguang(frames[i]);
+			filter_qiangguang(*frames[i]);
 			break;
 		default:
 			break;
