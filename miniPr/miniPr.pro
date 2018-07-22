@@ -32,7 +32,7 @@ win32{
 
 CONFIG += c++14
 
-SOURCES += 
+SOURCES += \
     APP/app.cpp \
     APP/main.cpp \
     commands/addvideocommand.cpp \
@@ -55,7 +55,7 @@ SOURCES +=
     commands/showeditwindowcommand.cpp \
     notification/showeditvideonotification.cpp
 
-HEADERS  += 
+HEADERS  += \
     APP/app.h \
     commands/addvideocommand.h \
     commands/playvideocommand.h \
@@ -78,7 +78,7 @@ HEADERS  +=
     commands/showeditwindowcommand.h \
     notification/showeditvideonotification.h
 
-FORMS    += 
+FORMS    += \
     VIEW/dialog_edit.ui \
     VIEW/dialog_integratedvideo.ui \
     VIEW/mainwindow.ui
