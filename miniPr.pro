@@ -48,7 +48,13 @@ SOURCES += main.cpp\
     VIEW/dialog_edit.cpp \
     VIEW/dialog_integratedvideo.cpp \
     VIEW/mainwindow.cpp \
-    VIEWMODEL/prviewmodel.cpp
+    VIEWMODEL/prviewmodel.cpp \
+    commands/cutvideocommand.cpp \
+    commands/speedchangecommand.cpp \
+    commands/removevideocommand.cpp \
+    commands/selecteditvideocommand.cpp \
+    commands/showeditwindowcommand.cpp \
+    notification/showeditvideonotification.cpp
 
 HEADERS  += mainwindow.h \
     APP/app.h \
@@ -65,7 +71,13 @@ HEADERS  += mainwindow.h \
     VIEW/dialog_edit.h \
     VIEW/dialog_integratedvideo.h \
     VIEW/mainwindow.h \
-    VIEWMODEL/prviewmodel.h
+    VIEWMODEL/prviewmodel.h \
+    commands/cutvideocommand.h \
+    commands/speedchangecommand.h \
+    commands/removevideocommand.h \
+    commands/selecteditvideocommand.h \
+    commands/showeditwindowcommand.h \
+    notification/showeditvideonotification.h
 
 FORMS    += mainwindow.ui \
     VIEW/dialog_edit.ui \
