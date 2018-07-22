@@ -173,7 +173,7 @@ void Dialog_IntegratedVideo::on_pushButton_2_clicked()//export
 	QMessageBox::about(0, QObject::tr("success"), "Export success!");
 }
 */
-void Dialog_IntegratedVideo::on_pushButton_3_clicked()
+void Dialog_IntegratedVideo::on_pushButton_5_clicked()
 {
 	QStringList fileNames = QFileDialog::getOpenFileNames(this, tr("Open Files"));
 	QString temp = fileNames.join("\\");
