@@ -58,7 +58,8 @@ SOURCES += \
     commands/showintegratewindowcommand.cpp \
     common/FilterFunction.cpp \
     notification/showintegratewindownotification.cpp \
-    commands/addsubtitlecommand.cpp
+    commands/addsubtitlecommand.cpp \
+    commands/addstickercommand.cpp
 
 HEADERS  += \
     APP/app.h \
@@ -86,7 +87,8 @@ HEADERS  += \
     commands/showintegratewindowcommand.h \
     common/FilterFunction.h \
     notification/showintegratewindownotification.h \
-    commands/addsubtitlecommand.h
+    commands/addsubtitlecommand.h \
+    commands/addstickercommand.h
 
 FORMS    += \
     VIEW/dialog_edit.ui \
