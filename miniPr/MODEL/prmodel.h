@@ -25,6 +25,7 @@ public:
 	~PrModel();
 
 	void addVideo(const string& video_path);
+	void exportVideo(const string& video_path);
 	void playVideo(int index);
 	void removeVideo(int index);
 	void changespeedVideo(double rate);

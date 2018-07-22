@@ -13,6 +13,7 @@
 #include "../commands/rotatecommand.h"
 #include "../commands/addfiltercommand.h"
 #include "../commands/funnycommand.h"
+#include "../commands/exportvideocommand.h"
 
 #include "../notification/wrongindexnotification.h"
 #include "../notification/showeditvideonotification.h"
@@ -34,6 +35,7 @@ PrViewModel::PrViewModel(){
 	rotate_command = static_pointer_cast<Command, RotateCommand>(shared_ptr<RotateCommand>(new RotateCommand(shared_ptr<PrViewModel>(this))));
 	add_filter_command = static_pointer_cast<Command, AddFilterCommand>(shared_ptr<AddFilterCommand>(new AddFilterCommand(shared_ptr<PrViewModel>(this))));
 	funny_command = static_pointer_cast<Command, FunnyCommand>(shared_ptr<FunnyCommand>(new FunnyCommand(shared_ptr<PrViewModel>(this))));
+	export_video_command = static_pointer_cast<Command, ExportVideoCommand>(shared_ptr<ExportVideoCommand>(new ExportVideoCommand(shared_ptr<PrViewModel> (this))));
 
 	index_error_notification = static_pointer_cast<Notification, UpdateInfoNotification>(shared_ptr<UpdateInfoNotification>(new UpdateInfoNotification(shared_ptr<PrViewModel>(this))));
 	edit_enable_notification = static_pointer_cast<Notification, UpdateEditEnableNotification>(shared_ptr<UpdateEditEnableNotification>(new UpdateEditEnableNotification(shared_ptr<PrViewModel>(this))));
@@ -122,6 +124,11 @@ void PrViewModel::exec_funny_command(int start_frame, int end_frame, int mode)
 	model->addFilter(start_frame, end_frame, mode);
 }
 
+void PrViewModel::exec_export_video_command(const string &video_path)
+{
+	model->exportVideo(video_path);
+}
+
 /*=============================================================================*/
 
 shared_ptr<Command> PrViewModel::get_add_video_command()
@@ -188,6 +195,11 @@ shared_ptr<Command> PrViewModel::get_add_filter_command()
 shared_ptr<Command> PrViewModel::get_funny_command()
 {
 	return funny_command;
+}
+
+shared_ptr<Command> PrViewModel::get_export_video_command()
+{
+	return export_video_command;
 }
 
 /*============================================================================*/

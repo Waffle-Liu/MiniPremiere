@@ -22,6 +22,12 @@ void PrModel::addVideo(const string &video_path)
 	}
 }
 
+void PrModel::exportVideo(const string& video_path)
+{
+	videoList[curEditIndex]->writer(video_path);
+	info_notify("Export success!");
+}
+
 void PrModel::playVideo(int index)
 {
 	if (index >= videoNum) {
