@@ -10,10 +10,10 @@ Dialog_IntegratedVideo::Dialog_IntegratedVideo(QWidget *parent) :
 {
 	
     ui->setupUi(this);
-	/*ui->pushButton_15->setEnabled(false);
+	ui->pushButton_15->setEnabled(false);
 	ui->pushButton_16->setEnabled(false);
 	ui->lineEdit_12->setAlignment(Qt::AlignTop);//contrain the space of the input
-	*/
+	
 }
 
 Dialog_IntegratedVideo::~Dialog_IntegratedVideo()
@@ -24,6 +24,11 @@ Dialog_IntegratedVideo::~Dialog_IntegratedVideo()
 void Dialog_IntegratedVideo::setAddSubtitleCommand(std::shared_ptr<Command> command)
 {
 	ptr_addsubtitleCommand = command;
+}
+
+void Dialog_IntegratedVideo::setAddStickerCommand(std::shared_ptr<Command> command)
+{
+	ptr_addstickerCommand = command;
 }
 
 void Dialog_IntegratedVideo::on_pushButton_17_clicked()//Subtitle confirm button
@@ -140,7 +145,7 @@ void Dialog_IntegratedVideo::on_pushButton_4_clicked()//add special effects
 	ui->lineEdit_29->clear();
 	ui->lineEdit_26->clear();
 }
-
+*/
 void Dialog_IntegratedVideo::on_pushButton_5_clicked()//stick pictures
 {
 	ui->pushButton_5->setEnabled(false);
@@ -149,21 +154,23 @@ void Dialog_IntegratedVideo::on_pushButton_5_clicked()//stick pictures
 	QString temp = fileNames.join("\\");
 	String filename = temp.toStdString();
 
-	int x = ui->lineEdit_16->text().toInt();
-	int y = ui->lineEdit_15->text().toInt();
+	double x = ui->lineEdit_16->text().toDouble();
+	double y = ui->lineEdit_15->text().toDouble();
 	int start = ui->lineEdit_17->text().toInt();
 	int end = ui->lineEdit_18->text().toInt();
 
-	globalplay.PlayList[0].addSticker(filename, x, y, start, end);
+	/*globalplay.PlayList[0].addSticker(filename, x, y, start, end);
 
-	QMessageBox::about(0, QObject::tr("success"), "Stick success!");
+	QMessageBox::about(0, QObject::tr("success"), "Stick success!");*/
+	ptr_addstickerCommand->set_parameters(std::static_pointer_cast<Parameters, StickerParameters>(std::shared_ptr<StickerParameters>(new StickerParameters(filename,start,end,x,y))));
+    ptr_addstickerCommand->exec();
 	ui->lineEdit_15->clear();
 	ui->lineEdit_16->clear();
 	ui->lineEdit_17->clear();
 	ui->lineEdit_18->clear();
 	ui->pushButton_5->setEnabled(true);
 }
-
+/*
 void Dialog_IntegratedVideo::on_pushButton_2_clicked()//export
 {
 
