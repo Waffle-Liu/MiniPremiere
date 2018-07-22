@@ -194,7 +194,7 @@ bool Video::addSubtitle(const string &text, int start_frame, int end_frame, doub
 
 	for (int i = start_frame; i < end_frame; i++)
 	{
-		putText(frames[i], text, Point(x, y), FONT_HERSHEY_COMPLEX, fontSize, Scalar(r, g, b), isbold ? 2 : 1, 8, 0);
+		putText(*frames[i], text, Point(x, y), FONT_HERSHEY_COMPLEX, fontSize, Scalar(r, g, b), isbold ? 2 : 1, 8, 0);
 	}
 	return true;
 }
