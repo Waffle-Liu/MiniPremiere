@@ -12,12 +12,16 @@ miniPrAPP::miniPrAPP(){
 	_mainWindow.setRemoveVideoCommand(viewmodel->get_remove_video_command());
 	_mainWindow.setSelectEditVideoCommand(viewmodel->get_select_edit_video_command());
 	_editWindow.setSpeedChangeCommand(viewmodel->get_speed_change_command());
+	_editWindow.setCutVideoCommand(viewmodel->get_cut_video_command());
 
 	viewmodel->set_update_view_notification(_mainWindow.get_update_mainwindow_notification());
 	model->set_index_error_notification(viewmodel->get_index_error_notification());
 
 	viewmodel->set_show_edit_window_notification(_mainWindow.get_show_edit_notification());
 	model->set_edit_enable_notification(viewmodel->get_edit_enable_notification());
+
+	//viewmodel->set(_editWindow.get_pop_window_notification());
+	//model->set()
 
 	_spShowEditWindowCommand = std::make_shared<ShowEditWindowCommand>(this);
 	_mainWindow.setShowEditWindowCommand(_spShowEditWindowCommand);

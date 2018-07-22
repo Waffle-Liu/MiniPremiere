@@ -15,6 +15,7 @@
 #include "commands/selecteditvideocommand.h"
 #include "commands/showeditwindowcommand.h"
 #include "commands/speedchangecommand.h"
+#include "commands/cutvideocommand.h"
 
 
 class miniPrAPP
