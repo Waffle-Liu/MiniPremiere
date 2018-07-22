@@ -15,6 +15,7 @@ miniPrAPP::miniPrAPP(){
 	_editWindow.setSpeedChangeCommand(viewmodel->get_speed_change_command());
 	_editWindow.setCutVideoCommand(viewmodel->get_cut_video_command());
 	_integratedWindow.setAddSubtitleCommand(viewmodel->get_add_subtitle_command());
+	_integratedWindow.setAddStickerCommand(viewmodel->get_add_sticker_command());
 
 	viewmodel->set_update_view_notification(_mainWindow.get_update_mainwindow_notification());
 	model->set_index_error_notification(viewmodel->get_index_error_notification());
@@ -24,8 +25,7 @@ miniPrAPP::miniPrAPP(){
 
 	viewmodel->set_show_integrate_window_notification(_mainWindow.get_show_integrate_notification());
 	model->set_integrate_complete_notification(viewmodel->get_integrate_complete_notification());
-	//viewmodel->set(_editWindow.get_pop_window_notification());
-	//model->set()
+
 
 	_spShowEditWindowCommand = std::make_shared<ShowEditWindowCommand>(this);
 	_spShowIntegrateWindowCommand = std::make_shared<ShowIntegrateWindowCommand>(this);

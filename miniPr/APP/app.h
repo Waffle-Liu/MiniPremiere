@@ -18,6 +18,7 @@
 #include "commands/cutvideocommand.h"
 #include "commands/showintegratewindowcommand.h"
 #include "commands/addsubtitlecommand.h"
+#include "commands/addstickercommand.h"
 
 class miniPrAPP
 {
