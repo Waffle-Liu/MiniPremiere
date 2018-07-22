@@ -16,6 +16,7 @@
 #include "commands/showeditwindowcommand.h"
 #include "commands/speedchangecommand.h"
 #include "commands/cutvideocommand.h"
+#include "commands/showintegratewindowcommand.h"
 
 
 class miniPrAPP
@@ -23,7 +24,7 @@ class miniPrAPP
 private:
     MainWindow _mainWindow;
     Dialog_edit _editWindow;
-//    Dialog_IntegratedVideo _integratedWindow;
+    Dialog_IntegratedVideo _integratedWindow;
 
     std::shared_ptr<PrModel> model;
     std::shared_ptr<PrViewModel> viewmodel;
@@ -38,5 +39,5 @@ public:
 
     MainWindow *getMainWindow();
     Dialog_edit *getEditWindow();
-//    Dialog_IntegratedVideo *getIntegratedWindow();
+    Dialog_IntegratedVideo *getIntegratedWindow();
 };
