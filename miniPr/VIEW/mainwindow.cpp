@@ -5,6 +5,7 @@
 #include "../notification/notification.h"
 #include "../notification/wrongindexnotification.h"
 #include "../notification/showeditvideonotification.h"
+#include "../notification/showintegratewindownotification.h"
 
 
 MainWindow::MainWindow(QWidget *parent) :
