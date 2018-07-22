@@ -11,6 +11,7 @@
 
 #include "commands/addvideocommand.h"
 #include "commands/playvideocommand.h"
+#include "commands/removevideocommand.h"
 
 
 
