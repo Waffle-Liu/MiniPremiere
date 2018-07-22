@@ -17,7 +17,7 @@
 #include "commands/speedchangecommand.h"
 #include "commands/cutvideocommand.h"
 #include "commands/showintegratewindowcommand.h"
-
+#include "commands/addsubtitlecommand.h"
 
 class miniPrAPP
 {

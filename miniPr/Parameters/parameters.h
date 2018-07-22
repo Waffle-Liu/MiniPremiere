@@ -89,7 +89,7 @@ private:
     double g;
     double b;
     int size;
-    boolean isbold;
+    bool isbold;
 public:
     int getstartframe(){return startframe;}
     int getendframe(){return endframe;}
@@ -100,6 +100,6 @@ public:
     double getg(){return g;}
     double getb(){return b;}
     int getsize(){return size;}
-    boolean getisbold(){return isbold;}
+    bool getisbold(){return isbold;}
 };
 #endif // PARAMETERS_H
