@@ -77,4 +77,29 @@ public:
     double gety_e() { return y_e; }
 
 };
+
+class SubtitleParameters: public Parameters {
+private:
+    string text;
+    int startframe;
+    int endframe;
+    double x;
+    double y;
+    double r;
+    double g;
+    double b;
+    int size;
+    boolean isbold;
+public:
+    int getstartframe(){return startframe;}
+    int getendframe(){return endframe;}
+    string gettext(){return text;}
+    double getx(){return x;}
+    double gety(){return y;}
+    double getr(){return r;}
+    double getg(){return g;}
+    double getb(){return b;}
+    int getsize(){return size;}
+    boolean getisbold(){return isbold;}
+};
 #endif // PARAMETERS_H
