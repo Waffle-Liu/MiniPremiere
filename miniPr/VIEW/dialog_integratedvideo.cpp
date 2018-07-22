@@ -31,6 +31,26 @@ void Dialog_IntegratedVideo::setAddStickerCommand(std::shared_ptr<Command> comma
 	ptr_addstickerCommand = command;
 }
 
+void Dialog_IntegratedVideo::setMirrorCommand(std::shared_ptr<Command> command)
+{
+	ptr_addmirrorCommand = command;
+}
+    
+void Dialog_IntegratedVideo::setRotateCommand(std::shared_ptr<Command> command)
+{
+	ptr_addrotateCommand = command;
+}
+
+void Dialog_IntegratedVideo::setAddFilterCommand(std::shared_ptr<Command> command)
+{
+	ptr_addfilterCommand = command;
+}
+
+void Dialog_IntegratedVideo::setFunnyCommand(std::shared_ptr<Command> command)
+{
+	ptr_addfunnyCommand = command;
+}
+
 void Dialog_IntegratedVideo::on_pushButton_17_clicked()//Subtitle confirm button
 {
 	
@@ -91,7 +111,7 @@ void Dialog_IntegratedVideo::on_pushButton_clicked()//display the size of video
 	double height = globalplay.PlayList[0].getHeight();
 	ui->lineEdit_13->setText(QString::number(width, 10, 1));
 	ui->lineEdit_14->setText(QString::number(height, 10, 1));
-}
+}*/
 
 void Dialog_IntegratedVideo::on_pushButton_4_clicked()//add special effects
 {
@@ -101,14 +121,28 @@ void Dialog_IntegratedVideo::on_pushButton_4_clicked()//add special effects
 	{
 		int startMirror = ui->lineEdit->text().toInt();
 		int endMirror = ui->lineEdit_2->text().toInt();
-		globalplay.PlayList[0].addFilter(0, startMirror, endMirror);
+		ptr_addmirrorCommand->set_parameters(std::static_pointer_cast<Parameters, FilterParameters>(std::shared_ptr<FilterParameters>(new FilterParameters(startMirror,endMirror,0))));
+        ptr_addmirrorCommand->exec();
+	}
+
+	else
+	{
+		ptr_addmirrorCommand->set_parameters(std::static_pointer_cast<Parameters, FilterParameters>(std::shared_ptr<FilterParameters>(new FilterParameters(0,0,-1))));
+        ptr_addmirrorCommand->exec();
 	}
 
 	if (ui->checkBox_2->isChecked())//rotation
 	{
 		int startRotation = ui->lineEdit_4->text().toInt();
 		int endRotation = ui->lineEdit_5->text().toInt();
-		globalplay.PlayList[0].addFilter(1, startRotation, endRotation);
+		ptr_addrotateCommand->set_parameters(std::static_pointer_cast<Parameters, FilterParameters>(std::shared_ptr<FilterParameters>(new FilterParameters(startRotation,endRotation,1))));
+        ptr_addrotateCommand->exec();
+	}
+
+	else
+	{
+		ptr_addrotateCommand->set_parameters(std::static_pointer_cast<Parameters, FilterParameters>(std::shared_ptr<FilterParameters>(new FilterParameters(0,0,-1))));
+        ptr_addrotateCommand->exec();
 	}
 
 	//filter
@@ -117,12 +151,38 @@ void Dialog_IntegratedVideo::on_pushButton_4_clicked()//add special effects
 		int startFilter = ui->lineEdit_19->text().toInt();
 		int endFilter = ui->lineEdit_20->text().toInt();
 
-		if (ui->checkBox_3->isChecked()) globalplay.PlayList[0].addFilter(3, startFilter, endFilter);
-		if (ui->checkBox_4->isChecked()) globalplay.PlayList[0].addFilter(4, startFilter, endFilter);
-		if (ui->checkBox_5->isChecked()) globalplay.PlayList[0].addFilter(12, startFilter, endFilter);
-		if (ui->checkBox_6->isChecked()) globalplay.PlayList[0].addFilter(14, startFilter, endFilter);
-		if (ui->checkBox_7->isChecked()) globalplay.PlayList[0].addFilter(13, startFilter, endFilter);
+		if (ui->checkBox_3->isChecked())
+		{
+			ptr_addfilterCommand->set_parameters(std::static_pointer_cast<Parameters, FilterParameters>(std::shared_ptr<FilterParameters>(new FilterParameters(startFilter,endFilter,3))));
+        	ptr_addfilterCommand->exec();
+		}
+		if (ui->checkBox_4->isChecked())
+		{
+			ptr_addfilterCommand->set_parameters(std::static_pointer_cast<Parameters, FilterParameters>(std::shared_ptr<FilterParameters>(new FilterParameters(startFilter,endFilter,4))));
+        	ptr_addfilterCommand->exec();
+		}
+		if (ui->checkBox_5->isChecked())
+		{
+			ptr_addfilterCommand->set_parameters(std::static_pointer_cast<Parameters, FilterParameters>(std::shared_ptr<FilterParameters>(new FilterParameters(startFilter,endFilter,12))));
+        	ptr_addfilterCommand->exec();
+		}
+		if (ui->checkBox_6->isChecked())
+		{
+			ptr_addfilterCommand->set_parameters(std::static_pointer_cast<Parameters, FilterParameters>(std::shared_ptr<FilterParameters>(new FilterParameters(startFilter,endFilter,14))));
+        	ptr_addfilterCommand->exec();
+		}
+		if (ui->checkBox_7->isChecked())
+		{
+			ptr_addfilterCommand->set_parameters(std::static_pointer_cast<Parameters, FilterParameters>(std::shared_ptr<FilterParameters>(new FilterParameters(startFilter,endFilter,13))));
+        	ptr_addfilterCommand->exec();
+		}
 
+	}
+
+	else
+	{
+		ptr_addfilterCommand->set_parameters(std::static_pointer_cast<Parameters, FilterParameters>(std::shared_ptr<FilterParameters>(new FilterParameters(0,0,-1))));
+        ptr_addfilterCommand->exec();
 	}
 
 	if (ui->checkBox_9->isChecked() || ui->checkBox_10->isChecked() || ui->checkBox_11->isChecked())//special effect
@@ -130,11 +190,29 @@ void Dialog_IntegratedVideo::on_pushButton_4_clicked()//add special effects
 		int start = ui->lineEdit_26->text().toInt();
 		int end = ui->lineEdit_29->text().toInt();
 
-		if (ui->checkBox_9->isChecked()) globalplay.PlayList[0].addFilter(5, start, end);
-		if (ui->checkBox_10->isChecked()) globalplay.PlayList[0].addFilter(6, start, end);
-		if (ui->checkBox_11->isChecked()) globalplay.PlayList[0].addFilter(7, start, end);
+		if (ui->checkBox_9->isChecked())
+		{
+			ptr_addfunnyCommand->set_parameters(std::static_pointer_cast<Parameters, FilterParameters>(std::shared_ptr<FilterParameters>(new FilterParameters(start,end,5))));
+        	ptr_addfunnyCommand->exec();
+		}
+		if (ui->checkBox_10->isChecked())
+		{
+			ptr_addfunnyCommand->set_parameters(std::static_pointer_cast<Parameters, FilterParameters>(std::shared_ptr<FilterParameters>(new FilterParameters(start,end,6))));
+        	ptr_addfunnyCommand->exec();
+		}
+		if (ui->checkBox_11->isChecked())
+		{
+			ptr_addfunnyCommand->set_parameters(std::static_pointer_cast<Parameters, FilterParameters>(std::shared_ptr<FilterParameters>(new FilterParameters(start,end,7))));
+        	ptr_addfunnyCommand->exec();
+		}
 	}
-	QMessageBox::about(0, QObject::tr("success"), "Add success!");
+
+	else
+	{
+		ptr_addfunnyCommand->set_parameters(std::static_pointer_cast<Parameters, FilterParameters>(std::shared_ptr<FilterParameters>(new FilterParameters(0,0,-1))));
+        ptr_addfunnyCommand->exec();
+	}
+	//QMessageBox::about(0, QObject::tr("success"), "Add success!");
 	ui->pushButton_4->setEnabled(true);
 	ui->lineEdit->clear();
 	ui->lineEdit_2->clear();
@@ -145,7 +223,7 @@ void Dialog_IntegratedVideo::on_pushButton_4_clicked()//add special effects
 	ui->lineEdit_29->clear();
 	ui->lineEdit_26->clear();
 }
-*/
+
 void Dialog_IntegratedVideo::on_pushButton_3_clicked()//stick pictures
 {
 	ui->pushButton_5->setEnabled(false);

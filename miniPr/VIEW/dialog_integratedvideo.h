@@ -25,18 +25,26 @@ public:
     ~Dialog_IntegratedVideo();
     void setAddSubtitleCommand(std::shared_ptr<Command>);
     void setAddStickerCommand(std::shared_ptr<Command>);
+    void setMirrorCommand(std::shared_ptr<Command>);
+    void setRotateCommand(std::shared_ptr<Command>);
+    void setAddFilterCommand(std::shared_ptr<Command>);
+    void setFunnyCommand(std::shared_ptr<Command>);
     static string filename;
 private:
     Ui::Dialog_IntegratedVideo *ui;
     std::shared_ptr<Command> ptr_addsubtitleCommand;
     std::shared_ptr<Command> ptr_addstickerCommand;
+    std::shared_ptr<Command> ptr_addmirrorCommand;
+    std::shared_ptr<Command> ptr_addrotateCommand;
+    std::shared_ptr<Command> ptr_addfilterCommand;
+    std::shared_ptr<Command> ptr_addfunnyCommand;
 
 private slots:
 
 	void on_pushButton_17_clicked();
 	/*void on_preview_clicked();
-	void on_pushButton_clicked();
-	void on_pushButton_4_clicked();*/
+	void on_pushButton_clicked();*/
+	void on_pushButton_4_clicked();
 	void on_pushButton_3_clicked();
 	void on_pushButton_5_clicked();
 };
