@@ -14,6 +14,7 @@ class PrModel
 private:
 	int videoNum;
 	vector<shared_ptr<Video>> videoList;
+	vector<int> videoLinkMode;
 	int curEditIndex;
 
 	shared_ptr<Notification> info_notification;
@@ -35,6 +36,7 @@ public:
 	void setEditIndex(int index);
 	void addSticker(const string &img_path, int start_frame, int end_frame, double pos_x, double pos_y);
 	void addFilter(int start_frame, int end_frame, int mode);
+	void setLinkMode(int mode);
 
 	void set_index_error_notification(shared_ptr<Notification> ntf);
 	void set_edit_enable_notification(shared_ptr<Notification> ntf);

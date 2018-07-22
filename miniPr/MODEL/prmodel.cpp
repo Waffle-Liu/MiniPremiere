@@ -15,6 +15,7 @@ void PrModel::addVideo(const string &video_path)
 	shared_ptr<Video> video(new Video);
 	if (video->capture(video_path)) {
 		videoList.push_back(video);
+		videoLinkMode.push_back(-1);
 		videoNum++;
 		info_notify("Add success!");
 	} else {
@@ -41,6 +42,7 @@ void PrModel::removeVideo(int index)
 {
 	if (index == 6) {
 		videoList.clear();
+		videoLinkMode.clear();
 		videoNum = 0;
 		return;
 	} else if (index >= videoNum) {
@@ -49,6 +51,7 @@ void PrModel::removeVideo(int index)
 	}
 
 	videoList.erase(videoList.begin() + index);
+	videoLinkMode.erase(videoLinkMode.begin() + index);
 	videoNum--;
 }
 
@@ -70,8 +73,30 @@ void PrModel::cutVideo(int start_frame, int end_frame)
 void PrModel::integrateAllVideo()
 {
 	for (int i = 1; i < videoNum; i++) {
-		videoList[0]->link(videoList[1]);
+		videoList[0]->link(videoList[1], videoLinkMode[0]);
+		switch (videoLinkMode[0])
+		{
+		case 2:
+			info_notify("Adding effect \"YuHua\" success!");
+			break;
+		case 8:
+			info_notify("Adding effect \"JingXiangSuoFang\" success!");
+			break;
+		case 9:
+			info_notify("Adding effect \"JingXiangXuanZhuan\" success!");
+			break;
+		case 10:
+			info_notify("Adding effect \"Feng\" success!");
+			break;
+		case 11:
+			info_notify("Adding effect \"XuanWo\" success!");
+			break;
+		default:
+			info_notify("Failed adding effect!");
+			break;
+		}
 		videoList.erase(videoList.begin() + 1);
+		videoLinkMode.erase(videoLinkMode.begin());
 	}
 	videoNum = 1;
 	curEditIndex = 0;
@@ -141,6 +166,12 @@ void PrModel::addFilter(int start_frame, int end_frame, int mode)
 		info_notify("Failed adding filter!");
 		break;
 	}
+}
+
+bool PrModel::setLinkMode(int mode)
+{
+	videoLinkMode[curEditIndex] = mode;
+	info_notify("Set success!");
 }
 
 /*=============================================================================*/
