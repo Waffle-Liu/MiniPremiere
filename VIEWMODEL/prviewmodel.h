@@ -32,18 +32,20 @@ public:
 	void exec_play_video_command(int index);
 	void exec_remove_video_command(int index);
 	void exec_select_edit_video_command(int index);
+	void exec_cut_video_command(int start_frame, int end_frame);
+	void exec_speed_change_command(double rate);
 
 	shared_ptr<Command> get_add_video_command();
 	shared_ptr<Command> get_play_video_command();
 	shared_ptr<Command> get_remove_video_command();
 	shared_ptr<Command> get_cut_video_command();
-	shared_ptr<Command> get_changspeed_video_command();
+	shared_ptr<Command> get_speed_change_command();
 	shared_ptr<Command> get_select_edit_video_command();
 
 	shared_ptr<Notification> get_index_error_notification();
 	shared_ptr<Notification> get_edit_enable_notification();
 	void set_update_view_notification(shared_ptr<Notification> ntf);
 	void set_show_edit_window_notification(shared_ptr<Notification> ntf);
-	void update_view_notified();
+	void update_view_notified(const string &str);
 	void show_edit_window_notified();
 };

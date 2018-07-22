@@ -1,12 +1,13 @@
 #include "dialog_edit.h"
 #include "ui_dialog_edit.h"
+#include "..\notification\showeditvideonotification.h"
 
 Dialog_edit::Dialog_edit(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Dialog_edit)
 {
     ui->setupUi(this);
-    pop_window_notification = std::static_pointer_cast<Notification, PopWindowNotification>(std::shared_ptr<PopWindowNotification>(new PopWindowNotification(std::shared_ptr<MainWindow>(this))));
+    //pop_window_notification = std::static_pointer_cast<Notification, UpdateView>(std::shared_ptr<UpdateShowEditVideoNotification>(new UpdateShowEditVideoNotification(std::shared_ptr<MainWindow>(this))));
 }
 
 Dialog_edit::~Dialog_edit()
@@ -29,10 +30,10 @@ std::shared_ptr<Notification> Dialog_edit::get_pop_window_notification()
 	return pop_window_notification;
 }
 
-void Dialog_edit::pop_window(const string &tip)
+/*void Dialog_edit::pop_window(const std::string &tip)
 {
 	QMessageBox::about(0, QObject::tr("feedback"),tip);
-}
+}*/
 
 void Dialog_edit::on_pushButton_2_clicked()//cut
 {

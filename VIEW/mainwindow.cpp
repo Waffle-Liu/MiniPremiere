@@ -63,9 +63,10 @@ std::shared_ptr<Notification> MainWindow::get_show_edit_notification()
     return show_edit_notification;
 }
 
-void MainWindow::update_load_state()
+void MainWindow::update_load_state(const string &s)
 {
-    QMessageBox::about(0, QObject::tr("fail"),"No sub video!");
+	QString temp = QString::fromStdString(s);
+    QMessageBox::about(0, QObject::tr("feedback"),temp);
 }
 
 void MainWindow::pop_edit_window()

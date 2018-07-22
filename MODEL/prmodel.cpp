@@ -12,15 +12,20 @@ PrModel::~PrModel()
 
 void PrModel::addVideo(const string &video_path)
 {
-	shared_ptr<Video> video(new Video(video_path));
-	videoList.push_back(video);
-	videoNum++;
+	shared_ptr<Video> video(new Video);
+	if (video->capture(video_path)) {
+		videoList.push_back(video);
+		videoNum++;
+		info_notify("Add success!");
+	} else {
+		info_notify("Add failed!");
+	}
 }
 
 void PrModel::playVideo(int index)
 {
 	if (index >= videoNum) {
-		info_notify("No video");
+		info_notify("No video!");
 		return;
 	}
 	videoList[index]->play();
@@ -33,7 +38,7 @@ void PrModel::removeVideo(int index)
 		videoNum = 0;
 		return;
 	} else if (index >= videoNum) {
-		info_notify("No video");
+		info_notify("No video!");
 		return;
 	}
 
@@ -44,12 +49,16 @@ void PrModel::removeVideo(int index)
 void PrModel::changespeedVideo(double rate)
 {
 	videoList[curEditIndex]->changeSpeed(rate);
+	info_notify("Change speed success!");
 }
 
 void PrModel::cutVideo(int start_frame, int end_frame)
 {
-	videoList[curEditIndex]->cut(start_frame, end_frame);
-	info_notify("Cut success!");
+	if (videoList[curEditIndex]->cut(start_frame, end_frame)) {
+		info_notify("Cut success!");
+	} else {
+		info_notify("Cut failed!");
+	}
 }
 
 

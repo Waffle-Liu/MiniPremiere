@@ -7,7 +7,7 @@ CutVideoCommand::CutVideoCommand(std::shared_ptr<PrViewModel> vm):viewmodel(vm)
 CutVideoCommand::~CutVideoCommand()
 {}
 
-void SpeedChangeCommand::exec()
+void CutVideoCommand::exec()
 {
 	int start = std::static_pointer_cast<Int2Parameters, Parameters>(Command::params)->getvalue1();
 	int end = std::static_pointer_cast<Int2Parameters, Parameters>(Command::params)->getvalue2();
