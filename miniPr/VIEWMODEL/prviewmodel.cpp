@@ -37,7 +37,7 @@ PrViewModel::PrViewModel(){
 	add_filter_command = static_pointer_cast<Command, AddFilterCommand>(shared_ptr<AddFilterCommand>(new AddFilterCommand(shared_ptr<PrViewModel>(this))));
 	funny_command = static_pointer_cast<Command, FunnyCommand>(shared_ptr<FunnyCommand>(new FunnyCommand(shared_ptr<PrViewModel>(this))));
 	export_video_command = static_pointer_cast<Command, ExportVideoCommand>(shared_ptr<ExportVideoCommand>(new ExportVideoCommand(shared_ptr<PrViewModel> (this))));
-	trans_mode_command = static_pointer_case<Command, TransModeCommand>(shared_ptr<TransModeCommand>(new TransModeCommand(shared_ptr<PrViewModel>(this))));
+	trans_mode_command = static_pointer_cast<Command, TransModeCommand>(shared_ptr<TransModeCommand>(new TransModeCommand(shared_ptr<PrViewModel>(this))));
 
 	index_error_notification = static_pointer_cast<Notification, UpdateInfoNotification>(shared_ptr<UpdateInfoNotification>(new UpdateInfoNotification(shared_ptr<PrViewModel>(this))));
 	edit_enable_notification = static_pointer_cast<Notification, UpdateEditEnableNotification>(shared_ptr<UpdateEditEnableNotification>(new UpdateEditEnableNotification(shared_ptr<PrViewModel>(this))));

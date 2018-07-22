@@ -76,6 +76,8 @@ void PrModel::integrateAllVideo()
 		videoList[0]->link(videoList[1], videoLinkMode[0]);
 		switch (videoLinkMode[0])
 		{
+		case -1:
+			break;
 		case 2:
 			info_notify("Adding effect \"YuHua\" success!");
 			break;
@@ -168,7 +170,7 @@ void PrModel::addFilter(int start_frame, int end_frame, int mode)
 	}
 }
 
-bool PrModel::setLinkMode(int mode)
+void PrModel::setLinkMode(int mode)
 {
 	videoLinkMode[curEditIndex] = mode;
 	info_notify("Set success!");
