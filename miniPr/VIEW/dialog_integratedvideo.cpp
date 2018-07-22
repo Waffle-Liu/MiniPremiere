@@ -260,8 +260,7 @@ void Dialog_IntegratedVideo::on_pushButton_3_clicked()//stick pictures
 
 void Dialog_IntegratedVideo::on_pushButton_2_clicked()//export
 {	
-	QStringList fileNames = QFileDialog::getOpenFileNames(this, tr("Open Files"));
-	QString temp = fileNames.join("\\");
+	QString temp = QFileDialog::getSaveFileName(this,tr("Save File"),"",tr("*.avi;; *.mp4;; *.mov"));
 	string filename = temp.toStdString();
 	ptr_exportvideoCommand->set_parameters(std::static_pointer_cast<Parameters, PathParameters>(std::shared_ptr<PathParameters>(new PathParameters(filename))));
     ptr_exportvideoCommand->exec();
