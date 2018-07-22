@@ -46,11 +46,6 @@ void MainWindow::setSelectEditVideoCommand(std::shared_ptr<Command> command)
     ptr_selecteditvideoCommand = command;
 }
 
-void MainWindow::setShowEditWindowCommand(std::shared_ptr<Command> command)
-{
-    ptr_showeditwindowCommand = command;
-}
-
 std::shared_ptr<Notification> MainWindow::get_update_mainwindow_notification()
 {
     return update_mainwindow_notification;

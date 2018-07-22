@@ -25,7 +25,7 @@ public:
     void setAddVideoCommand(std::shared_ptr<Command>);
     //void setDeletaAllCommand(std::shared_ptr<Command> ptr_deleteall);
     void setRemoveVideoCommand(std::shared_ptr<Command>);
-    void setShowEditWindowCommand(std::shared_ptr<Command>);
+    //void setShowEditWindowCommand(std::shared_ptr<Command>);
     /*void setDeleteTwoCommand(std::shared_ptr<Command> ptr_deletetwo);
     void setDeleteThreeCommand(std::shared_ptr<Command> ptr_deletethree);
     void setDeleteFourCommand(std::shared_ptr<Command> ptr_deletefour);
@@ -52,7 +52,7 @@ private:
     std::shared_ptr<Command> add_video_Command;
     //std::shared_ptr<Command> ptr_deleteallCommand;
     std::shared_ptr<Command> ptr_removevideoCommand;
-    std::shared_ptr<Command> ptr_showeditwindowCommand;
+    //std::shared_ptr<Command> ptr_showeditwindowCommand;
     /*std::shared_ptr<Command> ptr_deletetwoCommand;
     std::shared_ptr<Command> ptr_deletethreeCommand;
     std::shared_ptr<Command> ptr_deletefourCommand;
