@@ -1,0 +1,68 @@
+environment:
+  matrix:
+    - QTDIR: C:\Qt\5.11\msvc2017_64
+      CMD_VCVARSALL: '"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat" x64'
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      MSVC_PLATFORM: "x64"
+
+configuration:
+  - release
+
+# Get the project submodules
+# Set the environment variables and paths to make
+install:
+  - git submodule update --init --recursive
+  - dir %QTDIR%
+  - call %CMD_VCVARSALL%
+  - set PATH=%PATH%;%QTDIR%\bin;%APPVEYOR_BUILD_FOLDER%\OpenCV\bin
+
+# Run qmake
+before_build:
+  - cd %APPVEYOR_BUILD_FOLDER%
+  - mkdir buildMVVM buildMVC
+  - cd buildMVVM
+  - qmake ..\MVVM\imageBeautify.pro
+  - cd %APPVEYOR_BUILD_FOLDER%
+  - cd buildMVC
+  - qmake ..\MVC\imageBeautify.pro
+
+
+# Build the projects
+build_script:
+  - cd %APPVEYOR_BUILD_FOLDER%
+  - cd buildMVVM
+  - nmake
+  - cd %APPVEYOR_BUILD_FOLDER%
+  - cd buildMVC
+  - nmake
+  
+  
+after_build:
+  - cd %APPVEYOR_BUILD_FOLDER%\buildMVVM\release
+  - mkdir release
+  - cd release
+  - xcopy %APPVEYOR_BUILD_FOLDER%\buildMVVM\release\imageBeautify.exe %APPVEYOR_BUILD_FOLDER%\buildMVVM\release\release\
+  - windeployqt imageBeautify.exe
+  - cd %APPVEYOR_BUILD_FOLDER%\buildMVC\release
+  - mkdir release
+  - cd release
+  - xcopy %APPVEYOR_BUILD_FOLDER%\buildMVC\release\imageBeautify.exe %APPVEYOR_BUILD_FOLDER%\buildMVC\release\release\
+  - windeployqt imageBeautify.exe
+
+  
+
+artifacts:
+  - path: buildMVVM\release\release\
+    name: MVVM_image_beautify_bin
+  - path: MVVM\
+    name: MVVM_image_beautify_src
+  - path: buildMVC\release\release\
+    name: MVC_image_beautify_pre_bin
+  - path: MVC\
+    name: MVC_image_beautify_pre_src
+
+deploy:
+  - provider: GitHub
+    auth_token:
+      secure: 0ITmy8HuewW3zTSS4Zfusi9wn6G2Hmq718SLrQNDiDFC89ZcrBrYSyE1gWQJ9Om2
+    prerelease: true
