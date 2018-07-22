@@ -19,5 +19,5 @@ void AddSubtitleCommand::exec()
 	double b = std::static_pointer_cast<SubtitleParameters, Parameters>(Command::params)->getb();
 	double size = std::static_pointer_cast<SubtitleParameters, Parameters>(Command::params)->getsize();
 	bool isbold = std::static_pointer_cast<SubtitleParameters, Parameters>(Command::params)->getisbold();
-    viewmodel->exec_add_subtitle_command(string, start, end, x, y, r, g, b, size, isbold);
+    viewmodel->exec_add_subtitle_command(text, start, end, x, y, r, g, b, size, isbold);
 }
