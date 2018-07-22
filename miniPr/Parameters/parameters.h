@@ -120,5 +120,5 @@ public:
     int getendframe(){return endframe;}
     double getx(){return x;}
     double gety(){return y;}
-}
+};
 #endif // PARAMETERS_H
