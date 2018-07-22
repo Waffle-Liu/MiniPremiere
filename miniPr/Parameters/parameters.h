@@ -105,4 +105,20 @@ public:
     int getsize(){return size;}
     bool getisbold(){return isbold;}
 };
+
+class StickerParameters: public Parameters {
+private:
+    string path;
+    int startframe;
+    int endframe;
+    double x;
+    double y;
+public:
+    StickerParameters(string path_,int startframe_,int endframe_,double x_,double y_):path(path_),startframe(startframe_),endframe(endframe_),x(x_),y(y_){}
+    string getpath(){return path;}
+    int getstartframe(){return startframe;}
+    int getendframe(){return endframe;}
+    double getx(){return x;}
+    double gety(){return y;}
+}
 #endif // PARAMETERS_H
