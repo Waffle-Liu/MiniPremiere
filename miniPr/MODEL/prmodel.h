@@ -18,6 +18,7 @@ private:
 
 	shared_ptr<Notification> info_notification;
 	shared_ptr<Notification> edit_enable_notification;
+	shared_ptr<Notification> integrate_complete_notification;
 
 public:
 	PrModel();
@@ -28,6 +29,7 @@ public:
 	void removeVideo(int index);
 	void changespeedVideo(double rate);
 	void cutVideo(int start_frame, int end_frame);
+	void integrateAllVideo();
 
 	void setEditIndex(int index);
 
@@ -36,5 +38,6 @@ public:
 	void set_edit_enable_notification(shared_ptr<Notification> ntf);
 	void info_notify(const string& info);
 	void edit_enable_notify();
+	void integrate_complete_notify();
 
 };

@@ -1,10 +1,13 @@
 #include "../VIEWMODEL/prviewmodel.h"
+
 #include "../commands/addvideocommand.h"
 #include "../commands/playvideocommand.h"
 #include "../commands/removevideocommand.h"
 #include "../commands/selecteditvideocommand.h"
 #include "../commands/cutvideocommand.h"
 #include "../commands/speedchangecommand.h"
+#include "../commands/integrateallvideocommand.h"
+
 #include "../notification/wrongindexnotification.h"
 #include "../notification/showeditvideonotification.h"
 
