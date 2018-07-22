@@ -40,6 +40,16 @@ public:
     void setvalue(int v) { value = v; }
     int getvalue() { return value; }
 };
+
+class DoubleParameters :public Parameters {
+private:
+    double value;
+public:
+    DoubleParameters(double v) :value(v) {}
+    void setvalue(double v) { value = v; }
+    int getvalue() { return value; }
+};
+
 class MouseMoveParameters: public Parameters {
 private:
     double x_s;
