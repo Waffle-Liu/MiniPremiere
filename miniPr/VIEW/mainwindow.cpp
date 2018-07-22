@@ -39,7 +39,6 @@ void MainWindow::setPlayVideoCommand(std::shared_ptr<Command> command)
     ptr_playvideoCommand = command;
 }
 
-
 void MainWindow::setRemoveVideoCommand(std::shared_ptr<Command> command)
 {
     ptr_removevideoCommand = command;

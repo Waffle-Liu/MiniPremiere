@@ -51,6 +51,16 @@ void Dialog_IntegratedVideo::setFunnyCommand(std::shared_ptr<Command> command)
 	ptr_addfunnyCommand = command;
 }
 
+void MainWindow::setPlayVideoCommand(std::shared_ptr<Command> command)
+{
+    ptr_playvideoCommand = command;
+}
+
+void MainWindow::setExportVideoCommand(std::shared_ptr<Command> command)
+{
+	ptr_exportvideoCommand = command;
+}
+
 void Dialog_IntegratedVideo::on_pushButton_17_clicked()//Subtitle confirm button
 {
 	
@@ -98,12 +108,13 @@ void Dialog_IntegratedVideo::on_pushButton_17_clicked()//Subtitle confirm button
 	ui->lineEdit_9->clear();
 
 }
-/*
+
 void Dialog_IntegratedVideo::on_preview_clicked()//preview button
 {
-	globalplay.PlayList[0].play();
+	ptr_playvideoCommand->set_parameters(std::static_pointer_cast<Parameters, IntParameters>(std::shared_ptr<IntParameters>(new IntParameters(0))));
+    ptr_playvideoCommand->exec();
 }
-
+/*
 void Dialog_IntegratedVideo::on_pushButton_clicked()//display the size of video
 {
 	//display size
@@ -244,15 +255,16 @@ void Dialog_IntegratedVideo::on_pushButton_3_clicked()//stick pictures
 	ui->lineEdit_18->clear();
 	ui->pushButton_5->setEnabled(true);
 }
-/*
-void Dialog_IntegratedVideo::on_pushButton_2_clicked()//export
-{
 
+void Dialog_IntegratedVideo::on_pushButton_2_clicked()//export
+{	
+	QStringList fileNames = QFileDialog::getOpenFileNames(this, tr("Open Files"));
+	QString temp = fileNames.join("\\");
+	string filename = temp.toStdString();
+	ptr_exportvideoCommand->set_parameters(std::static_pointer_cast<Parameters, PathParameters>(std::shared_ptr<PathParameters>(new PathParameters(filename))));
+    ptr_exportvideoCommand->exec();
 	QMessageBox::about(0, QObject::tr("success"), "Export success!");
 }
-*/
-
-string Dialog_IntegratedVideo::filename = "";
 
 void Dialog_IntegratedVideo::on_pushButton_5_clicked()
 {

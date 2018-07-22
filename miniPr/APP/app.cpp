@@ -20,6 +20,8 @@ miniPrAPP::miniPrAPP(){
 	_integratedWindow.setRotateCommand(viewmodel->get_rotate_command());
 	_integratedWindow.setAddFilterCommand(viewmodel->get_add_filter_command());
 	_integratedWindow.setFunnyCommand(viewmodel->get_funny_command());
+	_integratedWindow.setExportVideoCommand(viewmodel->get_export_video_command());
+	_integratedWindow.setPlayVideoCommand(viewmodel->get_play_video_command());
 
 	viewmodel->set_update_view_notification(_mainWindow.get_update_mainwindow_notification());
 	model->set_index_error_notification(viewmodel->get_index_error_notification());

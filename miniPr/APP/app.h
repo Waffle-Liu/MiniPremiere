@@ -23,6 +23,7 @@
 #include "commands/rotatecommand.h"
 #include "commands/addfiltercommand.h"
 #include "commands/funnycommand.h"
+#include "commands/exportvideocommand.h"
 
 class miniPrAPP
 {
