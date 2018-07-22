@@ -19,6 +19,10 @@
 #include "commands/showintegratewindowcommand.h"
 #include "commands/addsubtitlecommand.h"
 #include "commands/addstickercommand.h"
+#include "commands/mirrorcommand.h"
+#include "commands/rotatecommand.h"
+#include "commands/addfiltercommand.h"
+#include "commands/funnycommand.h"
 
 class miniPrAPP
 {

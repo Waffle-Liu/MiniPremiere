@@ -16,6 +16,10 @@ miniPrAPP::miniPrAPP(){
 	_editWindow.setCutVideoCommand(viewmodel->get_cut_video_command());
 	_integratedWindow.setAddSubtitleCommand(viewmodel->get_add_subtitle_command());
 	_integratedWindow.setAddStickerCommand(viewmodel->get_add_sticker_command());
+	_integratedWindow.setMirrorCommand(viewmodel->get_mirror_command());
+	_integratedWindow.setRotateCommand(viewmodel->get_rotate_command());
+	_integratedWindow.setAddFilterCommand(viewmodel->get_add_filter_command());
+	_integratedWindow.setFunnyCommand(viewmodel->get_funny_command());
 
 	viewmodel->set_update_view_notification(_mainWindow.get_update_mainwindow_notification());
 	model->set_index_error_notification(viewmodel->get_index_error_notification());

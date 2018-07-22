@@ -59,7 +59,11 @@ SOURCES += \
     common/FilterFunction.cpp \
     notification/showintegratewindownotification.cpp \
     commands/addsubtitlecommand.cpp \
-    commands/addstickercommand.cpp
+    commands/addstickercommand.cpp \
+    commands/mirrorcommand.cpp \
+    commands/rotatecommand.cpp \
+    commands/addfiltercommand.cpp \
+    commands/funnycommand.cpp
 
 HEADERS  += \
     APP/app.h \
@@ -88,7 +92,11 @@ HEADERS  += \
     common/FilterFunction.h \
     notification/showintegratewindownotification.h \
     commands/addsubtitlecommand.h \
-    commands/addstickercommand.h
+    commands/addstickercommand.h \
+    commands/mirrorcommand.h \
+    commands/rotatecommand.h \
+    commands/addfiltercommand.h \
+    commands/funnycommand.h
 
 FORMS    += \
     VIEW/dialog_edit.ui \
