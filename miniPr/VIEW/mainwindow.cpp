@@ -144,7 +144,6 @@ void MainWindow::on_DeleteAllMedia_clicked()
 //the integrated video is stored in PlayList[0]
 void MainWindow::on_integrationDone_clicked()
 {
-    ui->label->setStyleSheet("border-image:url(:/images/images/load2.jpg)");
     ui->label_2->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
     ui->label_3->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
     ui->label_4->setStyleSheet("border-image:url(:/images/images/nothing.jpg)");
