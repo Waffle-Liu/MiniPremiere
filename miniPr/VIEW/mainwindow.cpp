@@ -7,7 +7,7 @@
 #include "../notification/showeditvideonotification.h"
 #include "../notification/showintegratewindownotification.h"
 
-static int num=0;
+int MainWindow::num = 0;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
