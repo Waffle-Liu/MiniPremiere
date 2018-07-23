@@ -22,7 +22,7 @@ public:
     }
 };
 
-class brightAndContrastParameters: public Parameters{
+/*class brightAndContrastParameters: public Parameters{
 private:
     int nBright; // may not be 'int'
     int nContrast;
@@ -31,7 +31,7 @@ public:
 
     int get_nBright(){return nBright;}
     int get_nContrast(){return nContrast;}
-};
+};*/
 
 class IntParameters :public Parameters {
 private:
@@ -62,7 +62,7 @@ public:
     int getvalue() { return value; }
 };
 
-class MouseMoveParameters: public Parameters {
+/*class MouseMoveParameters: public Parameters {
 private:
     double x_s;
     double y_s;
@@ -77,7 +77,7 @@ public:
     double getx_e() { return x_e; }
     double gety_e() { return y_e; }
 
-};
+};*/
 
 class SubtitleParameters: public Parameters {
 private:
