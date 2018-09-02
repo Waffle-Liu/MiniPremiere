@@ -3,6 +3,27 @@
 #include "../common/stdafx.h"
 #include "../MODEL/prmodel.h"
 #include "../common/command.h"
+
+#include "commands/addvideocommand.h"
+#include "commands/playvideocommand.h"
+#include "commands/removevideocommand.h"
+#include "commands/selecteditvideocommand.h"
+#include "commands/cutvideocommand.h"
+#include "commands/speedchangecommand.h"
+#include "commands/integrateallvideocommand.h"
+#include "commands/addsubtitlecommand.h"
+#include "commands/addstickercommand.h"
+#include "commands/mirrorcommand.h"
+#include "commands/rotatecommand.h"
+#include "commands/addfiltercommand.h"
+#include "commands/funnycommand.h"
+#include "commands/exportvideocommand.h"
+#include "commands/transmodecommand.h"
+
+#include "notification/wrongindexnotification.h"
+#include "notification/showeditvideonotification.h"
+#include "notification/showintegratewindownotification.h"
+
 using namespace std;
 
 class Command;
