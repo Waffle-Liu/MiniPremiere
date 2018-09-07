@@ -1,5 +1,5 @@
-#include "../commands/showintegratewindowcommand.h"
-#include "../APP/app.h"
+#include "showintegratewindowcommand.h"
+#include "../../APP/app.h"
 
 ShowIntegrateWindowCommand::ShowIntegrateWindowCommand(miniPrAPP *ptrAPP):ptrAPP(ptrAPP)
 {

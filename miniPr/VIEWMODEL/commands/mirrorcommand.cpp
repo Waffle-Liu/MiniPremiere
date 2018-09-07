@@ -1,4 +1,4 @@
-#include "../commands/mirrorcommand.h"
+#include "mirrorcommand.h"
 
 
 MirrorCommand::MirrorCommand(std::shared_ptr<PrViewModel> vm):viewmodel(vm)

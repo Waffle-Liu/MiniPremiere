@@ -1,4 +1,4 @@
-#include "../commands/addfiltercommand.h"
+#include "addfiltercommand.h"
 
 
 AddFilterCommand::AddFilterCommand(std::shared_ptr<PrViewModel> vm):viewmodel(vm)

@@ -1,4 +1,4 @@
-#include "../commands/transmodecommand.h"
+#include "transmodecommand.h"
 
 
 TransModeCommand::TransModeCommand(std::shared_ptr<PrViewModel> vm):viewmodel(vm)

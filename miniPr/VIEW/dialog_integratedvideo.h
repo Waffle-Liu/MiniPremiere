@@ -3,13 +3,13 @@
 
 #include <QDialog>
 #include <iostream>
-#include "..\common\Video.h"
+#include "../common/Video.h"
 #include <QMessageBox>
 #include <vector>
 #include <QString>
 #include <QTableWidget>
 #include <QFileDialog>
-#include "common/command.h"
+#include "../common/command.h"
 
 namespace Ui {
 class Dialog_IntegratedVideo;

@@ -8,7 +8,7 @@
 #include <QString>
 #include <string>
 #include "../common/command.h"
-#include "../notification/notification.h"
+#include "../VIEWMODEL/notification/notification.h"
 //#include "VideoPlay.h"
 //#include "stdafx.h"
 //#include "Video.h"

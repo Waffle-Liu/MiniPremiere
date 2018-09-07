@@ -1,4 +1,4 @@
-#include "../commands/integrateallvideocommand.h"
+#include "integrateallvideocommand.h"
 
 IntegrateAllVideoCommand::IntegrateAllVideoCommand(std::shared_ptr<PrViewModel> vm):viewmodel(vm)
 {

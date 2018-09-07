@@ -1,7 +1,7 @@
 #pragma once
 
-#include "..\common\stdafx.h"
-#include "..\Parameters\parameters.h"
+#include "..\..\common\stdafx.h"
+#include "..\..\Parameters\parameters.h"
 
 class Notification
 {

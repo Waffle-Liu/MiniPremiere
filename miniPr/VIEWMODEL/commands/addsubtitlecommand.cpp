@@ -1,4 +1,4 @@
-#include "../commands/addsubtitlecommand.h"
+#include "addsubtitlecommand.h"
 
 
 AddSubtitleCommand::AddSubtitleCommand(std::shared_ptr<PrViewModel> vm):viewmodel(vm)

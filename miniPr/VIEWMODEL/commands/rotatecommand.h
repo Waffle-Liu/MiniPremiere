@@ -1,8 +1,8 @@
 #ifndef ROTATECOMMAND_H
 #define ROTATECOMMAND_H
 
-#include "../common/command.h"
-#include "../VIEWMODEL/prviewmodel.h"
+#include "../../common/command.h"
+#include "../prviewmodel.h"
 #include <string>
 
 class RotateCommand: public Command

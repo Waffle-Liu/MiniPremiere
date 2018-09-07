@@ -1,4 +1,4 @@
-#include "../commands/removevideocommand.h"
+#include "removevideocommand.h"
 
 
 RemoveVideoCommand::RemoveVideoCommand(std::shared_ptr<PrViewModel> vm):viewmodel(vm)

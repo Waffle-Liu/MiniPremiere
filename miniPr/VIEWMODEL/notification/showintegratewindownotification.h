@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../VIEWMODEL/prviewmodel.h"
-#include "../VIEW/mainwindow.h"
+#include "../prviewmodel.h"
+#include "../../VIEW/mainwindow.h"
 
 using namespace std;
 

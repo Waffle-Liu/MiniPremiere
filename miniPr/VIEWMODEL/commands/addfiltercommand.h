@@ -1,8 +1,8 @@
 #ifndef ADDFILTERCOMMAND_H
 #define ADDFILTERCOMMAND_H
 
-#include "../common/command.h"
-#include "../VIEWMODEL/prviewmodel.h"
+#include "..\..\common/command.h"
+#include "..\prviewmodel.h"
 #include <string>
 
 class AddFilterCommand: public Command
