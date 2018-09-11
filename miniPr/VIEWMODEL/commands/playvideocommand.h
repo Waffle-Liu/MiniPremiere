@@ -1,8 +1,8 @@
 #ifndef PLAYVEDIOCOMMAND_H
 #define PLAYVEDIOCOMMAND_H
 
-#include "../../common/command.h"
-#include "../prviewmodel.h"
+#include "../common/command.h"
+#include "../VIEWMODEL/prviewmodel.h"
 #include <string>
 
 class PlayVideoCommand: public Command

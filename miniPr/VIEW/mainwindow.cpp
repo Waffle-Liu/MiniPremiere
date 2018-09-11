@@ -2,10 +2,10 @@
 #include "ui_mainwindow.h"
 #include <QBoxLayout>
 #include <iostream>
-#include "../VIEWMODEL/notification/notification.h"
-#include "../VIEWMODEL/notification/wrongindexnotification.h"
-#include "../VIEWMODEL/notification/showeditvideonotification.h"
-#include "../VIEWMODEL/notification/showintegratewindownotification.h"
+#include "../notification/notification.h"
+#include "../notification/wrongindexnotification.h"
+#include "../notification/showeditvideonotification.h"
+#include "../notification/showintegratewindownotification.h"
 
 int MainWindow::num = 0;
 

@@ -1,8 +1,8 @@
 #ifndef ADDVEDIOCOMMAND_H
 #define ADDVEDIOCOMMAND_H
 
-#include "../../common/command.h"
-#include "../prviewmodel.h"
+#include "../common/command.h"
+#include "../VIEWMODEL/prviewmodel.h"
 #include <string>
 
 class AddVideoCommand: public Command

@@ -1,8 +1,8 @@
 #ifndef SELECTEDITVIDEOCOMMAND_H
 #define SELECTEDITVIDEOCOMMAND_H
 
-#include "../../common/command.h"
-#include "../prviewmodel.h"
+#include "../common/command.h"
+#include "../VIEWMODEL/prviewmodel.h"
 #include <string>
 
 class SelectEditVideoCommand: public Command

@@ -20,9 +20,9 @@
 #include "commands/exportvideocommand.h"
 #include "commands/transmodecommand.h"
 
-#include "notification/wrongindexnotification.h"
-#include "notification/showeditvideonotification.h"
-#include "notification/showintegratewindownotification.h"
+#include "../notification/wrongindexnotification.h"
+#include "../notification/showeditvideonotification.h"
+#include "../notification/showintegratewindownotification.h"
 
 using namespace std;
 

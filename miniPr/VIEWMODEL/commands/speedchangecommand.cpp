@@ -1,4 +1,4 @@
-#include "speedchangecommand.h"
+#include "../commands/speedchangecommand.h"
 
 
 SpeedChangeCommand::SpeedChangeCommand(std::shared_ptr<PrViewModel> vm):viewmodel(vm)

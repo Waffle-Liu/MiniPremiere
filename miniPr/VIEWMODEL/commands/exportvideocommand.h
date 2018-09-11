@@ -1,8 +1,8 @@
 #ifndef EXPORTVIDEOCOMMAND_H
 #define EXPORTVIDEOCOMMAND_H
 
-#include "../../common/command.h"
-#include "../prviewmodel.h"
+#include "../common/command.h"
+#include "../VIEWMODEL/prviewmodel.h"
 #include <string>
 
 class ExportVideoCommand: public Command

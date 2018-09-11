@@ -1,4 +1,4 @@
-#include "funnycommand.h"
+#include "../commands/funnycommand.h"
 
 
 FunnyCommand::FunnyCommand(std::shared_ptr<PrViewModel> vm):viewmodel(vm)

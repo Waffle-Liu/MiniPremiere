@@ -1,4 +1,4 @@
-#include "rotatecommand.h"
+#include "../commands/rotatecommand.h"
 
 
 RotateCommand::RotateCommand(std::shared_ptr<PrViewModel> vm):viewmodel(vm)

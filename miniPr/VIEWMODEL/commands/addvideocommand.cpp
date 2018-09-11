@@ -1,4 +1,4 @@
-#include "addvideocommand.h"
+#include "../commands/addvideocommand.h"
 
 
 AddVideoCommand::AddVideoCommand(std::shared_ptr<PrViewModel> vm):viewmodel(vm)

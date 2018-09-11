@@ -1,5 +1,5 @@
-#include "showeditwindowcommand.h"
-#include "../../APP/app.h"
+#include "../commands/showeditwindowcommand.h"
+#include "../APP/app.h"
 
 ShowEditWindowCommand::ShowEditWindowCommand(miniPrAPP *ptrAPP):ptrAPP(ptrAPP)
 {

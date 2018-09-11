@@ -1,8 +1,8 @@
 #ifndef TRANSMODECOMMAND_H
 #define TRANSMODECOMMAND_H
 
-#include "../../common/command.h"
-#include "../prviewmodel.h"
+#include "../common/command.h"
+#include "../VIEWMODEL/prviewmodel.h"
 #include <string>
 
 class TransModeCommand: public Command

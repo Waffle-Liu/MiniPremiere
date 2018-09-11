@@ -1,4 +1,4 @@
-#include "cutvideocommand.h"
+#include "../commands/cutvideocommand.h"
 
 
 CutVideoCommand::CutVideoCommand(std::shared_ptr<PrViewModel> vm):viewmodel(vm)

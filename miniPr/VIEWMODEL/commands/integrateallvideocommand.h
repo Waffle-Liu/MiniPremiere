@@ -1,8 +1,8 @@
 #ifndef INTEGRATEALLVIDEOCOMMAND_H
 #define INTEGRATEALLVIDEOCOMMAND_H
 
-#include "../../common/command.h"
-#include "../prviewmodel.h"
+#include "../common/command.h"
+#include "../VIEWMODEL/prviewmodel.h"
 #include <string>
 
 class IntegrateAllVideoCommand: public Command

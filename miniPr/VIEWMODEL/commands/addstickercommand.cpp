@@ -1,4 +1,4 @@
-#include "addstickercommand.h"
+#include "../commands/addstickercommand.h"
 
 
 AddStickerCommand::AddStickerCommand(std::shared_ptr<PrViewModel> vm):viewmodel(vm)

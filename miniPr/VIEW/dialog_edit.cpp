@@ -1,6 +1,6 @@
 #include "dialog_edit.h"
 #include "ui_dialog_edit.h"
-#include "../VIEWMODEL/notification/showeditvideonotification.h"
+#include "..\notification\showeditvideonotification.h"
 
 Dialog_edit::Dialog_edit(QWidget *parent) :
     QDialog(parent),
