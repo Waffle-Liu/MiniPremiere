@@ -1,4 +1,4 @@
-#include "../common/command.h"
+#include "command.h"
 #include "../Parameters/parameters.h"
 #include "../VIEWMODEL/prviewmodel.h"
 
