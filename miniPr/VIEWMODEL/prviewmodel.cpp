@@ -1,4 +1,4 @@
-#include "../VIEWMODEL/prviewmodel.h"
+#include "prviewmodel.h"
 
 using namespace std;
 

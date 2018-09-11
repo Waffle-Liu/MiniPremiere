@@ -1,4 +1,4 @@
-#include "../commands/selecteditvideocommand.h"
+#include "selecteditvideocommand.h"
 
 SelectEditVideoCommand::SelectEditVideoCommand(std::shared_ptr<PrViewModel> vm):viewmodel(vm)
 {

@@ -1,4 +1,4 @@
-#include "../commands/playvideocommand.h"
+#include "playvideocommand.h"
 
 
 PlayVideoCommand::PlayVideoCommand(std::shared_ptr<PrViewModel> vm):viewmodel(vm)

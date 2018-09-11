@@ -2,7 +2,7 @@
 
 #include "..\common\stdafx.h"
 #include "..\common\Video.h"
-#include "..\notification\notification.h"
+#include "..\VIEWMODEL\notification\notification.h"
 
 #define NIL -1
 

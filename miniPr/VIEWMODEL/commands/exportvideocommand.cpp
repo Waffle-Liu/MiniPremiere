@@ -1,4 +1,4 @@
-#include "../commands/exportvideocommand.h"
+#include "exportvideocommand.h"
 
 
 ExportVideoCommand::ExportVideoCommand(std::shared_ptr<PrViewModel> vm):viewmodel(vm)

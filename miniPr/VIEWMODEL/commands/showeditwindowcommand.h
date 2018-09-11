@@ -1,7 +1,7 @@
 #ifndef SHOWEDITWINDOWCOMMAND_H
 #define SHOWEDITWINDOWCOMMAND_H
 
-#include "../common/command.h"
+#include "../../common/command.h"
 #include <string>
 
 class miniPrAPP;

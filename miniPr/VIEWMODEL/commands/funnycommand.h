@@ -1,8 +1,8 @@
 #ifndef FUNNYCOMMAND_H
 #define FUNNYCOMMAND_H
 
-#include "../common/command.h"
-#include "../VIEWMODEL/prviewmodel.h"
+#include "../../common/command.h"
+#include "../prviewmodel.h"
 #include <string>
 
 class FunnyCommand: public Command
