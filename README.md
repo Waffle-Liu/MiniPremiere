@@ -1,6 +1,6 @@
 # MiniPremiere
 
-MiniPremiere是一款视频处理软件。
+MiniPremiere是一款使用VMMV框架开发的视频处理软件。
 
 # 实现功能
 
